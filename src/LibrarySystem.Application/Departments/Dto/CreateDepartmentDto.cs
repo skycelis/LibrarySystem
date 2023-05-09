@@ -10,7 +10,6 @@ using LibrarySystem.Entities;
 
 namespace LibrarySystem.Departments.Dto
 {
-    [AutoMapFrom(typeof(DepartmentDto))]
     [AutoMapTo(typeof(Department))]
     public class CreateDepartmentDto
     {

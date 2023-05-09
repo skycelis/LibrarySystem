@@ -5,7 +5,7 @@ using Abp.Domain.Repositories;
 using LibrarySystem.Departments.Dto;
 using LibrarySystem.Entities;
 
-namespace LibrarySystem2.Departments
+namespace LibrarySystem.Departments
 {
     public class DepartmentAppService : AsyncCrudAppService<Department, DepartmentDto, int, PagedDepartmentResultRequestDto, CreateDepartmentDto, DepartmentDto>, IDepartmentAppService
 
@@ -24,27 +24,22 @@ namespace LibrarySystem2.Departments
             return base.DeleteAsync(input);
         }
 
-
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public override Task<PagedResultDto<DepartmentDto>> GetAllAsync(PagedDepartmentResultRequestDto input)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             return base.GetAllAsync(input);
         }
 
-
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public override Task<DepartmentDto> GetAsync(EntityDto<int> input)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+
         {
             return base.GetAsync(input);
         }
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
         public override Task<DepartmentDto> UpdateAsync(DepartmentDto input)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             return base.UpdateAsync(input);
         }
+
     }
 
 }

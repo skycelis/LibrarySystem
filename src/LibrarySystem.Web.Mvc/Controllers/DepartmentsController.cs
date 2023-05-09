@@ -1,11 +1,13 @@
 ﻿using LibrarySystem.Departments.Dto;
-using LibrarySystem.Web.Models.Departments;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
-using LibrarySystem2.Departments;
+using LibrarySystem.Departments;
+using LibrarySystem.Web.Models.Departments;
 using LibrarySystem.Controllers;
 using System;
+using Abp.Application.Services.Dto;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 
 namespace LibrarySystem.Web.Controllers
 {
@@ -26,28 +28,38 @@ namespace LibrarySystem.Web.Controllers
                 Departments = departments.Items.ToList()
             };
 
-            return ViewComponent(model);
+            return View(model);
         }
 
-        private IActionResult ViewComponent(DepartmentListViewModel model)
-        {
-            throw new NotImplementedException();
-        }
+        //private IActionResult ViewComponent(DepartmentListViewModel model)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         [HttpGet]
 
-        public ActionResult CreateDepartment(int id)
-        {
-            var model = new CreateOrEditDepartmentWiewModel();
+        //public ActionResult CreateDepartment(int id)
+        //{
+        //    var model = new CreateOrEditDepartmentWiewModel();
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public ActionResult EditDepartment()
+        public async Task<IActionResult> CreateDepartment(int id)
         {
             var model = new CreateOrEditDepartmentViewModel();
 
-            return View();
+            if (id > 0)
+            {
+                var department = await _departmentappService.GetAsync(new EntityDto<int>(id));
+                model = new CreateOrEditDepartmentViewModel()
+                {
+                    Name = department.Name,
+                    Id = id
+                };
+            }
+
+        return View(model);
         }
 
     }
