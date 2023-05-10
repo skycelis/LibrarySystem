@@ -10,11 +10,29 @@ namespace LibrarySystem.EntityFrameworkCore
 {
     public class LibrarySystemDbContext : AbpZeroDbContext<Tenant, Role, User, LibrarySystemDbContext>
     {
+
         /* Define a DbSet for each entity of the application */
-        public virtual DbSet<Department> Departments { get; set; }
+        //public virtual DbSet<Department> GetDepartments()
+        //{
+        //    return departments;
+        //}
+
+        ///* Define a DbSet for each entity of the application */
+        //public virtual void SetDepartments(DbSet<Department> value)
+        //{
+        //    departments = value;
+        //}
+
         public LibrarySystemDbContext(DbContextOptions<LibrarySystemDbContext> options)
             : base(options)
         {
         }
+
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Student> Students { get; set; }
+
+        //public virtual DbSet<Department> Departments { get; set; }
+
+        //public virtual DbSet<Students> Students { get; set; }
     }
 }

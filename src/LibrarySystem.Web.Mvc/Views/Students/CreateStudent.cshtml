@@ -1,0 +1,50 @@
+﻿@using LibrarySystem.Web.Models.Students
+@using LibrarySystem.Web.Controllers
+@using LibrarySystem.Students.Dto
+
+@model CreateOrEditStudentViewModel
+
+@section scripts{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Students/CreateOrEditStudents.js" asp-append-version="true"></script>
+    </environment>
+}
+<form name="CreateStudentForm" role="form" class="form-horizontal">
+
+
+    <div class="modal-body">
+        <label style="font-size:24px" class="col-md-3 col-form-label">CreateStudent</label>
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="form-group row required">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label class="col-md-3 col-form-label" for="Name">Name</label>
+
+                        <input id="Name" type="text" name="Name" value="@Model.StudentName" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="col-md-3 col-form-label" for="Name">Name</label>
+
+                        <input id="Name" type="text" name="Name" value="@Model.StudentName" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="col-md-3 col-form-label" for="Name">Name</label>
+
+                        <input id="Name" type="text" name="Name" value="@Model.StudentName" class="form-control" required>
+                    </div>
+                    <div>
+                        @Html.DropDownListFor(m => m.Departments,new SelectList(Model.Departments,"Id", "Name"), "...Select Department...")
+                    </div>
+                </div>
+
+                <div class="container my-3">
+                    <div class="col-md-12">
+                        <button id="Submit" type="submit" name="Submit" class="save-button btn btn-primary">Create</button>
+                        <button id="Cancel" type="button" name="Cancel" class="btn bg-secondary cancel-button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

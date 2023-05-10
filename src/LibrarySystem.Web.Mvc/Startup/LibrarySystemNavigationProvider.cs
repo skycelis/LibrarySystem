@@ -31,6 +31,14 @@ namespace LibrarySystem.Web.Startup
                     )
                 ).AddItem(
                     new MenuItemDefinition(
+                        PageNames.Students,
+                        L("Students"),
+                        url: "Students",
+                        icon: "fas fa-home",
+                        requiresAuthentication: true
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
                         PageNames.Tenants,
                         L("Tenants"),
                         url: "Tenants",

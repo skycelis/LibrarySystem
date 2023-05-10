@@ -119,6 +119,9 @@
 		<text name="UsersActivation">Users activation</text>
 		<text name="Departments">Departments</text>
 		<text name="CreateDepartment">CreateDepartment</text>
+		<text name="Students">Students</text>
+		<text name="CreateStudent">CreateStudent</text>
+		
 		
 
 	</texts>
