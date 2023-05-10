@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibrarySystem.Migrations
 {
     [DbContext(typeof(LibrarySystemDbContext))]
-    [Migration("20230509073235_student-migration")]
+    [Migration("20230510012607_student-migration")]
     partial class studentmigration
     {
         /// <inheritdoc />

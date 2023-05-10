@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem.Entities
 {
-    public class Student : FullAuditedEntity
+    public class Students : FullAuditedEntity<int>
     {
         public string StudentName { get; set; }
 
@@ -15,8 +15,7 @@ namespace LibrarySystem.Entities
 
         public string StudentEmail { get; set; }
 
-        public int DepartmentId { get; set; }
-        public Department DepartmentFk { get; set; }
+        public Department Department { get; set; }
 
     }
 }
