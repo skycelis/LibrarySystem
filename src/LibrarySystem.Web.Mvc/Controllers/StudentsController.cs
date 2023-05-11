@@ -46,15 +46,15 @@ namespace LibrarySystem.Web.Controllers
         [HttpGet]
 
 
-        public async Task<IActionResult> CreateOrEdit(int id)
+        public async Task<IActionResult> CreateStudent(int id)
         {
-            var model = new CreateOrEditStudentViewModel();
+            var model = new CreateOrEditStudentListViewModel();
             var departments = await _departmentappService.GetAllDepartments();
 
             if (id != 0)
             {
                 var student = await _studentappService.GetAsync(new EntityDto<int>(id));
-                model = new CreateOrEditStudentViewModel()
+                model = new CreateOrEditStudentListViewModel()
                 {
                     StudentName = student.StudentName,
                     StudentContactNumber = student.StudentContactNumber,
@@ -65,7 +65,7 @@ namespace LibrarySystem.Web.Controllers
                 };
             }
 
-            model.Departments = departments;   
+            model.Departments = departments;
             return View(model);
         }
 

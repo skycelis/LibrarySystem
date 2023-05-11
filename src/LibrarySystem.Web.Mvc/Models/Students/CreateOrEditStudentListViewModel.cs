@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LibrarySystem.Web.Models.Students
 {
-    public class CreateOrEditStudentViewModel
+    public class CreateOrEditStudentListViewModel
     {
         public int Id { get; set; }
         public string StudentName { get; set; }

@@ -2,46 +2,58 @@
 @using LibrarySystem.Web.Controllers
 @using LibrarySystem.Students.Dto
 
-@model CreateOrEditStudentViewModel
+@model CreateOrEditStudentListViewModel
 
 @section scripts{
     <environment names="Development">
-        <script src="~/view-resources/Views/Students/CreateOrEditStudents.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Students/CreateOrEditStudent.js" asp-append-version="true"></script>
     </environment>
 }
 <form name="CreateStudentForm" role="form" class="form-horizontal">
 
 
     <div class="modal-body">
-        <label style="font-size:24px" class="col-md-3 col-form-label">CreateStudent</label>
+        <div>
+            <h1 style="font-size:24px" class="col-md-3 col-form-label"><strong>Create Student</strong></h1>
+        </div>
         <input type="hidden" name="Id" value="@Model.Id" />
-        <div class="form-group row required">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label class="col-md-3 col-form-label" for="Name">Name</label>
-
-                        <input id="Name" type="text" name="Name" value="@Model.StudentName" class="form-control" required>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="col-md-3 col-form-label" for="Name">Name</label>
-
-                        <input id="Name" type="text" name="Name" value="@Model.StudentName" class="form-control" required>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="col-md-3 col-form-label" for="Name">Name</label>
-
-                        <input id="Name" type="text" name="Name" value="@Model.StudentName" class="form-control" required>
-                    </div>
-                    <div>
-                        @Html.DropDownListFor(m => m.Departments,new SelectList(Model.Departments,"Id", "Name"), "...Select Department...")
+        <div class="bg-opacity-5 py-2">
+            <div class="form-validation">
+                <div class="row g-1">
+                    <div class="col-md-10 mb-10">
+                        <div class="container tab-pane">
+                            <div class="col-md-6 form-group row required">
+                                <label for="StudentName" class="col-md-5 col-form-label">Student Name</label><br>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="StudentName" name="Name" value="@Model?.StudentName">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group row required">
+                                <label for="StudentContactNumber" class="col-md-5 col-form-label">Student Contact Number</label>
+                                <div class="col-md-9">
+                                    <input type="number" class="form-control" id="StudentContactNumber" name="ContactNumber" value="@Model?.StudentContactNumber">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group row required">
+                                <label for="StudentEmail" class="col-md-5 col-form-label">Student Email</label>
+                                <div class="col-md-9">
+                                    <input type="email" class="form-control" id="StudentEmail" name="Email" value="@Model?.StudentEmail">
+                                </div>
+                            </div>
+                            <input type="hidden" class="form-control" id="DepartmentId" name="Name" value="@Model.DepartmentId">
+                            <div class="col-md-6 form-group row required">
+                                <label for="StudentDepartment" class="col-md-5 col-form-label">Department</label>
+                                <div class="col-md-9">
+                                    @Html.DropDownListFor(m => m.Departments, Model.Departments.Select(d => new SelectListItem { Text = d.Name, Value = d.Id.ToString() }), "Select Department", new {@class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
                 <div class="container my-3">
                     <div class="col-md-12">
-                        <button id="Submit" type="submit" name="Submit" class="save-button btn btn-primary">Create</button>
-                        <button id="Cancel" type="button" name="Cancel" class="btn bg-secondary cancel-button">Cancel</button>
+                        <button id="Cancel" type="button" name="Cancel" class="cancel-button btn btn-primary">Cancel</button>
+                        <button id="Save" type="submit" name="Save" class="btn bg-secondary save-button">Save</button>
                     </div>
                 </div>
             </div>
