@@ -15,6 +15,8 @@ namespace LibrarySystem.Entities
 
         public string StudentEmail { get; set; }
 
+        public int? DepartmentId { get; set; }
+
         public Department Department { get; set; }
 
     }

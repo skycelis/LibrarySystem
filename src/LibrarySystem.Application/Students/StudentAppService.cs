@@ -10,17 +10,15 @@ namespace LibrarySystem.Students
 {
     public class StudentAppService : AsyncCrudAppService<Student, StudentDto, int, PagedStudentResultRequestDto, CreateStudentDto, StudentDto>, IStudentAppService
     {
-        private readonly IRepository<Student, int> repository;
+        private IRepository<Student, int> repository;
+        private readonly object _repository;
 
         public StudentAppService(IRepository<Student, int> repository) : base(repository)
         {
-            this.repository = repository;
+            repository = repository;
         }
 
-        public override Task<StudentDto> CreateAsync(CreateStudentDto input)
-        {
-            return base.CreateAsync(input);
-        }
+        
 
         public override Task DeleteAsync(EntityDto<int> input)
         {
@@ -45,6 +43,11 @@ namespace LibrarySystem.Students
         protected override Task<Student> GetEntityByIdAsync(int id)
         {
             return base.GetEntityByIdAsync(id);
+        }
+
+        public override Task<StudentDto> CreateAsync(CreateStudentDto input)
+        {
+            return base.CreateAsync(input);
         }
     }
 }
