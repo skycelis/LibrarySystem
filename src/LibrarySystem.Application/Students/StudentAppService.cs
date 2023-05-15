@@ -2,23 +2,23 @@
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
-using LibrarySystem.Students;
 using LibrarySystem.Students.Dto;
 using LibrarySystem.Entities;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibrarySystem.Students
 {
     public class StudentAppService : AsyncCrudAppService<Student, StudentDto, int, PagedStudentResultRequestDto, CreateStudentDto, StudentDto>, IStudentAppService
     {
-        private IRepository<Student, int> repository;
-        private readonly object _repository;
+        private IRepository<Student, int> _repository;
+        //private Task<PagedResultDto<StudentDto>> query;
+        //private readonly object repository;
 
         public StudentAppService(IRepository<Student, int> repository) : base(repository)
         {
-            repository = repository;
+            _repository = repository;
         }
-
-        
 
         public override Task DeleteAsync(EntityDto<int> input)
         {
@@ -46,8 +46,19 @@ namespace LibrarySystem.Students
         }
 
         public override Task<StudentDto> CreateAsync(CreateStudentDto input)
-        {
+        { 
             return base.CreateAsync(input);
+        }
+
+        public async Task<PagedResultDto<StudentDto>> GetAllStudentsWithDepartment(PagedStudentResultRequestDto input)
+        {
+            var students = await _repository.GetAll()
+                .Include(x => x.Department)
+                .Select(x => ObjectMapper.Map<StudentDto>(x))
+                .ToListAsync();
+
+            return new PagedResultDto<StudentDto>(students.Count(), students);
         }
     }
 }
+

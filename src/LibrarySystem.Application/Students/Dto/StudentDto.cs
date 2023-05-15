@@ -6,8 +6,8 @@ using LibrarySystem.Entities;
 
 namespace LibrarySystem.Students.Dto
 {
-    [AutoMapFrom(typeof(StudentDto))]
-    [AutoMapTo(typeof(StudentDto))]
+    [AutoMapFrom(typeof(Student))]
+    [AutoMapTo(typeof(Student))]
     public class StudentDto : EntityDto<int>
     {
         public string StudentName { get; set; }

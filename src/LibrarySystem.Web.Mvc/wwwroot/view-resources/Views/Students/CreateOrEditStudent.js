@@ -11,7 +11,6 @@
 
         var student = _$form.serializeFormToObject();
         student.DepartmentId = parseInt(student.DepartmentId);
-        abp.ui.setBusy(_$form);
         if (student.Id > 0) {
             _studentAppService.update(student).done(function () {
                 abp.notify.info(l('UpdatedSuccessfully'));
@@ -20,7 +19,7 @@
                 abp.ui.clearBusy(_$form);
             });
         } else {
-            _studentAppService.submit(student).done(function () {
+            _studentAppService.create(student).done(function () {
                 window.location.href = _indexPage;
             }).always(function () {
                 abp.ui.clearBusy(_$form);
@@ -39,18 +38,5 @@
         e.preventDefault();
         save();
     });
-    //function cancel() {
-    //    window.location.href = "/Students";
-    //}
-
-    //_$form.find('.save-button').closest('div#container my-3').click(function (e) {
-    //    e.preventDefault();
-    //    save();
-    //});
-
-    //_$form.find('.cancel-button').closest('div#container my-3').click(function (e) {
-    //    e.preventDefault();
-    //    cancel();
-    //});
 
 })(jQuery);

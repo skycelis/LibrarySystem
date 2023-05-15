@@ -65,7 +65,7 @@ namespace LibrarySystem.Web.Controllers
                 };
             }
 
-            model.Departments = departments;
+            model.ListDepartments = departments;
             return View(model);
         }
 

@@ -13,6 +13,6 @@ namespace LibrarySystem.Web.Models.Students
         public string StudentEmail { get; set; }
 
         public int DepartmentId { get; set; }
-        public List<DepartmentDto> Departments { get; set; }
+        public List<DepartmentDto> ListDepartments { get; set; }
     }
 }

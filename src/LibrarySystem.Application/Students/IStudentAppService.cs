@@ -7,6 +7,7 @@ namespace LibrarySystem.Students
 {
     public interface IStudentAppService : IAsyncCrudAppService<StudentDto, int, PagedStudentResultRequestDto, CreateStudentDto, StudentDto>
     {
-        //Task<PagedResultDto<StudentDto>> GetAllStudentsWithDepartment(PagedResultRequestDto input);
+        Task<PagedResultDto<StudentDto>> GetAllStudentsWithDepartment(PagedStudentResultRequestDto input);
     }
+
 }
