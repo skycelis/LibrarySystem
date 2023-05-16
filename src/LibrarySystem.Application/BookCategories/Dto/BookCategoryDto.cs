@@ -12,8 +12,8 @@ using LibrarySystem.Entities;
 
 namespace LibrarySystem.BookCategories
 {
-    [AutoMapFrom(typeof(BookCategoryDto))]
-    [AutoMapTo(typeof(BookCategoryDto))]
+    [AutoMapFrom(typeof(BookCategory))]
+    [AutoMapTo(typeof(BookCategory))]
     public class BookCategoryDto : EntityDto<int>
     {
         public string Name { get; set; }

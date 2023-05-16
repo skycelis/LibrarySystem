@@ -8,7 +8,7 @@ using Abp.Domain.Entities.Auditing;
 
 namespace LibrarySystem.Entities
 {
-    public class Book : FullAuditedEntity<int>
+    public class BookCategory : FullAuditedEntity<int>
     {
         public string Name { get; set; }
 

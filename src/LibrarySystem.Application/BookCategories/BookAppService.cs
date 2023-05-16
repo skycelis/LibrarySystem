@@ -10,11 +10,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibrarySystem.BookCategories
 {
-    public class BookAppService : AsyncCrudAppService<Book, BookCategoryDto, int, PagedBookCategoryResultRequestDto, CreateBookCategoryDto, BookCategoryDto>, IBookAppService
+    public class BookAppService : AsyncCrudAppService<BookCategory, BookCategoryDto, int, PagedBookCategoryResultRequestDto, CreateBookCategoryDto, BookCategoryDto>, IBookAppService
 
     {
-        private IRepository<Book, int> _repository;
-        public BookAppService(IRepository<Book, int> repository) : base(repository)
+        private IRepository<BookCategory, int> _repository;
+        public BookAppService(IRepository<BookCategory, int> repository) : base(repository)
         {
             _repository = repository;
         }

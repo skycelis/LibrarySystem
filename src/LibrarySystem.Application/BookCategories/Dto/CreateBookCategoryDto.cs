@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Abp.Application.Services.Dto;
-using Abp.Domain.Entities;
+﻿using System.Collections.Generic;
 using Abp.AutoMapper;
 using LibrarySystem.Entities;
 using LibrarySystem.Departments.Dto;
 
 namespace LibrarySystem.BookCategories.Dto
 {
-    [AutoMapTo(typeof(BookCategoryDto))]
+    [AutoMapTo(typeof(BookCategory))]
     public class CreateBookCategoryDto
     {
         public string Name { get; set; }
