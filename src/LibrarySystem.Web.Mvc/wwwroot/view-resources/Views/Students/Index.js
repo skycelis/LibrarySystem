@@ -14,16 +14,16 @@
 
     $(document).on('click', '.delete-student', function () {
         var studentId = parseInt($(this).attr("data-student-id"));
-        var studentName = $(this).attr("data-student-name");
+        var studentStudentName = $(this).attr("data-student-name");
 
-        deleteStudent(studentId, studentName);
+        deleteStudent(studentId, studentStudentName);
     });
 
-    function deleteStudent(studentId, studentName) {
+    function deleteStudent(studentId, studentStudentName) {
         abp.message.confirm(
             abp.utils.formatString(
                 l('AreYouSureWantToDelete',
-                    studentName
+                    studentStudentName
                 )),
             null,
             function (isConfirmed) {

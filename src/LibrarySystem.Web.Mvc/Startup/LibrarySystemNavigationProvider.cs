@@ -37,7 +37,17 @@ namespace LibrarySystem.Web.Startup
                         icon: "fas fa-home",
                         requiresAuthentication: true
                     )
-                ).AddItem(
+                )
+                .AddItem(
+                    new MenuItemDefinition(
+                        PageNames.BookCategories,
+                        L("BookCategories"),
+                        url: "BookCategories",
+                        icon: "fas fa-home",
+                        requiresAuthentication: true
+                    )
+                )
+                .AddItem(
                     new MenuItemDefinition(
                         PageNames.Tenants,
                         L("Tenants"),

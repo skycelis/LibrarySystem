@@ -121,6 +121,8 @@
 		<text name="CreateDepartment">CreateDepartment</text>
 		<text name="Students">Students</text>
 		<text name="CreateStudent">CreateStudent</text>
+		<text name="BookCategories">BookCategories</text>
+		<text name="CreateBookCategory">CreateBookCategory</text>
 		
 		
 

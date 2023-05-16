@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem.BookCategories
 {
-    public interface IBookAppService : IAsyncCrudAppService<BookCategoryDto, int, PagedBookCategoryResultRequestDto, CreateBookCategoryDto, BookCategoryDto>
+    public interface IBookCategoryAppService : IAsyncCrudAppService<BookCategoryDto, int, PagedBookCategoryResultRequestDto, CreateBookCategoryDto, BookCategoryDto>
     {
-        Task<PagedResultDto<BookCategoryDto>> GetAllAsync(PagedBookCategoryResultRequestDto input);
+        Task<List<BookCategoryDto>> GetAllBookCategories();
     }
 }

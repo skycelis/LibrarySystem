@@ -10,11 +10,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibrarySystem.BookCategories
 {
-    public class BookAppService : AsyncCrudAppService<BookCategory, BookCategoryDto, int, PagedBookCategoryResultRequestDto, CreateBookCategoryDto, BookCategoryDto>, IBookAppService
+    public class BookCategoryAppService : AsyncCrudAppService<BookCategory, BookCategoryDto, int, PagedBookCategoryResultRequestDto, CreateBookCategoryDto, BookCategoryDto>, IBookCategoryAppService
 
     {
         private IRepository<BookCategory, int> _repository;
-        public BookAppService(IRepository<BookCategory, int> repository) : base(repository)
+        public BookCategoryAppService(IRepository<BookCategory, int> repository) : base(repository)
         {
             _repository = repository;
         }
@@ -45,7 +45,7 @@ namespace LibrarySystem.BookCategories
             return base.UpdateAsync(input);
         }
 
-        public async Task<List<BookCategoryDto>> GetAllBooks()
+        public async Task<List<BookCategoryDto>> GetAllBookCategories()
         {
             var query = await _repository.GetAll()
                 .Select(x => ObjectMapper.Map<BookCategoryDto>(x))

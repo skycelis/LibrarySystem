@@ -30,9 +30,7 @@ namespace LibrarySystem.EntityFrameworkCore
 
         public DbSet<Department> Departments { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<BookCategory> BookCategories { get; set; }
 
-        //public virtual DbSet<Department> Departments { get; set; }
-
-        //public virtual DbSet<Students> Students { get; set; }
     }
 }
