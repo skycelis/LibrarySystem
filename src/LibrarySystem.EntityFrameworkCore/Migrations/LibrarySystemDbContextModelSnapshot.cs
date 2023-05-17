@@ -63,7 +63,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpEditions", (string)null);
+                    b.ToTable("AbpEditions");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.FeatureSetting", b =>
@@ -99,7 +99,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpFeatures", (string)null);
+                    b.ToTable("AbpFeatures");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("FeatureSetting");
 
@@ -179,7 +179,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpAuditLogs", (string)null);
+                    b.ToTable("AbpAuditLogs");
                 });
 
             modelBuilder.Entity("Abp.Authorization.PermissionSetting", b =>
@@ -215,7 +215,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpPermissions", (string)null);
+                    b.ToTable("AbpPermissions");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("PermissionSetting");
 
@@ -255,7 +255,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "ClaimType");
 
-                    b.ToTable("AbpRoleClaims", (string)null);
+                    b.ToTable("AbpRoleClaims");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserAccount", b =>
@@ -316,7 +316,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "UserName");
 
-                    b.ToTable("AbpUserAccounts", (string)null);
+                    b.ToTable("AbpUserAccounts");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserClaim", b =>
@@ -352,7 +352,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "ClaimType");
 
-                    b.ToTable("AbpUserClaims", (string)null);
+                    b.ToTable("AbpUserClaims");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLogin", b =>
@@ -391,7 +391,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "LoginProvider", "ProviderKey");
 
-                    b.ToTable("AbpUserLogins", (string)null);
+                    b.ToTable("AbpUserLogins");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLoginAttempt", b =>
@@ -440,7 +440,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenancyName", "UserNameOrEmailAddress", "Result");
 
-                    b.ToTable("AbpUserLoginAttempts", (string)null);
+                    b.ToTable("AbpUserLoginAttempts");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserOrganizationUnit", b =>
@@ -475,7 +475,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserOrganizationUnits", (string)null);
+                    b.ToTable("AbpUserOrganizationUnits");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserRole", b =>
@@ -509,7 +509,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserRoles", (string)null);
+                    b.ToTable("AbpUserRoles");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserToken", b =>
@@ -547,7 +547,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserTokens", (string)null);
+                    b.ToTable("AbpUserTokens");
                 });
 
             modelBuilder.Entity("Abp.BackgroundJobs.BackgroundJobInfo", b =>
@@ -593,7 +593,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("IsAbandoned", "NextTryTime");
 
-                    b.ToTable("AbpBackgroundJobs", (string)null);
+                    b.ToTable("AbpBackgroundJobs");
                 });
 
             modelBuilder.Entity("Abp.Configuration.Setting", b =>
@@ -637,7 +637,7 @@ namespace LibrarySystem.Migrations
                     b.HasIndex("TenantId", "Name", "UserId")
                         .IsUnique();
 
-                    b.ToTable("AbpSettings", (string)null);
+                    b.ToTable("AbpSettings");
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityProperty", b =>
@@ -666,7 +666,7 @@ namespace LibrarySystem.Migrations
                         .IsUnique()
                         .HasFilter("[EntityFullName] IS NOT NULL AND [TenantId] IS NOT NULL");
 
-                    b.ToTable("AbpDynamicEntityProperties", (string)null);
+                    b.ToTable("AbpDynamicEntityProperties");
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityPropertyValue", b =>
@@ -694,7 +694,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("DynamicEntityPropertyId");
 
-                    b.ToTable("AbpDynamicEntityPropertyValues", (string)null);
+                    b.ToTable("AbpDynamicEntityPropertyValues");
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicProperty", b =>
@@ -727,7 +727,7 @@ namespace LibrarySystem.Migrations
                         .IsUnique()
                         .HasFilter("[PropertyName] IS NOT NULL AND [TenantId] IS NOT NULL");
 
-                    b.ToTable("AbpDynamicProperties", (string)null);
+                    b.ToTable("AbpDynamicProperties");
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicPropertyValue", b =>
@@ -752,7 +752,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("DynamicPropertyId");
 
-                    b.ToTable("AbpDynamicPropertyValues", (string)null);
+                    b.ToTable("AbpDynamicPropertyValues");
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChange", b =>
@@ -789,7 +789,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("EntityTypeFullName", "EntityId");
 
-                    b.ToTable("AbpEntityChanges", (string)null);
+                    b.ToTable("AbpEntityChanges");
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChangeSet", b =>
@@ -842,7 +842,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpEntityChangeSets", (string)null);
+                    b.ToTable("AbpEntityChangeSets");
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityPropertyChange", b =>
@@ -885,7 +885,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("EntityChangeId");
 
-                    b.ToTable("AbpEntityPropertyChanges", (string)null);
+                    b.ToTable("AbpEntityPropertyChanges");
                 });
 
             modelBuilder.Entity("Abp.Localization.ApplicationLanguage", b =>
@@ -941,7 +941,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpLanguages", (string)null);
+                    b.ToTable("AbpLanguages");
                 });
 
             modelBuilder.Entity("Abp.Localization.ApplicationLanguageText", b =>
@@ -991,7 +991,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "Source", "LanguageName", "Key");
 
-                    b.ToTable("AbpLanguageTexts", (string)null);
+                    b.ToTable("AbpLanguageTexts");
                 });
 
             modelBuilder.Entity("Abp.Notifications.NotificationInfo", b =>
@@ -1052,7 +1052,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpNotifications", (string)null);
+                    b.ToTable("AbpNotifications");
                 });
 
             modelBuilder.Entity("Abp.Notifications.NotificationSubscriptionInfo", b =>
@@ -1095,7 +1095,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "NotificationName", "EntityTypeName", "EntityId", "UserId");
 
-                    b.ToTable("AbpNotificationSubscriptions", (string)null);
+                    b.ToTable("AbpNotificationSubscriptions");
                 });
 
             modelBuilder.Entity("Abp.Notifications.TenantNotificationInfo", b =>
@@ -1145,7 +1145,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId");
 
-                    b.ToTable("AbpTenantNotifications", (string)null);
+                    b.ToTable("AbpTenantNotifications");
                 });
 
             modelBuilder.Entity("Abp.Notifications.UserNotificationInfo", b =>
@@ -1177,7 +1177,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("UserId", "State", "CreationTime");
 
-                    b.ToTable("AbpUserNotifications", (string)null);
+                    b.ToTable("AbpUserNotifications");
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnit", b =>
@@ -1231,7 +1231,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "Code");
 
-                    b.ToTable("AbpOrganizationUnits", (string)null);
+                    b.ToTable("AbpOrganizationUnits");
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnitRole", b =>
@@ -1266,7 +1266,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "RoleId");
 
-                    b.ToTable("AbpOrganizationUnitRoles", (string)null);
+                    b.ToTable("AbpOrganizationUnitRoles");
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookEvent", b =>
@@ -1296,7 +1296,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpWebhookEvents", (string)null);
+                    b.ToTable("AbpWebhookEvents");
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSendAttempt", b =>
@@ -1330,7 +1330,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("WebhookEventId");
 
-                    b.ToTable("AbpWebhookSendAttempts", (string)null);
+                    b.ToTable("AbpWebhookSendAttempts");
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSubscriptionInfo", b =>
@@ -1367,7 +1367,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpWebhookSubscriptions", (string)null);
+                    b.ToTable("AbpWebhookSubscriptions");
                 });
 
             modelBuilder.Entity("LibrarySystem.Authorization.Roles.Role", b =>
@@ -1442,7 +1442,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "NormalizedName");
 
-                    b.ToTable("AbpRoles", (string)null);
+                    b.ToTable("AbpRoles");
                 });
 
             modelBuilder.Entity("LibrarySystem.Authorization.Users.User", b =>
@@ -1570,7 +1570,100 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "NormalizedUserName");
 
-                    b.ToTable("AbpUsers", (string)null);
+                    b.ToTable("AbpUsers");
+                });
+
+            modelBuilder.Entity("LibrarySystem.Entities.Book", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("BookAuthor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("BookCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BookPublisher")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BookTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsBorrowed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookCategoryId");
+
+                    b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("LibrarySystem.Entities.BookCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("BookCategories");
                 });
 
             modelBuilder.Entity("LibrarySystem.Entities.Department", b =>
@@ -1602,15 +1695,12 @@ namespace LibrarySystem.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("LibrarySystem.Entities.Student", b =>
@@ -1658,7 +1748,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Students", (string)null);
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("LibrarySystem.MultiTenancy.Tenant", b =>
@@ -1722,7 +1812,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenancyName");
 
-                    b.ToTable("AbpTenants", (string)null);
+                    b.ToTable("AbpTenants");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -1734,7 +1824,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("EditionId", "Name");
 
-                    b.ToTable("AbpFeatures", (string)null);
+                    b.ToTable("AbpFeatures");
 
                     b.HasDiscriminator().HasValue("EditionFeatureSetting");
                 });
@@ -1745,7 +1835,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpFeatures", (string)null);
+                    b.ToTable("AbpFeatures");
 
                     b.HasDiscriminator().HasValue("TenantFeatureSetting");
                 });
@@ -1759,7 +1849,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AbpPermissions", (string)null);
+                    b.ToTable("AbpPermissions");
 
                     b.HasDiscriminator().HasValue("RolePermissionSetting");
                 });
@@ -1773,7 +1863,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AbpPermissions", (string)null);
+                    b.ToTable("AbpPermissions");
 
                     b.HasDiscriminator().HasValue("UserPermissionSetting");
                 });
@@ -1941,6 +2031,26 @@ namespace LibrarySystem.Migrations
                     b.Navigation("DeleterUser");
 
                     b.Navigation("LastModifierUser");
+                });
+
+            modelBuilder.Entity("LibrarySystem.Entities.Book", b =>
+                {
+                    b.HasOne("LibrarySystem.Entities.BookCategory", "BookCategory")
+                        .WithMany()
+                        .HasForeignKey("BookCategoryId");
+
+                    b.Navigation("BookCategory");
+                });
+
+            modelBuilder.Entity("LibrarySystem.Entities.BookCategory", b =>
+                {
+                    b.HasOne("LibrarySystem.Entities.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Department");
                 });
 
             modelBuilder.Entity("LibrarySystem.Entities.Student", b =>

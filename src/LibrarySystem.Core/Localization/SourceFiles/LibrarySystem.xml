@@ -123,8 +123,11 @@
 		<text name="CreateStudent">CreateStudent</text>
 		<text name="BookCategories">BookCategories</text>
 		<text name="CreateBookCategory">CreateBookCategory</text>
-		
-		
+		<text name="Books">Books</text>
+		<text name="CreateBook">CreateBook</text>
+
+
+
 
 	</texts>
 </localizationDictionary>

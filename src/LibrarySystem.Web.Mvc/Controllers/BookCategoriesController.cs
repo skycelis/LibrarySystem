@@ -7,6 +7,7 @@ using Abp.Application.Services.Dto;
 using LibrarySystem.BookCategories;
 using LibrarySystem.BookCategories.Dto;
 using LibrarySystem.Web.Models.BookCategories;
+using LibrarySystem.Entities;
 
 namespace LibrarySystem.Web.Controllers
 {
@@ -48,6 +49,7 @@ namespace LibrarySystem.Web.Controllers
                 model = new CreateOrEditBookCategoryListViewModel()
                 {
                     Name = bookcategory.Name,
+                    DepartmentId = bookcategory.DepartmentId,
                     Id = id
 
                 };

@@ -9,9 +9,7 @@ namespace LibrarySystem.BookCategories.Dto
     public class CreateBookCategoryDto
     {
         public string Name { get; set; }
-
         public int DepartmentId { get; set; }
-
         public List<DepartmentDto> Departments { get; set; }
     }
 }

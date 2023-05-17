@@ -10,9 +10,5 @@ namespace LibrarySystem.Entities
     public class Department : FullAuditedEntity<int>
     {
         public string Name { get; set; }
-
-        public string LastName { get; set; }
-
-
     }
 }

@@ -10,6 +10,8 @@
         public const string Departments = "Departments";
         public const string Students = "Students";
         public const string BookCategories = "BookCategories";
+        public const string Books = "Books";
+
 
 
 

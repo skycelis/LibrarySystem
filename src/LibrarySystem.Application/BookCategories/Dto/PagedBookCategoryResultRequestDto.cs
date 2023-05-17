@@ -10,7 +10,6 @@ namespace LibrarySystem.BookCategories.Dto
     public class PagedBookCategoryResultRequestDto : PagedResultRequestDto
     {
         public string Keyword { get; set; }
-
         public bool? IsActive { get; set; }
 
     }

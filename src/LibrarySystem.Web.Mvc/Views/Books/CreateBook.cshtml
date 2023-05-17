@@ -1,0 +1,73 @@
+﻿@using LibrarySystem.Web.Models.Books
+@using LibrarySystem.Web.Controllers
+@using LibrarySystem.Books.Dto
+
+@model CreateOrEditBookViewModel
+
+@section scripts{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Books/CreateOrEditBook.js" asp-append-version="true"></script>
+    </environment>
+}
+<form name="CreateBookForm" role="form" class="form-horizontal">
+
+
+    <div class="modal-body">
+        <div>
+            <h1 style="font-size:27px" class="col-md-3 col-form-label"><strong>Create Book</strong></h1>
+        </div>
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="bg-opacity-5 py-2">
+            <div class="form-validation">
+                <div class="row g-1">
+                    <div class="col-md-10 mb-10">
+                        <div class="container tab-pane">
+                            <div class="col-md-6 form-group row required">
+                                <label for="BookTitle" class="col-md-5 col-form-label">Book Title</label><br>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="BookTitle" name="BookTitle" value="@Model?.BookTitle">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group row required">
+                                <label for="BookPublisher" class="col-md-5 col-form-label">Book Publisher</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="BookPublisher" name="BookPublisher" value="@Model?.BookPublisher">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group row required">
+                                <label for="BookAuthor" class="col-md-5 col-form-label">Book Author</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="BookAuthor" name="BookAuthor" value="@Model?.BookAuthor">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group row required">
+                                <label for="IsBorrowed" class="col-md-5 col-form-label">Is Borrowed</label>
+                                <div class="col-md-9">
+                                    <input type="checkbox" class="form-control" id="IsBorrowed" name="IsBorrowed" value="@Model?.IsBorrowed">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group row required">
+                                <label for="BookCategoryId" class="col-md-5 col-form-label">Book Category Id</label>
+                                <div class="col-md-9">
+                                    <input type="number" class="form-control" id="BookCategoryId" name="BookCategoryId" value="@Model?.BookCategoryId">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group row required">
+                                <label for="BookBookCategory" class="col-md-5 col-form-label">BookCategory</label>
+                                <div class="col-md-9">
+                                    @Html.DropDownListFor(m => m.BookCategoryId, Model.ListBookCategories.Select(d => new SelectListItem { Text = d.Name, Value = d.Id.ToString() }), "Select Book Category", new {@class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container my-3">
+                    <div class="col-md-12">
+                        <button id="Cancel" type="button" name="Cancel" class="cancel-button btn btn-primary">Cancel</button>
+                        <button id="Submit" type="submit" name="Submit" class="save-button btn bg-secondary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
