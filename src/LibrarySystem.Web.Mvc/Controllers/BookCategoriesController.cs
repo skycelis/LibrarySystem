@@ -40,13 +40,13 @@ namespace LibrarySystem.Web.Controllers
 
         public async Task<IActionResult> CreateBookCategory(int id)
         {
-            var model = new CreateOrEditBookCategoryListViewModel();
+            var model = new CreateOrEditBookCategoryViewModel();
             var departments = await _departmentappService.GetAllDepartments();
 
             if (id != 0)
             {
                 var bookcategory = await _bookcategoryappService.GetAsync(new EntityDto<int>(id));
-                model = new CreateOrEditBookCategoryListViewModel()
+                model = new CreateOrEditBookCategoryViewModel()
                 {
                     Name = bookcategory.Name,
                     DepartmentId = bookcategory.DepartmentId,

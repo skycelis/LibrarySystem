@@ -20,6 +20,6 @@ namespace LibrarySystem.BookCategories
 
         public int DepartmentId { get; set; }
 
-        public List<DepartmentDto> Departments { get; set; }
+        public DepartmentDto Departments { get; set; }
     }
 }

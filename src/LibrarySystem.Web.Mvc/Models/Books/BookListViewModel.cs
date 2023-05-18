@@ -1,4 +1,5 @@
-﻿using LibrarySystem.Books.Dto;
+﻿using LibrarySystem.Books;
+using LibrarySystem.Books.Dto;
 using System.Collections.Generic;
 
 namespace LibrarySystem.Web.Models.Books

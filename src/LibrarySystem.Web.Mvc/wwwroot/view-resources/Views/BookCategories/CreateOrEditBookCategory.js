@@ -1,7 +1,7 @@
 ﻿(function ($) {
     var _$form = $('form[name=CreateBookCategoryForm]');
     l = abp.localization.getSource('LibrarySystem');
-    var _bookcategoryAppService = abp.services.app.bookcategory;
+    var _bookcategoryAppService = abp.services.app.bookCategory;
     var _indexPage = "/BookCategories";
 
     function save() {
@@ -11,7 +11,7 @@
 
         var bookcategory = _$form.serializeFormToObject();
         bookcategory.DepartmentId = parseInt(bookcategory.DepartmentId);
-        if (bookcategory.Id > 0) {
+        if (bookcategory.Id != 0) {
             _bookcategoryAppService.update(bookcategory).done(function () {
                 abp.notify.info(l('UpdatedSuccessfully'));
                 window.location.href = _indexPage;
@@ -36,7 +36,8 @@
 
     _$form.find('.save-button').click(function (e) {
         e.preventDefault();
-        create();
+        save();
     });
+   
 
 })(jQuery);

@@ -1,7 +1,7 @@
 ﻿(function ($) {
     var _$form = $('form[name=CreateBookCategoryForm]');
     l = abp.localization.getSource('LibrarySystem');
-    var _bookcategoryAppService = abp.services.app.bookcategory;
+    var _bookcategoryAppService = abp.services.app.bookCategory;
 
 
     $(document).on('click', '.edit-bookcat', function (e) {

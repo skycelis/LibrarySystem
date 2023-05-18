@@ -11,7 +11,7 @@ namespace LibrarySystem.Entities
     {
         public string Name { get; set; }
         public int DepartmentId { get; set; }
-        public Department Department { get; set; }  
+        public Department Department { get; set; }
 
     }
 }

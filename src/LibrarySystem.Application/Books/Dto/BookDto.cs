@@ -2,8 +2,7 @@
 using Abp.AutoMapper;
 using LibrarySystem.BookCategories;
 
-
-namespace LibrarySystem.Books.Dto
+namespace LibrarySystem.Books
 {
     [AutoMapFrom(typeof(BookDto))]
     [AutoMapTo(typeof(BookDto))]

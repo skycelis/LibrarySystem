@@ -3,17 +3,19 @@ using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using LibrarySystem.BookCategories.Dto;
-using LibrarySystem.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using LibrarySystem.BookCategories;
+using LibrarySystem.Entities;
 
 namespace LibrarySystem.BookCategories
 {
     public class BookCategoryAppService : AsyncCrudAppService<BookCategory, BookCategoryDto, int, PagedBookCategoryResultRequestDto, CreateBookCategoryDto, BookCategoryDto>, IBookCategoryAppService
 
     {
-        private IRepository<BookCategory, int> _repository;
+        private readonly IRepository<BookCategory, int> _repository;
+
         public BookCategoryAppService(IRepository<BookCategory, int> repository) : base(repository)
         {
             _repository = repository;
@@ -44,8 +46,7 @@ namespace LibrarySystem.BookCategories
         {
             return base.UpdateAsync(input);
         }
-
-        public async Task<List<BookCategoryDto>> GetAllBookCategories()
+        public async Task <List<BookCategoryDto>> GetAllBookCategories(PagedBookCategoryResultRequestDto input)
         {
             var query = await _repository.GetAll()
                 .Select(x => ObjectMapper.Map<BookCategoryDto>(x))
@@ -53,6 +54,13 @@ namespace LibrarySystem.BookCategories
 
             return query;
         }
+        //public async Task<List<BookCategoryDto>> GetAllBookCategories()
+        //{
+        //    var bookcategories = await _repository.GetAll();
+        //    .Select(x => ObjectMapper.Map<BookCategoryDto>(x))
+        //    .ToListAsync();
+        //    return bookcategories;
+        //}
 
     }
 

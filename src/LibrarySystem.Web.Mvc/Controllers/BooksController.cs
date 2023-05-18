@@ -12,6 +12,7 @@ using LibrarySystem.Books;
 using System.Security.Policy;
 using LibrarySystem.Web.Models.Books;
 using LibrarySystem.Book.Dto;
+using System.Collections.Generic;
 
 namespace LibrarySystem.Web.Controllers
 {
@@ -45,7 +46,7 @@ namespace LibrarySystem.Web.Controllers
         public async Task<IActionResult> CreateBook(int id)
         {
             var model = new CreateOrEditBookViewModel();
-            var bookcategories = await _bookcategoryappService.GetAllBookCategories();
+            var bookcategories = new List<BookCategoryDto>();
 
             if (id != 0)
             {
