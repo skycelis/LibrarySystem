@@ -8,19 +8,23 @@ using System.Collections.Generic;
 using LibrarySystem.Borrowers;
 using LibrarySystem.Borrowers.Dto;
 using LibrarySystem.Students.Dto;
-using LibrarySystem.Students;
 using LibrarySystem.Web.Models.Borrowers;
+using LibrarySystem.Students;
 
 namespace LibrarySystem.Web.Controllers
 {
     public class BorrowersController : LibrarySystemControllerBase
     {
         private IBorrowerAppService _borrowerappService;
+        private IStudentAppService _studentappService;
+        private IBookAppService _bookappService;
         private readonly object borrowers;
        
-        public BorrowersController(IBorrowerAppService borrowerappService)
+        public BorrowersController(IBorrowerAppService borrowerappService, IStudentAppService studentAppService, IBookAppService bookAppService)
         {
             _borrowerappService = borrowerappService;
+            _studentappService = studentAppService;
+            _bookappService = bookAppService;
         }
 
         public async Task<IActionResult> Index()
@@ -50,9 +54,9 @@ namespace LibrarySystem.Web.Controllers
                 model = new CreateOrEditBorrowersViewModel()
                 {
                     BorrowDate = borrower.BorrowDate,
-                    ExpectedReturnDate = (int)borrower.ExpectedReturnDate,
-                    ReturnDate = (int)borrower.ReturnDate,
-                    BookId = (int)borrower.BookId,
+                    ExpectedReturnDate = borrower.ExpectedReturnDate,
+                    ReturnDate = borrower.ReturnDate,
+                    BookId = borrower.BookId,
                     StudentId = borrower.StudentId,
                     Id = id
 
