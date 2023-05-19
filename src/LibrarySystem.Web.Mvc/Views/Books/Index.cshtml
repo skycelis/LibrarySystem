@@ -1,6 +1,6 @@
 ﻿@using LibrarySystem.Web.Models.Books
 @using LibrarySystem.Web.Controllers
-@using LibrarySystem.Book.Dto
+@using LibrarySystem.Books.Dto
 @model BookListViewModel
 
 
@@ -66,7 +66,7 @@
                                             <td>@book.BookPublisher</td>
                                             <td>@book.BookAuthor</td>
                                             <td>@book.IsBorrowed</td>
-                                            <td>@book.BookCategoryId</td>
+                                            <td>@book.BookCategories?.Id</td>
                                             <td>
                                                 <button type="button" class="edit-book btn btn-sm bg-secondary" data-book-id="@book.Id">
                                                     <i class="fas fa-pencil-alt"></i> Edit

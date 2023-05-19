@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 
-namespace LibrarySystem.Book.Dto
+namespace LibrarySystem.Books.Dto
 {
     public class PagedBookResultRequestDto : PagedResultRequestDto
     {

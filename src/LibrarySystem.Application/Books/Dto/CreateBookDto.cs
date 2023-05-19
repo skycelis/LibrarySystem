@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using Abp.AutoMapper;
 using LibrarySystem.BookCategories;
+using LibrarySystem.Entities;
 
 namespace LibrarySystem.Books.Dto
 {
-    [AutoMapTo(typeof(BookDto))]
+    [AutoMapTo(typeof(Book))]
     public class CreateBookDto
     {
         public string BookTitle { get; set; }
@@ -12,6 +13,7 @@ namespace LibrarySystem.Books.Dto
         public string BookAuthor { get; set; }
         public bool IsBorrowed { get; set; }
         public int BookCategory { get; set; }
+        public string BookCategoryId { get; set; }
         public List<BookCategoryDto> BookCategories { get; set; }
     }
 }

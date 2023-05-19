@@ -10,7 +10,7 @@ namespace LibrarySystem.Web.Models.Books
         public string BookAuthor { get; set; }
         public bool IsBorrowed { get; set; }
         public List<BookCategoryDto> ListBookCategories { get; set; }
-        public int BookCategoryId { get; internal set; }
+        public string BookCategoryId { get; internal set; }
         public int Id { get; internal set; }
     }
 }

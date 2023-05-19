@@ -13,7 +13,7 @@ namespace LibrarySystem.Entities
         public string BookPublisher { get; set; }
         public string BookAuthor { get; set; }
         public bool IsBorrowed { get; set; }
-        public int? BookCategoryId { get; set; }
+        public string BookCategoryId { get; set; }
         public BookCategory BookCategory { get; set; }
 
     }

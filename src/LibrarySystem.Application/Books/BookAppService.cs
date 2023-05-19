@@ -5,7 +5,7 @@ using Abp.Domain.Repositories;
 using LibrarySystem.Books.Dto;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using LibrarySystem.Book.Dto;
+using LibrarySystem.Books.Dto;
 using LibrarySystem.Books;
 
 namespace LibrarySystem.Entities.Books

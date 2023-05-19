@@ -8,7 +8,7 @@
         var bookcategoryId = parseInt($(this).attr("data-bookcat-id"));
 
         e.preventDefault();
-        window.location.href = "/BookCategory/CreateBookCategory/" + bookcategoryId;
+        window.location.href = "/BookCategories/CreateBookCategory/" + bookcategoryId;
     });
 
 

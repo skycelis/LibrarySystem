@@ -10,10 +10,10 @@ namespace LibrarySystem.Borrowers.Dto
     public class CreateBorrowerDto
     {
         public object BorrowDate { get; set; }
-        public int? ExpectedReturnDate { get; set; }
-        public int? ReturnDate { get; set; }
-        public int? BookId { get; set; }
-        public int StudentId { get; set; }
+        public string ExpectedReturnDate { get; set; }
+        public string ReturnDate { get; set; }
+        public string BookId { get; set; }
+        public string StudentId { get; set; }
         public BookCategory Book { get; set; }
         public Student Student { get; set; }
     }

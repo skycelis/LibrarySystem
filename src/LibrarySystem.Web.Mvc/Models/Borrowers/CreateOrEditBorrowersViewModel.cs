@@ -9,8 +9,8 @@ namespace LibrarySystem.Web.Models.Borrowers
         public object BorrowDate { get; set; }
         public int ExpectedReturnDate { get; set; }
         public int ReturnDate { get; set; }
-        public int BookId { get; internal set; }
-        public int StudentId { get; internal set; }
+        public string BookId { get; internal set; }
+        public string StudentId { get; internal set; }
         public int Id { get; internal set; }
     }
 }
