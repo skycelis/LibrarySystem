@@ -1584,7 +1584,10 @@ namespace LibrarySystem.Migrations
                     b.Property<string>("BookAuthor")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("BookCategoryId")
+                    b.Property<string>("BookCategoryId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("BookCategoryId1")
                         .HasColumnType("int");
 
                     b.Property<string>("BookPublisher")
@@ -1619,7 +1622,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BookCategoryId");
+                    b.HasIndex("BookCategoryId1");
 
                     b.ToTable("Books");
                 });
@@ -1664,6 +1667,59 @@ namespace LibrarySystem.Migrations
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("BookCategories");
+                });
+
+            modelBuilder.Entity("LibrarySystem.Entities.Borrower", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("BorrowerDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExpectedReturnDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("ReturnDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("Borrowers");
                 });
 
             modelBuilder.Entity("LibrarySystem.Entities.Department", b =>
@@ -2037,7 +2093,7 @@ namespace LibrarySystem.Migrations
                 {
                     b.HasOne("LibrarySystem.Entities.BookCategory", "BookCategory")
                         .WithMany()
-                        .HasForeignKey("BookCategoryId");
+                        .HasForeignKey("BookCategoryId1");
 
                     b.Navigation("BookCategory");
                 });
@@ -2051,6 +2107,21 @@ namespace LibrarySystem.Migrations
                         .IsRequired();
 
                     b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("LibrarySystem.Entities.Borrower", b =>
+                {
+                    b.HasOne("LibrarySystem.Entities.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId");
+
+                    b.HasOne("LibrarySystem.Entities.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId");
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("LibrarySystem.Entities.Student", b =>

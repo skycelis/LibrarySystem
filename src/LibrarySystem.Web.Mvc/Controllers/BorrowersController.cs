@@ -58,13 +58,14 @@ namespace LibrarySystem.Web.Controllers
                     ReturnDate = borrower.ReturnDate,
                     BookId = borrower.BookId,
                     StudentId = borrower.StudentId,
-                    Id = id
+                    IsBorrowed = borrower.Book.IsBorrowed,
+                    Id = id                   
 
                 };
             }
 
-            //model.ListBooks = books;
-            //model.ListStudents = students;
+            model.Books = books;
+            model.Students = students;
             return View(model);
         }
 

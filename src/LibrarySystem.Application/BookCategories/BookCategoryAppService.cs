@@ -8,6 +8,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using LibrarySystem.BookCategories;
 using LibrarySystem.Entities;
+using System.Security.Cryptography.X509Certificates;
 
 namespace LibrarySystem.BookCategories
 {
@@ -46,20 +47,21 @@ namespace LibrarySystem.BookCategories
         {
             return base.UpdateAsync(input);
         }
-        public async Task <List<BookCategoryDto>> GetAllBookCategories(PagedBookCategoryResultRequestDto input)
+        public async Task <List<BookCategoryDto>> GetAllBookCategoriesWithDepartments(PagedBookCategoryResultRequestDto input)
         {
-            var query = await _repository.GetAll()
+            var bookCategories = await _repository.GetAll()
+                .Include(x => x.Department)
                 .Select(x => ObjectMapper.Map<BookCategoryDto>(x))
                 .ToListAsync();
 
-            return query;
+            return bookCategories;
         }
         //public async Task<List<BookCategoryDto>> GetAllBookCategories()
         //{
-        //    var bookcategories = await _repository.GetAll();
+        //    var bookcategories = await _repository.GetAll()
         //    .Select(x => ObjectMapper.Map<BookCategoryDto>(x))
         //    .ToListAsync();
-        //    return bookcategories;
+        //    return bookcategories; 
         //}
 
     }

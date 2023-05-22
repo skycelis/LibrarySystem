@@ -1,0 +1,89 @@
+﻿@using LibrarySystem.Web.Models.Borrowers
+@using LibrarySystem.Web.Controllers
+@using LibrarySystem.Borrowers.Dto
+@model BorrowersListViewModel
+
+
+@section scripts{
+    <environment names="Development">
+
+        <script src="~/view-resources/Views/Borrowers/Index.js" asp-append-version="true"></script>
+
+    </environment>
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>@L("Borrowers")</h1>
+            </div>
+            <div class="col-sm-6">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <a class="btn bg-blue float-sm-right" href="/Borrowers/CreateBorrower">
+                            <i class="fa fa-plus-square"></i>
+                            @L("CreateBorrower")
+                        </a>
+                        <div class="col-sm-6">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="UsersTable" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>BorrowDate</th>
+                                        <th>ExpectedReturnDate</th>
+                                        <th>ReturnDate</th>
+                                        <th>BookId</th>
+                                        <th>StudentId</th>
+                                        <th style="width: 150px">@L("Actions")</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var borrower in Model.Borrowers)
+                                    {
+                                        <tr>
+                                            <td>@borrower.Id</td>
+                                            <td>@borrower.BorrowDate</td>
+                                            <td>@borrower.ExpectedReturnDate</td>
+                                            <td>@borrower.ReturnDate</td>
+                                            <td>@borrower.Book?.Id</td>
+                                            <td>@borrower.Student?.Id</td>
+                                            <td>
+                                                <button type="button" class="edit-brwr btn btn-sm bg-secondary" data-brwr-id="@borrower.Id">
+                                                    <i class="fas fa-pencil-alt"></i> Edit
+                                                </button>
+                                                <button type="button" class="btn btn-sm bg-danger delete-brwr" data-brwr-id="@borrower.Id" data-brwr-name="@borrower.">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

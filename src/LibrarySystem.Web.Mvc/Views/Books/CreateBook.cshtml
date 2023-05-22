@@ -40,21 +40,15 @@
                                     <input type="text" class="form-control" id="BookAuthor" name="BookAuthor" value="@Model?.BookAuthor">
                                 </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">Is Borrowed</label>
-                            </div>
-                            <div class="col-md-6 form-group row required">
-                                <label for="BookCategoryId" class="col-md-5 col-form-label">Book Category Id</label>
-                                <div class="col-md-9">
-                                    <input type="number" class="form-control" id="BookCategoryId" name="BookCategoryId" value="@Model?.BookCategoryId">
-                                </div>
-                            </div>
                             <div class="col-md-6 form-group row required">
                                 <label for="BookBookCategory" class="col-md-5 col-form-label">Book Category</label>
                                 <div class="col-md-9">
                                     @Html.DropDownListFor(m => m.BookCategoryId, Model.ListBookCategories.Select(d => new SelectListItem { Text = d.Name, Value = d.Id.ToString() }), "Select Book Category", new {@class = "form-control" })
                                 </div>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="hidden" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1"></label>
                             </div>
                         </div>
                     </div>

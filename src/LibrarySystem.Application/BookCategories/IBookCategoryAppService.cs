@@ -9,6 +9,7 @@ namespace LibrarySystem.BookCategories
 {
     public interface IBookCategoryAppService : IAsyncCrudAppService<BookCategoryDto, int, PagedBookCategoryResultRequestDto, CreateBookCategoryDto, BookCategoryDto>
     {
-        Task<List<BookCategoryDto>> GetAllBookCategories(PagedBookCategoryResultRequestDto input);
+        Task<List<BookCategoryDto>> GetAllBookCategoriesWithDepartments(PagedBookCategoryResultRequestDto input);
+
     }
 }

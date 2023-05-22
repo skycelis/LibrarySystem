@@ -13,7 +13,6 @@ namespace LibrarySystem.Books.Dto
         public string BookAuthor { get; set; }
         public bool IsBorrowed { get; set; }
         public int BookCategory { get; set; }
-        public string BookCategoryId { get; set; }
         public List<BookCategoryDto> BookCategories { get; set; }
     }
 }
