@@ -14,7 +14,7 @@
 
     $(document).on('click', '.delete-book', function () {
         var bookId = parseInt($(this).attr("data-book-id"));
-        var bookBookTitle = $(this).attr("data-book-name");
+        var bookcategoryName = $(this).attr("data-bookcat-name");
 
         deleteBook(bookId, bookBookTitle);
     });

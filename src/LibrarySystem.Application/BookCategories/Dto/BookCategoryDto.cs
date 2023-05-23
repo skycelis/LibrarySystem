@@ -17,9 +17,8 @@ namespace LibrarySystem.BookCategories
     public class BookCategoryDto : EntityDto<int>
     {
         public string Name { get; set; }
-
         public int DepartmentId { get; set; }
-
+        public string DepartmentName { get; set; }
         public DepartmentDto Departments { get; set; }
     }
 }

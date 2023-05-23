@@ -1,4 +1,5 @@
 ﻿using LibrarySystem.BookCategories;
+using LibrarySystem.Entities;
 using System.Collections.Generic;
 
 namespace LibrarySystem.Web.Models.Books

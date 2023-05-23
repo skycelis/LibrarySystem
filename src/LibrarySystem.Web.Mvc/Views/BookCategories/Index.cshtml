@@ -54,7 +54,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>DepartmentId</th>
+                                        <th>Department Name</th>
                                         <th style="width: 150px">@L("Actions")</th>
                                     </tr>
                                 </thead>
@@ -64,7 +64,7 @@
                                         <tr>
                                             <td>@bookcategory.Id</td>
                                             <td>@bookcategory.Name</td>
-                                            <td>@bookcategory.Departments?.Name</td>
+                                            <td>@bookcategory.DepartmentName</td>
                                             <td>
                                                 <button type="button" class="edit-bookcat btn btn-sm bg-secondary" data-bookcat-id="@bookcategory.Id">
                                                     <i class="fas fa-pencil-alt"></i> Edit

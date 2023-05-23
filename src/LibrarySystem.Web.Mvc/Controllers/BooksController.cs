@@ -51,7 +51,7 @@ namespace LibrarySystem.Web.Controllers
                     BookTitle = book.BookTitle,
                     BookPublisher = book.BookPublisher,
                     BookAuthor = book.BookAuthor,
-                    IsBorrowed = book.IsBorrowed,
+                    IsBorrowed = book.IsBorrowed,               
                     Id = id
 
                 };

@@ -50,6 +50,7 @@ namespace LibrarySystem.Web.Controllers
                 {
                     Name = bookcategory.Name,
                     DepartmentId = bookcategory.DepartmentId,
+                    DepartmentName = bookcategory.DepartmentName,
                     Id = id
 
                 };
