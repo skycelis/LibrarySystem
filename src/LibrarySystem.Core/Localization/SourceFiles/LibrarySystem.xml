@@ -126,6 +126,7 @@
 		<text name="Books">Books</text>
 		<text name="CreateBook">CreateBook</text>
 		<text name="Borrowers">Borrowers</text>
+		<text name="CreateBorrower">CreateBorrower</text>
 
 
 

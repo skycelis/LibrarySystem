@@ -6,6 +6,7 @@
 
     $(document).on('click', '.edit-borrower', function (e) {
         var borrowerId = parseInt($(this).attr("data-borrower-id"));
+        /*var bookTitle = parseFloat($(this).attr("data-book-title"));*/
 
         e.preventDefault();
         window.location.href = "/Borrower/CreateBorrower/" + borrowerId;

@@ -41,9 +41,15 @@
                                 </div>
                             </div>
                             <div class="col-md-6 form-group row required">
-                                <label for="" class="col-md-5 col-form-label"></label>
+                                <label for="Books" class="col-md-5 col-form-label">Books</label>
                                 <div class="col-md-9">
-                                    @Html.DropDownListFor(m => m., Model.List.Select(d => new SelectListItem { Text = d.Name, Value = d.Id.ToString() }), "Select Book Category", new {@class = "form-control" })
+                                    @Html.DropDownListFor(m => m.BookId, Model.Books.Select(d => new SelectListItem { Text = d.BookTitle = d.Id.ToString() }), "Select Book Title", new {@class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group row required">
+                                <label for="Students" class="col-md-5 col-form-label">Students</label>
+                                <div class="col-md-9">
+                                    @Html.DropDownListFor(m => m.StudentId, Model.Students.Select(d => new SelectListItem { Text = d.StudentName = d.Id.ToString() }), "Select Student Name", new {@class = "form-control" })
                                 </div>
                             </div>
                         </div>
