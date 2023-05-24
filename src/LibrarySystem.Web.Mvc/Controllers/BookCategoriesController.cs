@@ -15,8 +15,6 @@ namespace LibrarySystem.Web.Controllers
     {
         private IBookCategoryAppService _bookcategoryappService;
         private IDepartmentAppService _departmentappService;
-        private object await_departmentAppService;
-
         public BookCategoriesController(IBookCategoryAppService bookcategoryappService, IDepartmentAppService departmentappService)
         {
             _bookcategoryappService = bookcategoryappService;
@@ -25,7 +23,7 @@ namespace LibrarySystem.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var bookcategories = await _bookcategoryappService.GetAllAsync(new PagedBookCategoryResultRequestDto { MaxResultCount = int.MaxValue });
+            var bookcategories = await _bookcategoryappService.GetAllBookCategoriesWithDepartments(new PagedBookCategoryResultRequestDto { MaxResultCount = int.MaxValue });
             var model = new BookCategoryListViewModel()
             {
                 BookCategories = bookcategories.Items.ToList()
@@ -50,7 +48,6 @@ namespace LibrarySystem.Web.Controllers
                 {
                     Name = bookcategory.Name,
                     DepartmentId = bookcategory.DepartmentId,
-                    DepartmentName = bookcategory.DepartmentName,
                     Id = id
 
                 };

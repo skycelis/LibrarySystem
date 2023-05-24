@@ -1584,10 +1584,7 @@ namespace LibrarySystem.Migrations
                     b.Property<string>("BookAuthor")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BookCategoryId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("BookCategoryId1")
+                    b.Property<int?>("BookCategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("BookPublisher")
@@ -1622,7 +1619,7 @@ namespace LibrarySystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BookCategoryId1");
+                    b.HasIndex("BookCategoryId");
 
                     b.ToTable("Books");
                 });
@@ -1647,7 +1644,7 @@ namespace LibrarySystem.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DepartmentId")
+                    b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -1677,7 +1674,7 @@ namespace LibrarySystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("BookId")
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("BorrowerDate")
@@ -1710,7 +1707,7 @@ namespace LibrarySystem.Migrations
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("StudentId")
+                    b.Property<int>("StudentId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -2093,7 +2090,7 @@ namespace LibrarySystem.Migrations
                 {
                     b.HasOne("LibrarySystem.Entities.BookCategory", "BookCategory")
                         .WithMany()
-                        .HasForeignKey("BookCategoryId1");
+                        .HasForeignKey("BookCategoryId");
 
                     b.Navigation("BookCategory");
                 });
@@ -2102,9 +2099,7 @@ namespace LibrarySystem.Migrations
                 {
                     b.HasOne("LibrarySystem.Entities.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DepartmentId");
 
                     b.Navigation("Department");
                 });
@@ -2113,11 +2108,15 @@ namespace LibrarySystem.Migrations
                 {
                     b.HasOne("LibrarySystem.Entities.Book", "Book")
                         .WithMany()
-                        .HasForeignKey("BookId");
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("LibrarySystem.Entities.Student", "Student")
                         .WithMany()
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Book");
 

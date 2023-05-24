@@ -41,9 +41,9 @@
                                 </div>
                             </div>
                             <div class="col-md-6 form-group row required">
-                                <label for="Book" class="col-md-5 col-form-label">Book Category</label>
+                                <label for="BookbookCategory" class="col-md-5 col-form-label">Book Category</label>
                                 <div class="col-md-9">
-                                    @Html.DropDownListFor(m => m.BookCategoryId, Model.ListBookCategories.Select(d => new SelectListItem { Text = d.Name, Value = d.Id.ToString() }), "Select Book Category", new {@class = "form-control" })
+                                    @Html.DropDownListFor(m => m.BookCategoryId, Model.ListBookCategories.Select(d => new SelectListItem { Text = d.Name, Value = d.Id.ToString()}), "Select Book Category", new {@class = "form-control" })
                                 </div>
                             </div>
                             <div class="form-check form-check-inline">

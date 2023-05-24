@@ -13,6 +13,6 @@ namespace LibrarySystem.Students.Dto
         public string StudentContactNumber { get; set; }
         public string StudentEmail { get; set; }
         public int DepartmentId { get; set; }
-        public List<DepartmentDto> Departments { get; set; }
+        public List<DepartmentDto> Department { get; set; }
     }
 }

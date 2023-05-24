@@ -47,14 +47,14 @@ namespace LibrarySystem.BookCategories
         {
             return base.UpdateAsync(input);
         }
-        public async Task <List<BookCategoryDto>> GetAllBookCategoriesWithDepartments(PagedBookCategoryResultRequestDto input)
+        public async Task<PagedResultDto<BookCategoryDto>> GetAllBookCategoriesWithDepartments(PagedBookCategoryResultRequestDto input)
         {
             var bookCategories = await _repository.GetAll()
                 .Include(x => x.Department)
                 .Select(x => ObjectMapper.Map<BookCategoryDto>(x))
                 .ToListAsync();
 
-            return bookCategories;
+            return new PagedResultDto<BookCategoryDto>(bookCategories.Count(), bookCategories);
         }
         //public async Task<List<BookCategoryDto>> GetAllBookCategories()
         //{

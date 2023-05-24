@@ -64,7 +64,7 @@
                                         <tr>
                                             <td>@bookcategory.Id</td>
                                             <td>@bookcategory.Name</td>
-                                            <td>@bookcategory.DepartmentName</td>
+                                            <td>@bookcategory.Department?.Name</td>
                                             <td>
                                                 <button type="button" class="edit-bookcat btn btn-sm bg-secondary" data-bookcat-id="@bookcategory.Id">
                                                     <i class="fas fa-pencil-alt"></i> Edit

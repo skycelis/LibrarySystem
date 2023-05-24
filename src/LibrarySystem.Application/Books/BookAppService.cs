@@ -7,6 +7,9 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using LibrarySystem.Books.Dto;
 using LibrarySystem.Books;
+using LibrarySystem.BookCategories.Dto;
+using LibrarySystem.BookCategories;
+using System.Runtime.InteropServices;
 
 namespace LibrarySystem.Entities.Books
 {
@@ -51,7 +54,17 @@ namespace LibrarySystem.Entities.Books
             return base.CreateAsync(input);
         }
 
-        public async Task<PagedResultDto<BookDto>> GetAllBooksWithBookCategories(PagedBookResultRequestDto input)
+        public async Task<BookDto> GetAllBooksWithCategories(EntityDto<int> input)
+        {
+            var books = await _repository.GetAll()
+                .Include(x => x.BookCategory)
+                .Where(x => x.Id == input.Id)
+                .Select(x => ObjectMapper.Map<BookDto>(x))
+                .FirstOrDefaultAsync();
+
+            return books;
+        }
+        public async Task<PagedResultDto<BookDto>> GetAllBookWithCategory(PagedResultRequestDto input)
         {
             var books = await _repository.GetAll()
                 .Include(x => x.BookCategory)
@@ -60,6 +73,7 @@ namespace LibrarySystem.Entities.Books
 
             return new PagedResultDto<BookDto>(books.Count(), books);
         }
+
     }
 }
 

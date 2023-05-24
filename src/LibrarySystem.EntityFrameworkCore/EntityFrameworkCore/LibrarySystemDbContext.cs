@@ -33,6 +33,7 @@ namespace LibrarySystem.EntityFrameworkCore
         public DbSet<BookCategory> BookCategories { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Borrower> Borrowers { get; set; }
+        public DbSet<Author> Authors { get; set; }  
 
     }
 }

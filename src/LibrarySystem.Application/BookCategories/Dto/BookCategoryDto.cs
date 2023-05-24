@@ -12,13 +12,13 @@ using LibrarySystem.Entities;
 
 namespace LibrarySystem.BookCategories
 {
-    [AutoMapFrom(typeof(BookCategory))]
     [AutoMapTo(typeof(BookCategory))]
+    [AutoMapFrom(typeof(BookCategory))]
+    
     public class BookCategoryDto : EntityDto<int>
     {
         public string Name { get; set; }
         public int DepartmentId { get; set; }
-        public string DepartmentName { get; set; }
-        public DepartmentDto Departments { get; set; }
+        public DepartmentDto Department { get; set; }
     }
 }

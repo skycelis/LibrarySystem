@@ -28,7 +28,7 @@ namespace LibrarySystem.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var students = await _studentappService.GetAllAsync(new PagedStudentResultRequestDto { MaxResultCount = int.MaxValue });
+            var students = await _studentappService.GetAllStudentsWithDepartment(new PagedStudentResultRequestDto { MaxResultCount = int.MaxValue });
             var model = new StudentListViewModel()
             {
                 Students = students.Items.ToList()
