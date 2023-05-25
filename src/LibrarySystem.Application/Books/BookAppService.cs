@@ -64,7 +64,7 @@ namespace LibrarySystem.Entities.Books
 
             return books;
         }
-        public async Task<PagedResultDto<BookDto>> GetAllBookWithCategory(PagedResultRequestDto input)
+        public async Task<PagedResultDto<BookDto>> GetAllBookWithCategory(PagedBookResultRequestDto input)
         {
             var books = await _repository.GetAll()
                 .Include(x => x.BookCategory)

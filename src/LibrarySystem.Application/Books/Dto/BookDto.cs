@@ -15,7 +15,7 @@ namespace LibrarySystem.Books
         public string BookAuthor { get; set; }
         public bool IsBorrowed { get; set; }
         public int BookCategoryId { get; set; }
-        public BookCategoryDto BookCategories { get; set; }
+        public BookCategoryDto BookCategory { get; set; }
 
     }
 }

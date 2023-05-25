@@ -8,7 +8,7 @@ namespace LibrarySystem.Books
 {
     public interface IBookAppService : IAsyncCrudAppService<BookDto, int, PagedBookResultRequestDto, CreateBookDto, BookDto>
     {
-        Task<BookDto> GetAllBooksWithCategories(EntityDto<int> input);
+        Task<PagedResultDto<BookDto>> GetAllBookWithCategory(PagedBookResultRequestDto input);
     }
 
 }
