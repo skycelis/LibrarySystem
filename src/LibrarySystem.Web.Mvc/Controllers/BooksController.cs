@@ -45,7 +45,7 @@ namespace LibrarySystem.Web.Controllers
 
             if (id != 0)
             {
-                var book = await _bookappService.GetAllBooksWithCategories(new EntityDto<int>(id));
+                var book = await _bookappService.GetAsync(new EntityDto<int>(id));
                 model = new CreateOrEditBookViewModel()
                 {
                     BookTitle = book.BookTitle,
