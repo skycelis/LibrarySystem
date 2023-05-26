@@ -1,13 +1,13 @@
-﻿@using LibrarySystem.Web.Models.Books
+﻿@using LibrarySystem.Web.Models.Authors
 @using LibrarySystem.Web.Controllers
-@using LibrarySystem.Books.Dto
-@model BookListViewModel
+@using LibrarySystem.Authors.Dto
+@model AuthorViewModel
 
 
 @section scripts{
     <environment names="Development">
 
-        <script src="~/view-resources/Views/Books/Index.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Authors/Index.js" asp-append-version="true"></script>
 
     </environment>
 }
@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@L("Books")</h1>
+                <h1>@L("Authors")</h1>
             </div>
             <div class="col-sm-6">
             </div>
@@ -30,9 +30,9 @@
                 <div class="card">
 
                     <div class="card-header">
-                        <a class="btn bg-blue float-sm-right" href="/Books/CreateBook">
+                        <a class="btn bg-blue float-sm-right" href="/Authors/CreateAuthor">
                             <i class="fa fa-plus-square"></i>
-                            @L("CreateBook")
+                            @L("CreateAuthor")
                         </a>
                         <div class="col-sm-6">
                         </div>
@@ -49,30 +49,21 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>BookTitle</th>
-                                        <th>BookPublisher</th>
-                                        <th>BookAuthor</th>
-                                        <th>IsBorrowed</th>
-                                        <th>BookCategoryId</th>
+                                        <th>Name</th>
                                         <th style="width: 150px">@L("Actions")</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var book in Model.Books)
+                                    @foreach (var author in Model.Authors)
                                     {
                                         <tr>
-                                            <td>@book.Id</td>
-                                            <td>@book.BookTitle</td>
-                                            <td>@book.BookPublisher</td>
-                                            <td>@book.BookAuthor</td>
-                                            <td>@book.IsBorrowed</td>
-                                            <td>@book.BookCategory?.Name</td>
-
+                                            <td>@author.Id</td>
+                                            <td>@author.Name</td>
                                             <td>
-                                                <button type="button" class="edit-book btn btn-sm bg-secondary" data-book-id="@book.Id">
+                                                <button type="button" class="edit-author btn btn-sm bg-secondary" data-author-id="@author.Id">
                                                     <i class="fas fa-pencil-alt"></i> Edit
                                                 </button>
-                                                <button type="button" class="btn btn-sm bg-danger delete-book" data-book-id="@book.Id" data-book-name="@book.BookTitle">
+                                                <button type="button" class="btn btn-sm bg-danger delete-author" data-author-id="@author.Id" data-author-name="@author.Name">
                                                     <i class="fas fa-trash"></i> Delete
                                                 </button>
                                             </td>

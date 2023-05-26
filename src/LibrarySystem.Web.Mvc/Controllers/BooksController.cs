@@ -25,7 +25,7 @@ namespace LibrarySystem.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var books = await _bookappService.GetAllAsync(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
+            var books = await _bookappService.GetAllBooksWithCategories(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
             var model = new BookListViewModel()
             {
                 Books = books.Items.ToList()

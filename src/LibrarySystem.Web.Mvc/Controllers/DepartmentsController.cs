@@ -31,19 +31,8 @@ namespace LibrarySystem.Web.Controllers
             return View(model);
         }
 
-        //private IActionResult ViewComponent(DepartmentListViewModel model)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         [HttpGet]
 
-        //public ActionResult CreateDepartment(int id)
-        //{
-        //    var model = new CreateOrEditDepartmentWiewModel();
-
-        //    return View();
-        //}
 
         public async Task<IActionResult> CreateDepartment(int id)
         {

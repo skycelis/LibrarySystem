@@ -1,24 +1,22 @@
 ﻿function ($) {
-    var _userService = abp.services.app.user,
-        l = abp.localization.getSource('LibrarySystem'),
-        _$modal = $('#UserCreateModal'),
-        _$form = _$modal.find('form'),
-        _$table = $('#UsersTable');
+    var l = abp.localization.getSource('LibrarySystem'),
+        _$form = _$('form[name=CreateAuthorForm]'),
+        _$table = $('#AuthorsTable');
 
-    var _$usersTable = _$table.DataTable({
+    var _$authorsTable = _$table.DataTable({
         paging: true,
         serverSide: true,
         listAction: {
-            ajaxFunction: _userService.getAll,
+            ajaxFunction: _authorService.getAll,
             inputFilter: function () {
-                return $('#UsersSearchForm').serializeFormToObject(true);
+                return $('#AuthorsSearchForm').serializeFormToObject(true);
             }
         },
         buttons: [
             {
                 name: 'refresh',
                 text: '<i class="fas fa-redo-alt"></i>',
-                action: () => _$usersTable.draw(false)
+                action: () => _$authorsTable.draw(false)
             }
         ],
         responsive: {
@@ -34,37 +32,26 @@
             },
             {
                 targets: 1,
-                data: 'userName',
+                data: 'id',
                 sortable: false
             },
             {
                 targets: 2,
-                data: 'fullName',
+                data: 'name',
                 sortable: false
             },
             {
                 targets: 3,
-                data: 'emailAddress',
-                sortable: false
-            },
-            {
-                targets: 4,
-                data: 'isActive',
-                sortable: false,
-                render: data => `<input type="checkbox" disabled ${data ? 'checked' : ''}>`
-            },
-            {
-                targets: 5,
                 data: null,
                 sortable: false,
                 autoWidth: false,
                 defaultContent: '',
                 render: (data, type, row, meta) => {
                     return [
-                        `   <button type="button" class="btn btn-sm bg-secondary edit-user" data-user-id="${row.id}" data-toggle="modal" data-target="#UserEditModal">`,
+                        `   <button type="button" class="btn btn-sm bg-secondary edit-author" data-author-id="${row.id}" data-toggle="modal" data-target="#AuthorEditModal">`,
                         `       <i class="fas fa-pencil-alt"></i> ${l('Edit')}`,
                         '   </button>',
-                        `   <button type="button" class="btn btn-sm bg-danger delete-user" data-user-id="${row.id}" data-user-name="${row.name}">`,
+                        `   <button type="button" class="btn btn-sm bg-danger delete-author" data-author-id="${row.id}" data-author-name="${row.name}">`,
                         `       <i class="fas fa-trash"></i> ${l('Delete')}`,
                         '   </button>'
                     ].join('');

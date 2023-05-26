@@ -12,6 +12,6 @@ namespace LibrarySystem.Web.Models.Books
         public bool IsBorrowed { get; set; }
         public int BookCategoryId { get; set; }
         public List<BookCategoryDto> ListBookCategories { get; set; }        
-        public int Id { get; internal set; }
+        public int Id { get; set; }
     }
 }
