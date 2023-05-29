@@ -12,7 +12,7 @@
         public const string BookCategories = "BookCategories";
         public const string Books = "Books";
         public const string Borrowers = "Borrowers";
-
+        public const string Authors = "Authors";
 
 
 

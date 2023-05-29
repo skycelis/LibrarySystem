@@ -10,6 +10,7 @@ using LibrarySystem.Books;
 using LibrarySystem.BookCategories.Dto;
 using LibrarySystem.BookCategories;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 namespace LibrarySystem.Entities.Books
 {
@@ -54,14 +55,21 @@ namespace LibrarySystem.Entities.Books
             return base.CreateAsync(input);
         }
 
-        public async Task<BookDto> GetAllBooksWithCategories(EntityDto<int> input)
+        //public async Task<BookDto> GetAllBooksWithCategories(EntityDto<int> input)
+        //{
+        //    var books = await _repository.GetAll()
+        //        .Include(x => x.BookCategory)
+        //        .Where(x => x.Id == input.Id)
+        //        .Select(x => ObjectMapper.Map<BookDto>(x))
+        //        .FirstOrDefaultAsync();
+
+        //    return books;
+        //}
+        public async Task<List<BookDto>> GetAllBooks()
         {
             var books = await _repository.GetAll()
-                .Include(x => x.BookCategory)
-                .Where(x => x.Id == input.Id)
-                .Select(x => ObjectMapper.Map<BookDto>(x))
-                .FirstOrDefaultAsync();
-
+            .Select(x => ObjectMapper.Map<BookDto>(x))
+            .ToListAsync();
             return books;
         }
         public async Task<PagedResultDto<BookDto>> GetAllBookWithCategory(PagedBookResultRequestDto input)

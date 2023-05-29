@@ -9,5 +9,6 @@ namespace LibrarySystem.Authors.Dto
     public class CreateAuthorDto
     {
         public string Name { get; set; }
+        public int BookId { get; set; }
     }
 }
