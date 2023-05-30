@@ -18,19 +18,17 @@ namespace LibrarySystem.Web.Controllers
     public class AuthorsController : LibrarySystemControllerBase
     {
         private IAuthorAppService _authorappService;
-        private IBookAppService _bookappService;
-        public AuthorsController(IAuthorAppService authorappService, IBookAppService bookappService)
+        public AuthorsController(IAuthorAppService userAppService)
         {
-            _authorappService = authorappService;
-            _bookappService = bookappService;
+            _authorappService = userAppService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var authors = await _authorappService.GetAllAuthorsUnderBooks(new PagedAuthorResultRequestDto { MaxResultCount = int.MaxValue });
+            var authors = await _authorappService.GetAllAuthorsUnderBooks();
             var model = new AuthorViewModel()
             {
-                Authors = authors.Items.ToList()
+                Authors = authors
             };
             return View(model);
         }
@@ -41,42 +39,24 @@ namespace LibrarySystem.Web.Controllers
 
         public async Task<IActionResult> CreateAuthor(int id)
         {
-            var model = new CreateOrEditAuthorViewModel();
-            var books = await _bookappService.GetAllBooks();
 
             if (id != 0)
             {
                 var authors = await _authorappService.GetAsync(new EntityDto<int>(id));
-                model = new CreateOrEditAuthorViewModel()
+                var model = new CreateOrEditAuthorViewModel()
                 {
                     Name = authors.Name,
-                    BookId = authors.BookId,
                     Id = id
-                }
-                   return View(model);
-            }
-
-            [HttpGet]
-
-
-            public async Task<IActionResult> CreateStudent(int id)
-            {
-                var model = new CreateOrEditAuthorViewModel();
-                var books = await _bookappService.GetAllAuthorsUnderBooks();
-
-                if (id != 0)
-                {
-                    var author = await _authorappService.GetAsync(new EntityDto<int>(id));
-                    model = new CreateOrEditAuthorViewModel()
-                    {
-                        Name = author.Name,
-                        Id = id
-
-                    };
-                }
-                model.ListBooks = books;
+                };
                 return View(model);
             }
+            else
+            {
+                return View();
+            }
+           
 
         }
     }
+}
+

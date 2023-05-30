@@ -5,7 +5,6 @@ using Abp.Domain.Repositories;
 using LibrarySystem.Books.Dto;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using LibrarySystem.Books.Dto;
 using LibrarySystem.Books;
 using LibrarySystem.BookCategories.Dto;
 using LibrarySystem.BookCategories;
@@ -17,9 +16,7 @@ namespace LibrarySystem.Entities.Books
     public class BookAppService : AsyncCrudAppService<Book, BookDto, int, PagedBookResultRequestDto, CreateBookDto, BookDto>, IBookAppService
     {
         private readonly IRepository<Book, int> _repository;
-        //private Task<PagedResultDto<BookDto>> query;
-        //private readonly object repository;
-
+       
         public BookAppService(IRepository<Book, int> repository) : base(repository)
         {
             _repository = repository;
@@ -54,16 +51,6 @@ namespace LibrarySystem.Entities.Books
         {
             return base.CreateAsync(input);
         }
-        //public async Task<BookDto> GetAllBooksWithCategories(EntityDto<int> input)
-        //{
-        //    var books = await _repository.GetAll()
-        //        .Include(x => x.BookCategory)
-        //        .Where(x => x.Id == input.Id)
-        //        .Select(x => ObjectMapper.Map<BookDto>(x))
-        //        .FirstOrDefaultAsync();
-
-        //    return books;
-        //}
         public async Task<List<BookDto>> GetAllBooks()
         {
             var books = await _repository.GetAll()
@@ -75,20 +62,19 @@ namespace LibrarySystem.Entities.Books
         {
             var books = await _repository.GetAll()
                 .Include(x => x.BookCategory)
-                //.Where(x => x.Id == input.Id)
                 .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 
             return new PagedResultDto<BookDto>(books.Count(), books);
         }
-        public async Task<List<BookDto>> GetAllAuthorsUnderBooks() /*Task<PagedResultDto<BookDto>> GetAllBookWithCategory(PagedBookResultRequestDto input)*/
+        public async Task<List<BookDto>> GetAllAuthorsUnderBooks()
         {
             var books = await _repository.GetAll()
                 .Include(x => x.BookCategory)
                 .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 
-            return books; /*new PagedResultDto<BookDto>(books.Count(), books);*/
+            return books;
         }
 
     }

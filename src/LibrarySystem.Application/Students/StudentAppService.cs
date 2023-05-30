@@ -6,6 +6,8 @@ using LibrarySystem.Students.Dto;
 using LibrarySystem.Entities;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using LibrarySystem.Borrowers.Dto;
+using System.Collections.Generic;
 
 namespace LibrarySystem.Students
 {
@@ -58,6 +60,14 @@ namespace LibrarySystem.Students
                 .ToListAsync();
 
             return new PagedResultDto<StudentDto>(students.Count(), students);
+        }
+        public async Task<List<StudentDto>> GetAllStudents(PagedStudentResultRequestDto input)
+        {
+            var students = await _repository.GetAll()
+                .Select(x => ObjectMapper.Map<StudentDto>(x))
+                .ToListAsync();
+
+            return students;
         }
     }
 }

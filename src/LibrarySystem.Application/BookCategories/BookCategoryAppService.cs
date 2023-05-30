@@ -56,13 +56,13 @@ namespace LibrarySystem.BookCategories
 
             return new PagedResultDto<BookCategoryDto>(bookCategories.Count(), bookCategories);
         }
-        //public async Task<List<BookCategoryDto>> GetAllBookCategories()
-        //{
-        //    var bookcategories = await _repository.GetAll()
-        //    .Select(x => ObjectMapper.Map<BookCategoryDto>(x))
-        //    .ToListAsync();
-        //    return bookcategories; 
-        //}
+        public async Task<List<BookCategoryDto>> GetAllBookCategories()
+        {
+            var bookcategories = await _repository.GetAll()
+            .Select(x => ObjectMapper.Map<BookCategoryDto>(x))
+            .ToListAsync();
+            return bookcategories;
+        }
 
     }
 

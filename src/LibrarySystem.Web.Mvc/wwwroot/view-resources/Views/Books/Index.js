@@ -8,22 +8,23 @@
         var bookId = parseInt($(this).attr("data-book-id"));
 
         e.preventDefault();
-        window.location.href = "/Book/CreateBook/" + bookId;
+        window.location.href = "/Books/CreateBook/" + bookId;
     });
 
 
     $(document).on('click', '.delete-book', function () {
         var bookId = parseInt($(this).attr("data-book-id"));
-        var bookcategoryName = $(this).attr("data-bookcat-name");
+        var bookTitle = $(this).attr("data-book-title");
+        
 
-        deleteBook(bookId, bookBookTitle);
+        deleteBook(bookId, bookTitle);
     });
 
-    function deleteBook(bookId, bookBookTitle) {
+    function deleteBook(bookId, bookTitle) {
         abp.message.confirm(
             abp.utils.formatString(
                 l('AreYouSureWantToDelete',
-                    bookBookTitle
+                    bookTitle
                 )),
             null,
             function (isConfirmed) {

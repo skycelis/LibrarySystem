@@ -18,7 +18,7 @@ namespace LibrarySystem.Web.Controllers
         private IBorrowerAppService _borrowerappService;
         private IStudentAppService _studentappService;
         private IBookAppService _bookappService;
-        private readonly object borrowers;
+        //private readonly object borrowers;
        
         public BorrowersController(IBorrowerAppService borrowerappService, IStudentAppService studentAppService, IBookAppService bookAppService)
         {
@@ -45,8 +45,8 @@ namespace LibrarySystem.Web.Controllers
         public async Task<IActionResult> CreateBorrower(int id)
         {
             var model = new CreateOrEditBorrowersViewModel();
-            var books = new List<BookDto>();
-            var students = new List<StudentDto>();
+            var books = await _bookappService.GetAllBooks();
+            var students = await _studentappService.GetAllStudents();
 
             if (id != 0)
             {

@@ -6,8 +6,9 @@ using LibrarySystem.Borrowers.Dto;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using LibrarySystem.Borrowers;
 using LibrarySystem.Entities;
+using LibrarySystem.Students.Dto;
+using LibrarySystem.Books;
 
 namespace LibrarySystem.Borrowers
 {
@@ -54,7 +55,24 @@ namespace LibrarySystem.Borrowers
 
             return query;
         }
+        public async Task<List<StudentDto>> GetAllStudentsWithBorrowers()
+        {
+            var borrower = await _repository.GetAll()
+                .Include(x => x.Student)
+                .Select(x => ObjectMapper.Map<BorrowerDto>(x))
+                .ToListAsync();
 
+            return borrower;
+        }
+        public async Task<List<BookDto>> GetAllBooksWithBorrowers()
+        {
+            var borrowers = await _repository.GetAll()
+                .Include(x => x.Book)
+                .Select(x => ObjectMapper.Map<BorrowerDto>(x))
+                .ToListAsync();
+
+            return borrowers;
+        }
     }
 
 }

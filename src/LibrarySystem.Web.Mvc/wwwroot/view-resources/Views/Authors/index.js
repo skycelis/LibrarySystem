@@ -1,12 +1,9 @@
 ﻿function ($) {
-<<<<<<< HEAD
-    var _authorService = abp.services.app.author,
-        l = abp.localization.getSource('LibrarySystem'),
-=======
-    var l = abp.localization.getSource('LibrarySystem'),
-        _$form = _$('form[name=CreateAuthorForm]'),
->>>>>>> 80d52e39396ba3c78fb4a4a9ac8f79193bf2a815
-        _$table = $('#AuthorsTable');
+    var _$form = _$('form[name=CreateAuthorForm]');
+    var _authorService = abp.services.app.author;
+    l = abp.localization.getSource('LibrarySystem'),        
+    _$table = $('#AuthorsTable');
+    var _indexPage = "/Authors";
 
     var _$authorsTable = _$table.DataTable({
         paging: true,
@@ -14,7 +11,7 @@
         listAction: {
             ajaxFunction: _authorService.getAll,
             inputFilter: function () {
-                return $('#AuthorsSearchForm').serializeFormToObject(true);
+                return $('#AuthorsTable').serializeFormToObject(true);
             }
         },
         buttons: [
@@ -62,5 +59,7 @@
                     ].join('');
                 }
             }
-     
-    })(jQuery);
+        ]
+    });
+
+} (jQuery);

@@ -128,14 +128,7 @@
 		<text name="Borrowers">Borrowers</text>
 		<text name="CreateBorrower">CreateBorrower</text>
 		<text name="Authors">Authors</text>
-<<<<<<< HEAD
     <text name="CreateAuthor">CreateAuthor</text>
-=======
     <text name="Create Author">Create Author</text>
->>>>>>> 80d52e39396ba3c78fb4a4a9ac8f79193bf2a815
-
-
-
-
 	</texts>
 </localizationDictionary>

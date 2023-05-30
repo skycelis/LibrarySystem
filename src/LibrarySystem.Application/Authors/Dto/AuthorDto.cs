@@ -11,6 +11,5 @@ namespace LibrarySystem.Authors
     public class AuthorDto : EntityDto<int>
     {
         public string Name { get; set; }
-        public int BookId { get; set; }
     }
 }

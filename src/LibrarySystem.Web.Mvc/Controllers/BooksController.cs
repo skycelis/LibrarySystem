@@ -41,7 +41,7 @@ namespace LibrarySystem.Web.Controllers
         public async Task<IActionResult> CreateBook(int id)
         {
             var model = new CreateOrEditBookViewModel();
-            var bookcategories = new List<BookCategoryDto>();
+            var bookcategories = await _bookcategoryappService.GetAllBookCategories();
 
             if (id != 0)
             {

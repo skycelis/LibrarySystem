@@ -38,13 +38,7 @@ namespace LibrarySystem.Web.Controllers
             return View(model);
         }
 
-        //private IActionResult ViewComponent(DepartmentListViewModel model)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         [HttpGet]
-
 
         public async Task<IActionResult> CreateStudent(int id)
         {
