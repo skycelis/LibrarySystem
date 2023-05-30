@@ -6,7 +6,11 @@
 
 @section scripts{
     <environment names="Development">
+<<<<<<< HEAD
         <script src="~/view-resources/Views/Authors/CreateOrEditAuthor.js" asp-append-version="true"></script>
+=======
+        <script src="~/view-resources/Views/Author/CreateOrEditAuthor.js" asp-append-version="true"></script>
+>>>>>>> 80d52e39396ba3c78fb4a4a9ac8f79193bf2a815
     </environment>
 }
 <form name="CreateAuthorForm" role="form" class="form-horizontal">
@@ -24,12 +28,15 @@
                         <input id="Name" type="text" name="Name" value="@Model.Name" class="form-control" required>
                     </div>
                 </div>
+<<<<<<< HEAD
                 @*<div class="col-md-6 form-group row required">
                     <label for="AuthorBook" class="col-md-5 col-form-label">Book</label>
                     <div class="col-md-9">
                         @Html.DropDownListFor(m => m.BookId, Model.ListBooks.Select(d => new SelectListItem { Text = Boo = d.Id.ToString() }), "Select Department", new {@class = "form-control" })
                     </div>
                 </div>*@
+=======
+>>>>>>> 80d52e39396ba3c78fb4a4a9ac8f79193bf2a815
 
 
                 <div class="container my-3">

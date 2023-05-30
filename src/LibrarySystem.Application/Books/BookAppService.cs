@@ -55,6 +55,7 @@ namespace LibrarySystem.Entities.Books
             return base.CreateAsync(input);
         }
 
+<<<<<<< HEAD
         //public async Task<BookDto> GetAllBooksWithCategories(EntityDto<int> input)
         //{
         //    var books = await _repository.GetAll()
@@ -71,15 +72,26 @@ namespace LibrarySystem.Entities.Books
             .Select(x => ObjectMapper.Map<BookDto>(x))
             .ToListAsync();
             return books;
+=======
+        public async Task<PagedResultDto<BookDto>> GetAllBooksWithCategories(PagedResultRequestDto input)
+        {
+            var books = await _repository.GetAll()
+                .Include(x => x.BookCategory)
+                //.Where(x => x.Id == input.Id)
+                .Select(x => ObjectMapper.Map<BookDto>(x))
+                .ToListAsync();
+
+            return new PagedResultDto<BookDto>(books.Count(), books);
+>>>>>>> 80d52e39396ba3c78fb4a4a9ac8f79193bf2a815
         }
-        public async Task<PagedResultDto<BookDto>> GetAllBookWithCategory(PagedBookResultRequestDto input)
+        public async Task<List<BookDto>> GetAllAuthorsUnderBooks() /*Task<PagedResultDto<BookDto>> GetAllBookWithCategory(PagedBookResultRequestDto input)*/
         {
             var books = await _repository.GetAll()
                 .Include(x => x.BookCategory)
                 .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 
-            return new PagedResultDto<BookDto>(books.Count(), books);
+            return books; /*new PagedResultDto<BookDto>(books.Count(), books);*/
         }
 
     }
