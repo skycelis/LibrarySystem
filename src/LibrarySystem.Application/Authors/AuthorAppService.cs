@@ -13,8 +13,6 @@ namespace LibrarySystem.Authors
     public class AuthorAppService : AsyncCrudAppService<Author, AuthorDto, int, PagedAuthorResultRequestDto, CreateAuthorDto, AuthorDto>, IAuthorAppService
     {
         private readonly IRepository<Author, int> _repository;
-        //private Task<PagedResultDto<StudentDto>> query;
-        //private readonly object repository;
 
         public AuthorAppService(IRepository<Author, int> repository) : base(repository)
         {

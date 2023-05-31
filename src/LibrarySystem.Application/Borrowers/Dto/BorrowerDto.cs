@@ -1,24 +1,27 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using LibrarySystem.Authorization.Users;
+using LibrarySystem.Books;
 using LibrarySystem.Departments.Dto;
 using LibrarySystem.Entities;
+using LibrarySystem.Students.Dto;
 using Microsoft.VisualBasic;
 using System;
 
 namespace LibrarySystem.Borrowers.Dto
 {
-    [AutoMapFrom(typeof(Borrower))]
     [AutoMapTo(typeof(Borrower))]
+    [AutoMapFrom(typeof(Borrower))]
+    
     public class BorrowerDto : EntityDto<int>
     {
         public DateTime BorrowDate { get; set; }
         public DateTime ExpectedReturnDate { get; set; }
-        public DateTime ReturnDate { get; set; }
-        public string BookId { get; set; }
-        public Book Book { get; set; }
-        public string StudentId { get; set; }        
-        public Student Student { get; set; }
+        public DateTime? ReturnDate { get; set; }
+        public int BookId { get; set; }
+        public BookDto Book { get; set; }
+        public int StudentId { get; set; }        
+        public StudentDto Student { get; set; }
 
     }
 }

@@ -18,8 +18,8 @@ namespace LibrarySystem.Web.Controllers
         private IBorrowerAppService _borrowerappService;
         private IStudentAppService _studentappService;
         private IBookAppService _bookappService;
-        //private readonly object borrowers;
-       
+        //private readonly object borrower;
+
         public BorrowersController(IBorrowerAppService borrowerappService, IStudentAppService studentAppService, IBookAppService bookAppService)
         {
             _borrowerappService = borrowerappService;
@@ -38,7 +38,6 @@ namespace LibrarySystem.Web.Controllers
             return View(model);
         }
 
-
         [HttpGet]
 
 
@@ -50,7 +49,7 @@ namespace LibrarySystem.Web.Controllers
 
             if (id != 0)
             {
-                var borrower = await _borrowerappService.GetAsync(new EntityDto<int>(id));
+                var borrower = await _borrowerappService.GetBorrowerWithBooksAndStudent(new EntityDto<int>(id));
                 model = new CreateOrEditBorrowersViewModel()
                 {
                     BorrowDate = borrower.BorrowDate,

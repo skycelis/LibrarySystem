@@ -24,12 +24,6 @@
                         <input id="Name" type="text" name="Name" value="@Model?.Name" class="form-control" required>
                     </div>
                 </div>
-                @*<div class="col-md-6 form-group row required">
-                    <label for="AuthorBook" class="col-md-5 col-form-label">Book</label>
-                    <div class="col-md-9">
-                        @Html.DropDownListFor(m => m.BookId, Model.ListBooks.Select(d => new SelectListItem { Text = Boo = d.Id.ToString() }), "Select Department", new {@class = "form-control" })
-                    </div>
-                </div>*@
                 <div class="container my-3">
                     <div class="col-md-12">
                         <button id="Submit" type="submit" name="Submit" class="save-button btn btn-primary">Create</button>

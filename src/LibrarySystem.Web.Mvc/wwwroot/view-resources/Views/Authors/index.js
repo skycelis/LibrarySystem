@@ -1,15 +1,15 @@
-﻿function ($) {
-    var _$form = _$('form[name=CreateAuthorForm]');
-    var _authorService = abp.services.app.author;
-    l = abp.localization.getSource('LibrarySystem'),        
-    _$table = $('#AuthorsTable');
-    var _indexPage = "/Authors";
+﻿(function ($) {
+    //var _$form = $('#CreateAuthorForm');
+    var _authorappService = abp.services.app.author;
+    l = abp.localization.getSource('LibrarySystem'),
+        _$table = $('#AuthorsTable');
+    //var _indexPage = "/Authors";
 
     var _$authorsTable = _$table.DataTable({
         paging: true,
         serverSide: true,
         listAction: {
-            ajaxFunction: _authorService.getAll,
+            ajaxFunction: _authorappService.getAll,
             inputFilter: function () {
                 return $('#AuthorsTable').serializeFormToObject(true);
             }
@@ -60,6 +60,42 @@
                 }
             }
         ]
+    })
+    $(document).on('click', '.edit-author', function (e) {
+        var authorId = parseInt($(this).attr("data-author-id"));
+
+        e.preventDefault();
+        window.location.href = "/Authors/CreateAuthor/" + authorId;
     });
 
-} (jQuery);
+
+    $(document).on('click', '.delete-author', function () {
+        var authorId = parseInt($(this).attr("data-author-id"));
+        var authorName = $(this).attr("data-author-name");
+
+        deleteAuthor(authorId, authorName);
+    });
+
+    function deleteAuthor(authorId, authorName) {
+        abp.message.confirm(
+            abp.utils.formatString(
+                l('AreYouSureWantToDelete',
+                    authorName
+                )),
+            null,
+            function (isConfirmed) {
+                if (isConfirmed) {
+                    if (authorId > 0) {
+                        _authorAppService.delete({
+                            id: authorId
+                        })
+                            .done(function () {
+                                abp.notify.info(l('SuccessfullyDeleted'));
+                            });
+                    }
+                }
+            }
+        );
+    }
+
+})(jQuery);

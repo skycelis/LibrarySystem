@@ -52,9 +52,9 @@
                                         <th>BorrowDate</th>
                                         <th>ExpectedReturnDate</th>
                                         <th>ReturnDate</th>
-                                        <th>BookId</th>
-                                        <th>StudentId</th>
-                                        <th style="width: 150px">@L("Actions")</th>
+                                        <th>Book Title</th>
+                                        <th>Student Name</th>
+                                        <th style="width: 200px">@L("Actions")</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -62,16 +62,16 @@
                                     {
                                         <tr>
                                             <td>@borrower.Id</td>
-                                            <td>@borrower.BorrowDate</td>
-                                            <td>@borrower.ExpectedReturnDate</td>
-                                            <td>@borrower.ReturnDate</td>
-                                            <td>@borrower.Book?.Id</td>
-                                            <td>@borrower.Student?.Id</td>
+                                            <td>@borrower.BorrowDate.ToString("yyyy-MM-dd")</td>
+                                            <td>@borrower.ExpectedReturnDate.ToString("yyyy-MM-dd")</td>
+                                            <td>@borrower.ReturnDate?.ToString("yyyy-MM-dd")</td>
+                                            <td>@borrower.Book?.BookTitle</td>
+                                            <td>@borrower.Student?.StudentName</td>
                                             <td>
                                                 <button type="button" class="edit-brwr btn btn-sm bg-secondary" data-brwr-id="@borrower.Id">
                                                     <i class="fas fa-pencil-alt"></i> Edit
                                                 </button>
-                                                <button type="button" class="btn btn-sm bg-danger delete-brwr" data-brwr-id="@borrower.Id" data-brwr-name="@borrower.">
+                                                <button type="button" class="btn btn-sm bg-danger delete-brwr" data-brwr-id="@borrower.Id" data-brwr-date="@borrower.BorrowDate">
                                                     <i class="fas fa-trash"></i> Delete
                                                 </button>
                                             </td>

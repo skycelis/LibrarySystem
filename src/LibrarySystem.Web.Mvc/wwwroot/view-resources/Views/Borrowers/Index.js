@@ -4,20 +4,22 @@
     var _borrowerAppService = abp.services.app.borrower;
 
 
-    $(document).on('click', '.edit-borrower', function (e) {
-        var borrowerId = parseInt($(this).attr("data-borrower-id"));
+    $(document).on('click', '.edit-brwr', function (e) {
+        var borrowerId = parseInt($(this).attr("data-brwr-id"));
         /*var bookTitle = parseFloat($(this).attr("data-book-title"));*/
 
         e.preventDefault();
-        window.location.href = "/Borrower/CreateBorrower/" + borrowerId;
+        window.location.href = "/Borrowers/CreateBorrower/" + borrowerId;
     });
 
 
-    $(document).on('click', '.delete-borrower', function () {
-        var borrowerId = parseInt($(this).attr("data-borrower-id"));
+    $(document).on('click', '.delete-brwr', function () {
+        var borrowerId = parseInt($(this).attr("data-brwr-id"));
+        var borrowerBorrowDate = $(this).attr("data-brwr-date");
+        
 
 
-        deleteBorrower(borrowerId);      
+        deleteBorrower(borrowerId, borrowerBorrowDate);      
     });
 
    function deleteBorrower(borrowerId) {

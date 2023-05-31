@@ -34,7 +34,7 @@ namespace LibrarySystem.Web.Startup
                         PageNames.Students,
                         L("Students"),
                         url: "Students",
-                        icon: "fas fa-home",
+                        icon: "fa fa-graduation-cap",
                         requiresAuthentication: true
                     )
                 )
@@ -52,7 +52,7 @@ namespace LibrarySystem.Web.Startup
                         PageNames.Books,
                         L("Books"),
                         url: "Books",
-                        icon: "fas fa-home",
+                        icon: "fa fa-book",
                         requiresAuthentication: true
                     )
                 )
@@ -61,7 +61,7 @@ namespace LibrarySystem.Web.Startup
                         PageNames.Authors,
                         L("Authors"),
                         url: "Authors",
-                        icon: "fas fa-home",
+                        icon: "fa fa-user",
                         requiresAuthentication: true
                     )
                 )

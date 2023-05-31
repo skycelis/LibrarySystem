@@ -16,22 +16,22 @@
         <div>
             <h1 style="font-size:27px" class="col-md-3 col-form-label"><strong>Create Borrower</strong></h1>
         </div>
-        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="hidden" name="Id" value="@Model?.Id" />
         <div class="bg-opacity-5 py-2">
             <div class="form-validation">
                 <div class="row g-1">
                     <div class="col-md-10 mb-10">
                         <div class="container tab-pane">
                             <div class="col-md-6 form-group row required">
-                                <label for="BorrowDate" class="col-md-5 col-form-label">Borrow Date</label><br>
+                                <label for="BorrowDate" class="col-md-5 col-form-label">Borrow Date</label>
                                 <div class="col-md-9">
-                                    <input type="date" class="form-control" id="BorrowDate" name="BorrowDate" value="@Model?.BorrowDate">
+                                    <input type="date" class="form-control" id="BorrowDate" name="BorrowDate" value="@Model?.BorrowDate.ToString("yyyy-MM-dd")">
                                 </div>
                             </div>
                             <div class="col-md-6 form-group row required">
                                 <label for="ExpectedReturnDate" class="col-md-5 col-form-label">Expected Return Date</label>
                                 <div class="col-md-9">
-                                    <input type="date" class="form-control" id="ExpectedReturnDate" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate">
+                                    <input type="date" class="form-control" id="ExpectedReturnDate" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate.ToString("yyyy-MM-dd")">
                                 </div>
                             </div>
                             @*<div class="col-md-6 form-group row required">
@@ -43,13 +43,13 @@
                             <div class="col-md-6 form-group row required">
                                 <label for="Books" class="col-md-5 col-form-label">Books</label>
                                 <div class="col-md-9">
-                                    @Html.DropDownListFor(m => m.BookId, Model.Books.Select(d => new SelectListItem { Text = d.BookTitle = d.Id.ToString() }), "Select Book Title", new {@class = "form-control" })
+                                    @Html.DropDownListFor(m => m.BookId, Model.Books.Select(d => new SelectListItem {  Value= d.Id.ToString(), Text = d.BookTitle }), "Select Book Title", new {@class = "form-control" })
                                 </div>
                             </div>
                             <div class="col-md-6 form-group row required">
                                 <label for="Students" class="col-md-5 col-form-label">Students</label>
                                 <div class="col-md-9">
-                                    @Html.DropDownListFor(m => m.StudentId, Model.Students.Select(d => new SelectListItem { Text = d.StudentName = d.Id.ToString() }), "Select Student Name", new {@class = "form-control" })
+                                    @Html.DropDownListFor(m => m.StudentId, Model.Students.Select(d => new SelectListItem { Value= d.Id.ToString(), Text = d.StudentName }), "Select Student Name", new {@class = "form-control" })
                                 </div>
                             </div>
                         </div>

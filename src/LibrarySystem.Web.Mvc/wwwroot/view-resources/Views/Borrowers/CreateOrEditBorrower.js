@@ -10,7 +10,8 @@
         }
 
         var borrower = _$form.serializeFormToObject();
-        borrower.BorrowerId = parseInt(borrower.BorrowerId);
+        borrower.BookId = parseInt(borrower.BookId);
+        borrower.StudentId = parseInt(borrower.StudentId);
         if (borrower.Id > 0) {
             _borrowerAppService.update(borrower).done(function () {
                 abp.notify.info(l('UpdatedSuccessfully'));

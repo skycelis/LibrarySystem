@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Abp.AutoMapper;
 using LibrarySystem.Books.Dto;
 using LibrarySystem.Departments.Dto;
@@ -11,12 +12,12 @@ namespace LibrarySystem.Borrowers.Dto
     [AutoMapTo(typeof(Borrower))]
     public class CreateBorrowerDto
     {
+        [Required]
         public DateTime BorrowDate { get; set; }
+        [Required]
         public DateTime ExpectedReturnDate { get; set; }
-        public DateTime ReturnDate { get; set; }
-        public string BookId { get; set; }
-        public string StudentId { get; set; }
-        public Book Book { get; set; }
-        public Student Student { get; set; }
+        public DateTime? ReturnDate { get; set; }
+        public int BookId { get; set; }
+        public int StudentId { get; set; }
     }
 }

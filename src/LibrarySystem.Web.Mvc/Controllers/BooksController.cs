@@ -15,7 +15,6 @@ namespace LibrarySystem.Web.Controllers
     {
         private IBookAppService _bookappService;
         private IBookCategoryAppService _bookcategoryappService;
-        private object await_bookcategoryAppService;
 
         public BooksController(IBookAppService bookappService, IBookCategoryAppService bookcategoryappService)
         {

@@ -18,7 +18,6 @@ namespace LibrarySystem.Web.Controllers
     {
         private IStudentAppService _studentappService;
         private IDepartmentAppService _departmentappService;
-        private object await_departmentAppService;
 
         public StudentsController(IStudentAppService studentappService, IDepartmentAppService departmentappService)
         {
