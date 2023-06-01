@@ -24,10 +24,10 @@ namespace LibrarySystem.Authors
             return base.DeleteAsync(input);
         }
 
-        //public override Task<PagedResultDto<AuthorDto>> GetAllAsync(PagedAuthorResultRequestDto input)
-        //{
-        //    return base.GetAllAsync(input);
-        //}
+        public override Task<PagedResultDto<AuthorDto>> GetAllAsync(PagedAuthorResultRequestDto input)
+        {
+            return base.GetAllAsync(input);
+        }
 
         public override Task<AuthorDto> GetAsync(EntityDto<int> input)
         {
@@ -48,7 +48,13 @@ namespace LibrarySystem.Authors
         {
             return base.CreateAsync(input);
         }
-
+        public async Task<List<AuthorDto>> GetAllAuthors()
+        {
+            var authors = await _repository.GetAll()
+                .Select(x => ObjectMapper.Map<AuthorDto>(x))
+                .ToListAsync();
+            return authors;
+        }
         public async Task<List<AuthorDto>> GetAllAuthorsUnderBooks()
         {
             var authors = await _repository.GetAll()

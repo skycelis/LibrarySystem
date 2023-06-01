@@ -1,4 +1,5 @@
-﻿using LibrarySystem.BookCategories;
+﻿using LibrarySystem.Authors;
+using LibrarySystem.BookCategories;
 using LibrarySystem.Entities;
 using System.Collections.Generic;
 
@@ -12,7 +13,9 @@ namespace LibrarySystem.Web.Models.Books
         public string BookAuthor { get; set; }
         public bool IsBorrowed { get; set; }
         public int? BookCategoryId { get; set; }
-        public List<BookCategoryDto> ListBookCategories { get; set; }        
+        public int? AuthorId { get; set; }
+        public List<BookCategoryDto> ListBookCategories { get; set; }
+        public List<AuthorDto> ListAuthors { get; set; }
        
     }
 }

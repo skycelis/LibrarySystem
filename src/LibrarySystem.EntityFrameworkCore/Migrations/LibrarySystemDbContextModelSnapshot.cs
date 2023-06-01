@@ -1618,8 +1618,8 @@ namespace LibrarySystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("BookAuthor")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("AuthorId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("BookCategoryId")
                         .HasColumnType("int");
@@ -1655,6 +1655,8 @@ namespace LibrarySystem.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
 
                     b.HasIndex("BookCategoryId");
 
@@ -2125,9 +2127,15 @@ namespace LibrarySystem.Migrations
 
             modelBuilder.Entity("LibrarySystem.Entities.Book", b =>
                 {
+                    b.HasOne("LibrarySystem.Entities.Author", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
                     b.HasOne("LibrarySystem.Entities.BookCategory", "BookCategory")
                         .WithMany()
                         .HasForeignKey("BookCategoryId");
+
+                    b.Navigation("Author");
 
                     b.Navigation("BookCategory");
                 });

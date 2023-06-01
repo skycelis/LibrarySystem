@@ -5,16 +5,16 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using LibrarySystem.Departments.Dto;
+using LibrarySystem.Authors.Dto;
+using LibrarySystem.Authors;
 
 namespace LibrarySystem.Books
 {
     public interface IBookAppService : IAsyncCrudAppService<BookDto, int, PagedBookResultRequestDto, CreateBookDto, BookDto>
     {
         Task<PagedResultDto<BookDto>> GetAllBooksWithCategories(PagedResultRequestDto input);
-
         Task<List<BookDto>> GetAllAuthorsUnderBooks();
-        Task<List<BookDto>> GetAllBooks();
-
+        Task<PagedResultDto<AuthorDto>> GetAllAuthors(PagedAuthorResultRequestDto input);
 
     }
 

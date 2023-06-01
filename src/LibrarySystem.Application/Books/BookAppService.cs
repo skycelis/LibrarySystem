@@ -10,6 +10,8 @@ using LibrarySystem.BookCategories.Dto;
 using LibrarySystem.BookCategories;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using LibrarySystem.Authors;
+using LibrarySystem.Authors.Dto;
 
 namespace LibrarySystem.Entities.Books
 {
@@ -75,6 +77,15 @@ namespace LibrarySystem.Entities.Books
                 .ToListAsync();
 
             return books;
+        }
+        public async Task<PagedResultDto<AuthorDto>> GetAllAuthors(PagedAuthorResultRequestDto input)
+        {
+            var books = await _repository.GetAll()
+                .Include(x => x.Author)
+                .Select(x => ObjectMapper.Map<AuthorDto>(x))
+                .ToListAsync();
+
+            return new PagedResultDto<AuthorDto>(books.Count(), books);
         }
 
     }

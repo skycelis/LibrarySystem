@@ -129,6 +129,6 @@
 		<text name="CreateBorrower">CreateBorrower</text>
 		<text name="Authors">Authors</text>
     <text name="CreateAuthor">CreateAuthor</text>
-    <text name="Create Author">Create Author</text>
+
 	</texts>
 </localizationDictionary>

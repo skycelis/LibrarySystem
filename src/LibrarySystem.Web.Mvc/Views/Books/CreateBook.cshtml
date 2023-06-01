@@ -35,9 +35,9 @@
                                 </div>
                             </div>
                             <div class="col-md-6 form-group row required">
-                                <label for="BookAuthor" class="col-md-5 col-form-label">Book Author</label>
+                                <label for="bookAuthor" class="col-md-5 col-form-label">Book Author</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="BookAuthor" name="BookAuthor" value="@Model?.BookAuthor">
+                                    @Html.DropDownListFor(m => m.AuthorId, Model.ListAuthors.Select(d => new SelectListItem { Value= d.Id.ToString(), Text = d.Name }), "Select Book Author", new {@class = "form-control" })
                                 </div>
                             </div>
                             <div class="col-md-6 form-group row required">

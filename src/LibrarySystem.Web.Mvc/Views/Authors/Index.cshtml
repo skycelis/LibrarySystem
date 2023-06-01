@@ -18,13 +18,6 @@
                 <h1>@L("Authors")</h1>
             </div>
             <div class="col-sm-6">
-
-                @*  <a href="javascript:;" data-toggle="modal" data-target="#UserCreateModal" class="btn bg-blue float-sm-right">
-                <i class="fa fa-plus-square"></i>
-                @L("Create")
-                </a>*@
-
-
             </div>
         </div>
     </div>
@@ -57,25 +50,24 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                       
                                         <th style="width: 150px">@L("Actions")</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @* @foreach (var author in Model.Authors)
+                                    @* @foreach (var author in Model.Authors)
                                     {
-                                        <tr>
-                                            <td>@author.Id</td>
-                                            <td>@author.Name</td>
-                                            <td>
-                                                <button type="button" class="edit-author btn btn-sm bg-secondary" data-author-id="@author.Id">
-                                                    <i class="fas fa-pencil-alt"></i> Edit
-                                                </button>
-                                                <button type="button" class="btn btn-sm bg-danger delete-author" data-author-id="@author.Id" data-author-name="@author.Name">
-                                                    <i class="fas fa-trash"></i> Delete
-                                                </button>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                    <td>@author.Id</td>
+                                    <td>@author.Name</td>
+                                    <td>
+                                    <button type="button" class="edit-author btn btn-sm bg-secondary" data-author-id="@author.Id">
+                                    <i class="fas fa-pencil-alt"></i> Edit
+                                    </button>
+                                    <button type="button" class="btn btn-sm bg-danger delete-author" data-author-id="@author.Id" data-author-name="@author.Name">
+                                    <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                    </td>
+                                    </tr>
                                     }*@
                                 </tbody>
                             </table>

@@ -3,6 +3,13 @@
     l = abp.localization.getSource('LibrarySystem');
     var _borrowerAppService = abp.services.app.borrower;
     var _indexPage = "/Borrowers";
+    var _borrowDate = new Date();
+    var _expectedReturnDate = new Date();
+
+    window.onload = (event) => {
+        document.getElementById('borrow-date').value = _borrowDate.toISOString().slice(0, 10);
+        document.getElementById('expected-return-date').value = _expectedReturnDate.toISOString().slice(0, 10);
+    }
 
     function save() {
         if (!_$form.valid()) {

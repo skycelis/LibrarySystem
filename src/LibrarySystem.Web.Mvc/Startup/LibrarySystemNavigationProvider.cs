@@ -26,7 +26,7 @@ namespace LibrarySystem.Web.Startup
                         PageNames.Departments,
                         L("Departments"),
                         url: "Departments",
-                        icon: "fas fa-home",
+                        icon: "fa fa-university",
                         requiresAuthentication: true
                     )
                 ).AddItem(
@@ -43,7 +43,7 @@ namespace LibrarySystem.Web.Startup
                         PageNames.BookCategories,
                         L("BookCategories"),
                         url: "BookCategories",
-                        icon: "fas fa-home",
+                        icon: "fa fa-list",
                         requiresAuthentication: true
                     )
                 )
@@ -70,7 +70,7 @@ namespace LibrarySystem.Web.Startup
                         PageNames.Borrowers,
                         L("Borrowers"),
                         url: "Borrowers",
-                        icon: "fas fa-home",
+                        icon: "fa fa-credit-card",
                         requiresAuthentication: true
                     )
                 )

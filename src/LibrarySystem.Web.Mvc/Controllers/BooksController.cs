@@ -8,6 +8,8 @@ using LibrarySystem.Books;
 using LibrarySystem.Web.Models.Books;
 using System.Collections.Generic;
 using LibrarySystem.Books.Dto;
+using LibrarySystem.Authors;
+using LibrarySystem.Authors.Dto;
 
 namespace LibrarySystem.Web.Controllers
 {
@@ -15,11 +17,13 @@ namespace LibrarySystem.Web.Controllers
     {
         private IBookAppService _bookappService;
         private IBookCategoryAppService _bookcategoryappService;
+        private IAuthorAppService _authorappService;
 
-        public BooksController(IBookAppService bookappService, IBookCategoryAppService bookcategoryappService)
+        public BooksController(IBookAppService bookappService, IBookCategoryAppService bookcategoryappService, IAuthorAppService authorAppService)
         {
             _bookappService = bookappService;
             _bookcategoryappService = bookcategoryappService;
+            _authorappService = authorAppService;
         }
 
         public async Task<IActionResult> Index()
@@ -33,7 +37,6 @@ namespace LibrarySystem.Web.Controllers
             return View(model);
         }
 
-
         [HttpGet]
 
 
@@ -41,6 +44,7 @@ namespace LibrarySystem.Web.Controllers
         {
             var model = new CreateOrEditBookViewModel();
             var bookcategories = await _bookcategoryappService.GetAllBookCategories();
+            var authors = await _authorappService.GetAllAsync(new PagedAuthorResultRequestDto { MaxResultCount = int.MaxValue });
 
             if (id != 0)
             {
@@ -52,12 +56,14 @@ namespace LibrarySystem.Web.Controllers
                     BookAuthor = book.BookAuthor,
                     IsBorrowed = book.IsBorrowed,               
                     Id = id,
-                    BookCategoryId = book.BookCategoryId
+                    BookCategoryId = book.BookCategoryId,
+                    AuthorId = book.AuthorId
 
                 };
             }
 
             model.ListBookCategories = bookcategories;
+            model.ListAuthors = authors.Items.ToList();
             return View(model);
         }
 

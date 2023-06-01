@@ -6,7 +6,6 @@
 
     $(document).on('click', '.edit-brwr', function (e) {
         var borrowerId = parseInt($(this).attr("data-brwr-id"));
-        /*var bookTitle = parseFloat($(this).attr("data-book-title"));*/
 
         e.preventDefault();
         window.location.href = "/Borrowers/CreateBorrower/" + borrowerId;
@@ -17,8 +16,6 @@
         var borrowerId = parseInt($(this).attr("data-brwr-id"));
         var borrowerBorrowDate = $(this).attr("data-brwr-date");
         
-
-
         deleteBorrower(borrowerId, borrowerBorrowDate);      
     });
 

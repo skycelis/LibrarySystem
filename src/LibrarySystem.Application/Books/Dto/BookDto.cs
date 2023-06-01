@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
+using LibrarySystem.Authors;
 using LibrarySystem.BookCategories;
 using LibrarySystem.Entities;
 
@@ -15,7 +16,9 @@ namespace LibrarySystem.Books
         public string BookAuthor { get; set; }
         public bool IsBorrowed { get; set; }
         public int BookCategoryId { get; set; }
+        public int AuthorId { get; set; }
         public BookCategoryDto BookCategory { get; set; }
+        public AuthorDto Author { get; set; }
 
     }
 }
