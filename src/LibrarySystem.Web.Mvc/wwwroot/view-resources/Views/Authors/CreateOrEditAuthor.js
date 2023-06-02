@@ -12,7 +12,7 @@
         var author = _$form.serializeFormToObject();
         author.BookId = parseInt(author.BookId);
         if (author.Id != 0) {
-            _authorAppService.update(author).done(function () {
+            _authorappService.update(author).done(function () {
                 abp.notify.info(l('UpdatedSuccessfully'));
                 window.location.href = _indexPage;
             }).always(function () {

@@ -60,10 +60,11 @@ namespace LibrarySystem.Entities.Books
             .ToListAsync();
             return books;
         }
-        public async Task<PagedResultDto<BookDto>> GetAllBooksWithCategories(PagedResultRequestDto input)
+        public async Task<PagedResultDto<BookDto>> GetAllBooksWithCategoriesAndAuthor(PagedBookResultRequestDto input)
         {
             var books = await _repository.GetAll()
                 .Include(x => x.BookCategory)
+                .Include(x => x.Author)
                 .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 
@@ -73,6 +74,7 @@ namespace LibrarySystem.Entities.Books
         {
             var books = await _repository.GetAll()
                 .Include(x => x.BookCategory)
+                .Include(x => x.Author)
                 .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 

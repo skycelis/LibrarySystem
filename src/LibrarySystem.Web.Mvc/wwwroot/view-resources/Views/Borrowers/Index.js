@@ -4,17 +4,17 @@
     var _borrowerAppService = abp.services.app.borrower;
 
 
-    $(document).on('click', '.edit-brwr', function (e) {
-        var borrowerId = parseInt($(this).attr("data-brwr-id"));
+    $(document).on('click', '.edit-borrower', function (e) {
+        var borrowerId = parseInt($(this).attr("data-borrower-id"));
 
         e.preventDefault();
         window.location.href = "/Borrowers/CreateBorrower/" + borrowerId;
     });
 
 
-    $(document).on('click', '.delete-brwr', function () {
-        var borrowerId = parseInt($(this).attr("data-brwr-id"));
-        var borrowerBorrowDate = $(this).attr("data-brwr-date");
+    $(document).on('click', '.delete-borrower', function () {
+        var borrowerId = parseInt($(this).attr("data-borrower-id"));
+        var borrowerBorrowDate = $(this).attr("data-borrow-date");
         
         deleteBorrower(borrowerId, borrowerBorrowDate);      
     });
