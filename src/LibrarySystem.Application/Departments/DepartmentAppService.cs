@@ -54,6 +54,10 @@ namespace LibrarySystem.Departments
             return query;
         }
 
+        //protected override IQueryable<Department> CreateFilteredQuery(PagedDepartmentResultRequestDto input)
+        //{
+        //    return base.CreateFilteredQuery(input);
+        //}
     }
 
 }

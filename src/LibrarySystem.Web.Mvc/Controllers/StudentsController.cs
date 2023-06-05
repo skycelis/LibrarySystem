@@ -25,15 +25,25 @@ namespace LibrarySystem.Web.Controllers
             _departmentappService = departmentappService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchStudent)
         {
             var students = await _studentappService.GetAllStudentsWithDepartment(new PagedStudentResultRequestDto { MaxResultCount = int.MaxValue });
-            var model = new StudentListViewModel()
+            var model = new StudentListViewModel();
+
+            if (!string.IsNullOrEmpty(SearchStudent))
             {
-                Students = students.Items.ToList()
-            };
-
-
+                model = new StudentListViewModel()
+                {
+                    Students = students.Items.Where(d => d.StudentName.Contains(SearchStudent)).ToList()
+                };
+            }
+            else
+            {
+                model = new StudentListViewModel()
+                {
+                    Students = students.Items.ToList()
+                };
+            }
             return View(model);
         }
 

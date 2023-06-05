@@ -26,13 +26,25 @@ namespace LibrarySystem.Web.Controllers
             _authorappService = authorAppService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchBook)
         {
             var books = await _bookappService.GetAllBooksWithCategoriesAndAuthor(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
-            var model = new BookListViewModel()
+            var model = new BookListViewModel();
+
+            if (!string.IsNullOrEmpty(SearchBook))
             {
-                Books = books.Items.ToList()
-            };
+                model = new BookListViewModel()
+                {
+                    Books = books.Items.Where(b => b.BookTitle.Contains(SearchBook)).ToList()
+                };
+            }
+            else
+            {
+                model = new BookListViewModel()
+                {
+                    Books = books.Items.ToList()
+                };
+            }
 
             return View(model);
         }

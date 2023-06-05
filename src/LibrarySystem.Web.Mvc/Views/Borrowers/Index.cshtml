@@ -38,6 +38,18 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
+                                <div class="abp-advanced-search">
+                                    <form name="SearchBorrowerForm" class="form-horizontal" asp-controller="Borrowers" asp-action="Index" method="get">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="submit" class="btn bg-blue btn-search search-button">
+                                                    <span class="fas fa-search" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                            <input class="form-control" type="text" name="SearchBorrower" placeholder="Search" />
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                             <div class="col-md-6">
                             </div>

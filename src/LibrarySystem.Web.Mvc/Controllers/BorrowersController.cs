@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using LibrarySystem.Controllers;
 using Abp.Application.Services.Dto;
 using LibrarySystem.Books;
-using System.Collections.Generic;
 using LibrarySystem.Borrowers;
 using LibrarySystem.Borrowers.Dto;
-using LibrarySystem.Students.Dto;
 using LibrarySystem.Web.Models.Borrowers;
 using LibrarySystem.Students;
+using LibrarySystem.Web.Models.Books;
+using LibrarySystem.Web.Models.Students;
 
 namespace LibrarySystem.Web.Controllers
 {
@@ -26,13 +26,26 @@ namespace LibrarySystem.Web.Controllers
             _bookappService = bookAppService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchBorrower)
         {
             var borrowers = await _borrowerappService.GetAllAsync(new PagedBorrowerResultRequestDto { MaxResultCount = int.MaxValue });
-            var model = new BorrowersListViewModel()
+            var model = new BorrowersListViewModel();
+
+            if (!string.IsNullOrEmpty(SearchBorrower))
             {
-                Borrowers = borrowers.Items.ToList()
-            };
+                model = new BorrowersListViewModel()
+                {
+                    //Borrowers = borrowers.Items.Where(d => d.BookTitle.Contains(SearchBorrower)).ToList()
+                    //Borrowers = borrowers.Items.Where(b => b.BookTitle.Contains(SearchBorrower)).ToList()
+                };
+            }
+            else
+            {
+                model = new BorrowersListViewModel()
+                {
+                    Borrowers = borrowers.Items.ToList()
+                };
+            }
 
             return View(model);
         }
