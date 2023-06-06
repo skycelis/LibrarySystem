@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using LibrarySystem.Controllers;
 using Abp.Application.Services.Dto;
 using LibrarySystem.Web.Models.Authors;
+using LibrarySystem.Books.Dto;
+using LibrarySystem.Authors.Dto;
+using System.Linq;
 
 namespace LibrarySystem.Web.Controllers
 {
@@ -15,13 +18,26 @@ namespace LibrarySystem.Web.Controllers
             _authorappService = userAppService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchAuthor)
         {
-            var authors = await _authorappService.GetAllAuthorsUnderBooks();
-            var model = new AuthorViewModel()
+            var authors = await _authorappService.GetAllAuthorsUnderBooks(new PagedAuthorResultRequestDto { MaxResultCount = int.MaxValue });
+            var model = new AuthorViewModel();
+
+            if (!string.IsNullOrEmpty(SearchAuthor))
             {
-                Authors = authors
-            };
+                model = new AuthorViewModel()
+                {
+                    Authors = authors.ToList().Where(x => x.Name.Contains(SearchAuthor)).ToList()
+                };
+            }
+            else
+            {
+                model = new AuthorViewModel()
+                {
+                    Authors = authors.ToList()
+                };
+            }
+
             return View(model);
         }
 

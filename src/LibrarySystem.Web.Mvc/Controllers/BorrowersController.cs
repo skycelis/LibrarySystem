@@ -19,11 +19,11 @@ namespace LibrarySystem.Web.Controllers
         private IStudentAppService _studentappService;
         private IBookAppService _bookappService;
 
-        public BorrowersController(IBorrowerAppService borrowerappService, IStudentAppService studentAppService, IBookAppService bookAppService)
+        public BorrowersController(IBorrowerAppService borrowerappService, IStudentAppService studentAppService, IBookAppService bookappService)
         {
             _borrowerappService = borrowerappService;
             _studentappService = studentAppService;
-            _bookappService = bookAppService;
+            _bookappService = bookappService;
         }
 
         public async Task<IActionResult> Index(string SearchBorrower)
@@ -35,8 +35,7 @@ namespace LibrarySystem.Web.Controllers
             {
                 model = new BorrowersListViewModel()
                 {
-                    //Borrowers = borrowers.Items.Where(d => d.BookTitle.Contains(SearchBorrower)).ToList()
-                    //Borrowers = borrowers.Items.Where(b => b.BookTitle.Contains(SearchBorrower)).ToList()
+                    //Borrowers = borrowers.Items.Where(b => b.Borrower.Contains(SearchBorrower)).ToList()
                 };
             }
             else

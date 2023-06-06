@@ -1,7 +1,7 @@
 ﻿(function ($) {
     var _$form = $('form[name=CreateBorrowerForm]');
     l = abp.localization.getSource('LibrarySystem');
-    var _borrowerAppService = abp.services.app.borrower;
+    var _borrowerappService = abp.services.app.borrower;
 
 
     $(document).on('click', '.edit-borrower', function (e) {
@@ -29,7 +29,7 @@
            function (isConfirmed) {
                 if (isConfirmed) {
                     if (borrowerId > 0) {
-                        _borrowerAppService.delete({
+                        _borrowerappService.delete({
                            id: borrowerId
                         })
                             .done(function () {

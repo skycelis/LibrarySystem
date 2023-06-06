@@ -11,7 +11,7 @@
         listAction: {
             ajaxFunction: _authorappService.getAll,
             inputFilter: function () {
-                return $('#AuthorsTable').serializeFormToObject(true);
+                return $('#SearchAuthorTable').serializeFormToObject(true);
             }
         },
         buttons: [

@@ -7,6 +7,7 @@ using LibrarySystem.Entities;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using LibrarySystem.Borrowers.Dto;
 
 namespace LibrarySystem.Authors
 {
@@ -48,14 +49,14 @@ namespace LibrarySystem.Authors
         {
             return base.CreateAsync(input);
         }
-        public async Task<List<AuthorDto>> GetAllAuthors()
+        public async Task<PagedResultDto<AuthorDto>> GetAllAuthors(PagedAuthorResultRequestDto input)
         {
             var authors = await _repository.GetAll()
                 .Select(x => ObjectMapper.Map<AuthorDto>(x))
                 .ToListAsync();
-            return authors;
+            return new PagedResultDto<AuthorDto>(authors.Count(), authors);
         }
-        public async Task<List<AuthorDto>> GetAllAuthorsUnderBooks()
+        public async Task<List<AuthorDto>> GetAllAuthorsUnderBooks(PagedAuthorResultRequestDto input)
         {
             var authors = await _repository.GetAll()
                 .Select(x => ObjectMapper.Map<AuthorDto>(x))
