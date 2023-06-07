@@ -35,7 +35,7 @@ namespace LibrarySystem.Web.Controllers
             {
                 model = new BorrowersListViewModel()
                 {
-                    //Borrowers = borrowers.Items.Where(b => b.Borrower.Contains(SearchBorrower)).ToList()
+                    Borrowers = borrowers.Items.Where(b => b.Book.BookTitle.Contains(SearchBorrower)) /*|| (b => b.Student.StudentName.Contains(SearchBorrower)*/.ToList()
                 };
             }
             else
@@ -58,6 +58,19 @@ namespace LibrarySystem.Web.Controllers
             var books = await _bookappService.GetAllAuthorsUnderBooks();
             var students = await _studentappService.GetAllStudents();
 
+
+            model.Books = books;
+            model.Students = students;
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditBorrower(int id)
+        {
+            var model = new CreateOrEditBorrowersViewModel();
+            var books = await _bookappService.GetAllAuthorsUnderBooks();
+            var students = await _studentappService.GetAllStudents();
+
             if (id != 0)
             {
                 var borrower = await _borrowerappService.GetBorrowerWithBooksAndStudent(new EntityDto<int>(id));
@@ -69,7 +82,7 @@ namespace LibrarySystem.Web.Controllers
                     BookId = borrower.BookId,
                     StudentId = borrower.StudentId,
                     IsBorrowed = borrower.Book.IsBorrowed,
-                    Id = id                   
+                    Id = id
 
                 };
             }
@@ -78,6 +91,5 @@ namespace LibrarySystem.Web.Controllers
             model.Students = students;
             return View(model);
         }
-
     }
 }

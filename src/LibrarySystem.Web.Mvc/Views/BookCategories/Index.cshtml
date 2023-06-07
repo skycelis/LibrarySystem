@@ -18,10 +18,6 @@
                 <h1>@L("BookCategories")</h1>
             </div>
             <div class="col-sm-6">
-                @*  <a href="javascript:;" data-toggle="modal" data-target="#UserCreateModal" class="btn bg-blue float-sm-right">
-                <i class="fa fa-plus-square"></i>
-                @L("Create")
-                </a>*@
             </div>
         </div>
     </div>
@@ -81,9 +77,9 @@
                                                 <button type="button" class="edit-bookcat btn btn-sm bg-secondary" data-bookcat-id="@bookcategory.Id">
                                                     <i class="fas fa-pencil-alt"></i> Edit
                                                 </button>
-                                                <button type="button" class="btn btn-sm bg-danger delete-bookcat" data-bookcat-id="@bookcategory.Id" data-bookcat-name="@bookcategory.Name">
-                                                    <i class="fas fa-trash"></i> Delete
-                                                </button>
+                                                <a class="btn btn-sm bg-danger delete-bookcat" href="#" data-bookcat-id="@bookcategory.Id" data-bookcat-name="@bookcategory.Name">
+                                                    <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                </a>
                                             </td>
                                         </tr>
                                     }

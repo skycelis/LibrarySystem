@@ -26,7 +26,6 @@ namespace LibrarySystem.Borrowers
         {
             return base.CreateAsync(input);
         }
-
         public override Task DeleteAsync(EntityDto<int> input)
         {
             return base.DeleteAsync(input);
@@ -34,7 +33,7 @@ namespace LibrarySystem.Borrowers
 
         public override async Task<PagedResultDto<BorrowerDto>> GetAllAsync(PagedBorrowerResultRequestDto input)
         {
-            var borrower = await _repository.GetAll()
+            var borrowers = await _repository.GetAll()
                 .Include(x => x.Book)
                     .ThenInclude(x => x.BookCategory)
                     .ThenInclude(x => x.Department)
@@ -44,7 +43,7 @@ namespace LibrarySystem.Borrowers
                 .Select(x => ObjectMapper.Map<BorrowerDto>(x))
                 .ToListAsync();
 
-            return new PagedResultDto<BorrowerDto>(borrower.Count(), borrower);
+            return new PagedResultDto<BorrowerDto>(borrowers.Count(), borrowers);
         }
 
         public async Task<BorrowerDto> GetBorrowerWithBooksAndStudent(EntityDto<int> input)
@@ -77,7 +76,7 @@ namespace LibrarySystem.Borrowers
             var borrower = await _repository.GetAll()
                 .Select(x => ObjectMapper.Map<BorrowerDto>(x))
                 .ToListAsync();
-            
+
             return borrower;
         }
         public async Task<List<BorrowerDto>> GetAllBooksWithBorrowers()

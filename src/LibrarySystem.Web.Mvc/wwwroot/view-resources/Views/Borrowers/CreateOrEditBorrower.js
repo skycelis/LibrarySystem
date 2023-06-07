@@ -5,10 +5,14 @@
     var _indexPage = "/Borrowers";
     var _borrowDate = new Date();
     var _expectedReturnDate = new Date();
+    var _returnDate = new Date();
+    _expectedReturnDate.setDate(_expectedReturnDate.getDate() + 7);
+    console.log(_expectedReturnDate.toDateString());
 
-    window.onload = (event) => {
-        document.getElementById('borrow-date').value = _borrowDate.toISOString().slice(0, 10);
-        document.getElementById('expected-return-date').value = _expectedReturnDate.toISOString().slice(0, 10);
+    window.onload = function () {
+        document.getElementById('BorrowDate').value = _borrowDate.toISOString().slice(0, 10);
+        document.getElementById('ExpectedReturnDate').value = _expectedReturnDate.toISOString().slice(0, 10);
+        document.getElementById('ReturnDate').value = _returnDate.toISOString().slice(0, 10);
     }
 
     function save() {

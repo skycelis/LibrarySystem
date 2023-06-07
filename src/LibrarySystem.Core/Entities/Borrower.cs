@@ -1,6 +1,5 @@
 ﻿using System;
 using Abp.Domain.Entities.Auditing;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +11,7 @@ namespace LibrarySystem.Entities
     {
         public DateTime BorrowDate { get; set; }
         public DateTime ExpectedReturnDate { get; set; }
-        public DateTime? ReturnDate { get; set; }
+        public DateTime ReturnDate { get; set; }
         public int? BookId { get; set; }
         public Book Book { get; set; }
         public int? StudentId { get; set; }

@@ -16,7 +16,7 @@ namespace LibrarySystem.Borrowers.Dto
         public DateTime BorrowDate { get; set; }
         [Required]
         public DateTime ExpectedReturnDate { get; set; }
-        public DateTime? ReturnDate { get; set; }
+        public DateTime ReturnDate { get; set; }
         public int BookId { get; set; }
         public int StudentId { get; set; }
     }

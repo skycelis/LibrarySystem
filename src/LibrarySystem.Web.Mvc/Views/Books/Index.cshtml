@@ -83,9 +83,9 @@
                                                 <button type="button" class="edit-book btn btn-sm bg-secondary" data-book-id="@book.Id">
                                                     <i class="fas fa-pencil-alt"></i> Edit
                                                 </button>
-                                                <button type="button" class="btn btn-sm bg-danger delete-book" data-book-id="@book.Id" data-book-name="@book.BookTitle">
-                                                    <i class="fas fa-trash"></i> Delete
-                                                </button>
+                                                <a class="btn btn-sm bg-danger delete-book" href="#" data-book-id="@book.Id" data-book-title="@book.BookTitle">
+                                                    <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                </a>
                                             </td>
                                         </tr>
                                     }
