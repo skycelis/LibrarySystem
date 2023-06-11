@@ -8,6 +8,11 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using LibrarySystem.Borrowers.Dto;
+using LibrarySystem.Authorization.Users;
+using LibrarySystem.Users.Dto;
+using Abp.Extensions;
+using Abp.Collections.Extensions;
+using Abp.Linq.Extensions;
 
 namespace LibrarySystem.Authors
 {
@@ -63,6 +68,12 @@ namespace LibrarySystem.Authors
                 .ToListAsync();
 
             return authors;
+        }
+
+        protected override IQueryable<Author> CreateFilteredQuery(PagedAuthorResultRequestDto input)
+        {
+            return Repository.GetAll()
+                .WhereIf(!input.Keyword.IsNullOrWhiteSpace(), x => x.Name.Contains(input.Keyword));
         }
     }
 }

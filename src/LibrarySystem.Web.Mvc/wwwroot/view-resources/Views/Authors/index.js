@@ -11,7 +11,7 @@
         listAction: {
             ajaxFunction: _authorappService.getAll,
             inputFilter: function () {
-                return $('#SearchAuthorTable').serializeFormToObject(true);
+                return $('#authorSearchForm').serializeFormToObject(true);
             }
         },
         buttons: [
@@ -29,28 +29,23 @@
         columnDefs: [
             {
                 targets: 0,
-                className: 'control',
-                defaultContent: '',
-            },
-            {
-                targets: 1,
                 data: 'id',
                 sortable: false
             },
             {
-                targets: 2,
+                targets: 1,
                 data: 'name',
                 sortable: false
             },
             {
-                targets: 3,
+                targets: 2,
                 data: null,
                 sortable: false,
                 autoWidth: false,
                 defaultContent: '',
                 render: (data, type, row, meta) => {
                     return [
-                        `   <button type="button" class="btn btn-sm bg-secondary edit-author" data-author-id="${row.id}" data-toggle="modal" data-target="#AuthorEditModal">`,
+                        `   <button type="button" class="btn btn-sm bg-secondary edit-author" data-author-id="${row.id}">`,
                         `       <i class="fas fa-pencil-alt"></i> ${l('Edit')}`,
                         '   </button>',
                         `   <button type="button" class="btn btn-sm bg-danger delete-author" data-author-id="${row.id}" data-author-name="${row.name}">`,
@@ -60,7 +55,20 @@
                 }
             }
         ]
+
     })
+    $('.search-button').on('click', (e) => {
+        _$authorsTable.ajax.reload();
+    });
+
+
+    $('.txt-search').on('keypress', (e) => {
+        if (e.which == 13) {
+            _$authorsTable.ajax.reload();
+            return false;
+        }
+    });
+
     $(document).on('click', '.edit-author', function (e) {
         var authorId = parseInt($(this).attr("data-author-id"));
 

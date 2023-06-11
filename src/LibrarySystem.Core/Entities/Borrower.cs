@@ -11,7 +11,7 @@ namespace LibrarySystem.Entities
     {
         public DateTime BorrowDate { get; set; }
         public DateTime ExpectedReturnDate { get; set; }
-        public DateTime ReturnDate { get; set; }
+        public DateTime? ReturnDate { get; set; }
         public int? BookId { get; set; }
         public Book Book { get; set; }
         public int? StudentId { get; set; }

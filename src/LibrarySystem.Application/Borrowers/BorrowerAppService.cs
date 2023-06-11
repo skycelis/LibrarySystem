@@ -31,63 +31,78 @@ namespace LibrarySystem.Borrowers
             return base.DeleteAsync(input);
         }
 
-        public override async Task<PagedResultDto<BorrowerDto>> GetAllAsync(PagedBorrowerResultRequestDto input)
-        {
-            var borrowers = await _repository.GetAll()
-                .Include(x => x.Book)
-                    .ThenInclude(x => x.BookCategory)
-                    .ThenInclude(x => x.Department)
-                .Include(x => x.Student)
-                    .ThenInclude(x => x.Department)
-                .OrderByDescending(x => x.Id)
-                .Select(x => ObjectMapper.Map<BorrowerDto>(x))
-                .ToListAsync();
-
-            return new PagedResultDto<BorrowerDto>(borrowers.Count(), borrowers);
-        }
-
-        public async Task<BorrowerDto> GetBorrowerWithBooksAndStudent(EntityDto<int> input)
-
-        {
-            var borrower = await _repository.GetAll()
-                .Include(x => x.Book)
-                .Include(x => x.Student)
-                .Where(x => x.Id == input.Id)
-                .Select(x => ObjectMapper.Map<BorrowerDto>(x))
-                .FirstOrDefaultAsync();
-
-            return borrower;
-        }
-
         public override Task<BorrowerDto> UpdateAsync(BorrowerDto input)
         {
             return base.UpdateAsync(input);
         }
-        public async Task<List<BorrowerDto>> GetAllBorrowers(PagedBorrowerResultRequestDto input)
+        public override Task<BorrowerDto> GetAsync(EntityDto<int> input)
         {
-            var query = await _repository.GetAll()
-                .Select(x => ObjectMapper.Map<BorrowerDto>(x))
-                .ToListAsync();
-
-            return query;
+            return base.GetAsync(input);
         }
-        public async Task<List<BorrowerDto>> GetAllStudentsWithBorrowers()
+
+        public override Task<PagedResultDto<BorrowerDto>> GetAllAsync(PagedBorrowerResultRequestDto input)
         {
-            var borrower = await _repository.GetAll()
-                .Select(x => ObjectMapper.Map<BorrowerDto>(x))
-                .ToListAsync();
-
-            return borrower;
+            return base.GetAllAsync(input);
         }
-        public async Task<List<BorrowerDto>> GetAllBooksWithBorrowers()
+
+        protected override Task<Borrower> GetEntityByIdAsync(int id)
+        {
+            return base.GetEntityByIdAsync(id);
+        }
+
+        public async Task<PagedResultDto<BorrowerDto>> GetBorrowerWithBooksAndStudent(PagedBorrowerResultRequestDto input)
+
         {
             var borrower = await _repository.GetAll()
                 .Include(x => x.Book)
+                .Include(x => x.Student)
                 .Select(x => ObjectMapper.Map<BorrowerDto>(x))
                 .ToListAsync();
 
-            return borrower;
+            return new PagedResultDto<BorrowerDto>(borrower.Count(), borrower);
         }
+
+
+        //public async Task<List<BorrowerDto>> GetAllBorrowers(PagedBorrowerResultRequestDto input)
+        //{
+        //    var query = await _repository.GetAll()
+        //        .Select(x => ObjectMapper.Map<BorrowerDto>(x))
+        //        .ToListAsync();
+
+        //    return query;
+        //}
+        //public async Task<List<BorrowerDto>> GetAllStudentsWithBorrowers()
+        //{
+        //    var borrower = await _repository.GetAll()
+        //        .Select(x => ObjectMapper.Map<BorrowerDto>(x))
+        //        .ToListAsync();
+
+        //    return borrower;
+        //}
+        //public async Task<List<BorrowerDto>> GetAllBooksWithBorrowers()
+        //{
+        //    var borrower = await _repository.GetAll()
+        //        .Include(x => x.Book)
+        //        .Select(x => ObjectMapper.Map<BorrowerDto>(x))
+        //        .ToListAsync();
+
+        //    return borrower;
+        //}
+        //public override async Task<PagedResultDto<BorrowerDto>> GetAllAsync(PagedBorrowerResultRequestDto input)
+        //{
+        //    var borrowers = await _repository.GetAll()
+        //        .Include(x => x.Book)
+        //            .ThenInclude(x => x.BookCategory)
+        //            .ThenInclude(x => x.Department)
+        //        .Include(x => x.Student)
+        //            .ThenInclude(x => x.Department)
+        //        .OrderByDescending(x => x.Id)
+        //        .Select(x => ObjectMapper.Map<BorrowerDto>(x))
+        //        .ToListAsync();
+
+        //    return new PagedResultDto<BorrowerDto>(borrowers.Count(), borrowers);
+        //    return base.GetAllAsync(input);
+        //}
     }
 
 }

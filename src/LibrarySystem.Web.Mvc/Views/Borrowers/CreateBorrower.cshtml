@@ -31,15 +31,9 @@
                             <div class="col-md-6 form-group row required">
                                 <label for="ExpectedReturnDate" class="col-md-5 col-form-label">Expected Return Date</label>
                                 <div class="col-md-9">
-                                    <input type="date" class="form-control" id="ExpectedReturnDate" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate.ToString("yyyy-MM-dd")">
+                                    <input id="ExpectedReturnDate" type="date" class="form-control" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate.ToString("yyyy-MM-dd")">
                                 </div>
                             </div>
-                            @*<div class="col-md-6 form-group row required">
-                                <label for="ReturnDate" class="col-md-5 col-form-label">Return Date</label>
-                                <div class="col-md-9">
-                                    <input type="date" class="form-control" id="ReturnDate" name="ReturnDate" value="@Model?.ReturnDate">
-                                </div>
-                            </div>*@
                             <div class="col-md-6 form-group row required">
                                 <label for="Books" class="col-md-5 col-form-label">Books</label>
                                 <div class="col-md-9">
@@ -57,8 +51,8 @@
                 </div>
                 <div class="container my-3">
                     <div class="col-md-12">
-                        <button id="Cancel" type="button" name="Cancel" class="cancel-button btn btn-primary">Cancel</button>
-                        <button id="Submit" type="submit" name="Submit" class="save-button btn bg-secondary">Save</button>
+                        <button id="Submit" type="submit" name="Submit" class="save-button btn btn-primary">Save</button>
+                        <button id="Cancel" type="button" name="Cancel" class="cancel-button btn bg-secondary">Cancel</button>
                     </div>
                 </div>
             </div>

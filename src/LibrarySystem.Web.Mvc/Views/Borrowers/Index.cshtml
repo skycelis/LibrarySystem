@@ -73,17 +73,17 @@
                                     @foreach (var borrower in Model.Borrowers)
                                     {
                                         <tr>
-                                            <td>@borrower.Id</td>
-                                            <td>@borrower.BorrowDate.ToString("yyyy-MM-dd")</td>
-                                            <td>@borrower.ExpectedReturnDate.ToString("yyyy-MM-dd")</td>
-                                            <td>@borrower.ReturnDate.ToString("yyyy-MM-dd")</td>
+                                            <td>@borrower?.Id</td>
+                                            <td>@borrower?.BorrowDate</td>
+                                            <td>@borrower?.ExpectedReturnDate</td>
+                                            <td>@borrower?.ReturnDate?</td>
                                             <td>@borrower.Book?.BookTitle</td>
                                             <td>@borrower.Student?.StudentName</td>
                                             <td>
-                                                <button type="button" class="edit-borrower btn btn-sm bg-secondary" data-borrower-id="@borrower.Id">
-                                                    <i class="fas fa-pencil-alt"></i> Edit
+                                                <button type="button" class="edit-borrower btn btn-sm bg-secondary" data-borrower-id="@borrower?.Id">
+                                                    <i class="fas fa-pencil-alt"></i> Update
                                                 </button>
-                                                <a class="btn btn-sm bg-danger delete-borrower" href="#" data-borrower-id="@borrower.Id" data-borrow-date="@borrower.BorrowDate">
+                                                <a class="btn btn-sm bg-danger delete-borrower" href="#" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
                                                     <i class="fas fa-trash-o fa-lg"></i> Delete
                                                 </a>
                                             </td>

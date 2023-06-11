@@ -14,12 +14,11 @@ namespace LibrarySystem.Web.Models.Borrowers
         public DateTime BorrowDate { get; set; }
         public DateTime ExpectedReturnDate { get; set; }
         public DateTime? ReturnDate { get; set; }
-        public int BookId { get; set; }
+        public int? BookId { get; set; }
         public List<BookDto> Books { get; set; }
-        public int StudentId { get; set; }
-        
+
         [Required]
-        public bool IsBorrowed { get; set; }
+        public int? StudentId { get; set; }
         public List<StudentDto> Students { get; set;}
     }
 }

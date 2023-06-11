@@ -23,7 +23,7 @@
         abp.message.confirm(
             abp.utils.formatString(
               l('AreYouSureWantToDelete',
-                   borrower
+                   borrowerId
                 )),
            null,
            function (isConfirmed) {
