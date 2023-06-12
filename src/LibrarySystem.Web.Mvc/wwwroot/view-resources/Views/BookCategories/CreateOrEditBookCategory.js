@@ -38,6 +38,6 @@
         e.preventDefault();
         save();
     });
-   
-    
+
+
 })(jQuery);

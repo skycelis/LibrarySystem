@@ -6,7 +6,7 @@
 
 @section scripts{
     <environment names="Development">
-        <script src="~/view-resources/Views/Borrowers/CreateOrEditBorrower.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Borrowers/COEB.js" asp-append-version="true"></script>
     </environment>
 }
 <form name="CreateBorrowerForm" role="form" class="form-horizontal">
@@ -31,13 +31,13 @@
                             <div class="col-md-6 form-group row required">
                                 <label for="ExpectedReturnDate" class="col-md-5 col-form-label">Expected Return Date</label>
                                 <div class="col-md-9">
-                                    <input type="date" class="form-control" id="ExpectedReturnDate" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate.ToString("yyyy-MM-dd")">
+                                    <input id="ExpectedReturnDate" type="date" class="form-control" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate.ToString("yyyy-MM-dd")">
                                 </div>
                             </div>
                             <div class="col-md-6 form-group row required">
                                 <label for="ReturnDate" class="col-md-5 col-form-label">Return Date</label>
                                 <div class="col-md-9">
-                                    <input type="date" class="form-control" id="ReturnDate" name="ReturnDate" value="@Model?.ReturnDate?.ToString("yyyy-MM-dd")">
+                                    <input id="ReturnDate" type="date" class="form-control" name="ReturnDate" value="@Model?.ReturnDate">
                                 </div>
                             </div>
                             <div class="col-md-6 form-group row required">

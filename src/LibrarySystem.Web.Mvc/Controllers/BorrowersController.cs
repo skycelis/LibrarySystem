@@ -54,7 +54,7 @@ namespace LibrarySystem.Web.Controllers
         [HttpGet]
 
 
-        public async Task<IActionResult> CreateOrEditBorrower(int id)
+        public async Task<IActionResult> CreateBorrower(int id)
         {
             var model = new CreateOrEditBorrowersViewModel();
             var books = await _bookappService.GetAllAuthorsUnderBooks();

@@ -3,7 +3,6 @@
     l = abp.localization.getSource('LibrarySystem');
     var _bookAppService = abp.services.app.book;
 
-
     $(document).on('click', '.edit-book', function (e) {
         var bookId = parseInt($(this).attr("data-book-id"));
 
@@ -15,7 +14,7 @@
     $(document).on('click', '.delete-book', function () {
         var bookId = parseInt($(this).attr("data-book-id"));
         var bookTitle = $(this).attr("data-book-title");
-        
+
 
         deleteBook(bookId, bookTitle);
     });

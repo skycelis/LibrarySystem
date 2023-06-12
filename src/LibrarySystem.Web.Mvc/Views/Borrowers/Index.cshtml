@@ -32,13 +32,13 @@
                     <div class="card-header">
                         <a class="btn bg-blue float-sm-right" href="/Borrowers/CreateBorrower">
                             <i class="fa fa-plus-square"></i>
-                            @L("CreateBorrower")
+                            @L("Create")
                         </a>
                         <div class="col-sm-6">
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="abp-advanced-search">
+                                <div class="abp-advanced-search"> @*Search Bar*@
                                     <form name="SearchBorrowerForm" class="form-horizontal" asp-controller="Borrowers" asp-action="Index" method="get">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -80,9 +80,9 @@
                                             <td>@borrower.Book?.BookTitle</td>
                                             <td>@borrower.Student?.StudentName</td>
                                             <td>
-                                                <button type="button" class="edit-borrower btn btn-sm bg-secondary" data-borrower-id="@borrower?.Id">
-                                                    <i class="fas fa-pencil-alt"></i> Update
-                                                </button>
+                                                <a class="edit-borrower btn btn-sm bg-secondary" data-borrower-id="@borrower?.Id">
+                                                    <i class="fas fa-trash-o fa-lg"></i> Update
+                                                </a>
                                                 <a class="btn btn-sm bg-danger delete-borrower" href="#" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
                                                     <i class="fas fa-trash-o fa-lg"></i> Delete
                                                 </a>

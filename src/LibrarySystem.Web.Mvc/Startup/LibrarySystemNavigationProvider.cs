@@ -47,21 +47,21 @@ namespace LibrarySystem.Web.Startup
                         requiresAuthentication: true
                     )
                 )
+                .AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Authors,
+                        L("Authors"),
+                        url: "Authors",
+                        icon: "fa fa-user",
+                        requiresAuthentication: true
+                    )
+                )
                  .AddItem(
                     new MenuItemDefinition(
                         PageNames.Books,
                         L("Books"),
                         url: "Books",
                         icon: "fa fa-book",
-                        requiresAuthentication: true
-                    )
-                )
-                 .AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Authors,
-                        L("Authors"),
-                        url: "Authors",
-                        icon: "fa fa-user",
                         requiresAuthentication: true
                     )
                 )

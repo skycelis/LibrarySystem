@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using LibrarySystem.Authors;
 using LibrarySystem.Authors.Dto;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace LibrarySystem.Entities.Books
 {
@@ -89,7 +90,21 @@ namespace LibrarySystem.Entities.Books
 
             return new PagedResultDto<AuthorDto>(books.Count(), books);
         }
+        public async Task<BookDto> GetUpdateBook(EntityDto<int> input)
+        {
+            var book = await GetAsync(input);
 
+            if (book.IsBorrowed == true)
+            {
+                book.IsBorrowed = false;
+            }
+            else
+            {
+                book.IsBorrowed = true;
+            }
+            var updateBook = await UpdateAsync(book);
+            return updateBook;
+        }
     }
 }
 

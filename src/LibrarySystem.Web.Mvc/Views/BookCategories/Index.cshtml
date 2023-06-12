@@ -32,7 +32,7 @@
                     <div class="card-header">
                         <a class="btn bg-blue float-sm-right" href="/BookCategories/CreateBookCategory">
                             <i class="fa fa-plus-square"></i>
-                            @L("CreateBookCategory")
+                            @L("Create")
                         </a>
                         <div class="col-sm-6">
                         </div>
@@ -74,9 +74,9 @@
                                             <td>@bookcategory.Name</td>
                                             <td>@bookcategory.Department?.Name</td>
                                             <td>
-                                                <button type="button" class="edit-bookcat btn btn-sm bg-secondary" data-bookcat-id="@bookcategory.Id">
-                                                    <i class="fas fa-pencil-alt"></i> Edit
-                                                </button>
+                                                <a class="edit-bookcat btn btn-sm bg-secondary" href="#" data-bookcat-id="@bookcategory.Id">
+                                                    <i class="fas fa-trash-o fa-lg"></i> Edit
+                                                </a>
                                                 <a class="btn btn-sm bg-danger delete-bookcat" href="#" data-bookcat-id="@bookcategory.Id" data-bookcat-name="@bookcategory.Name">
                                                     <i class="fas fa-trash-o fa-lg"></i> Delete
                                                 </a>

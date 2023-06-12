@@ -15,6 +15,7 @@ namespace LibrarySystem.Books
         Task<List<BookDto>> GetAllBooks();
         Task<List<BookDto>> GetAllAuthorsUnderBooks();
         Task<PagedResultDto<AuthorDto>> GetAllAuthors(PagedAuthorResultRequestDto input);
+        Task<BookDto> GetUpdateBook(EntityDto<int> input);
 
     }
 
