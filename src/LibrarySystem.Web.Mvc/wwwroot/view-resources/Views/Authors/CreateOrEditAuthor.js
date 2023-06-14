@@ -10,7 +10,7 @@
         }
 
         var author = _$form.serializeFormToObject();
-        author.BookId = parseInt(author.BookId);
+        /*author.BookId = parseInt(author.BookId);*/
         if (author.Id != 0) {
             _authorappService.update(author).done(function () {
                 abp.notify.info(l('UpdatedSuccessfully'));

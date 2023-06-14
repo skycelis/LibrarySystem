@@ -66,6 +66,7 @@ namespace LibrarySystem.Entities.Books
             var books = await _repository.GetAll()
                 .Include(x => x.BookCategory)
                 .Include(x => x.Author)
+                .OrderByDescending(x => x.Id)
                 .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 
@@ -76,6 +77,7 @@ namespace LibrarySystem.Entities.Books
             var books = await _repository.GetAll()
                 .Include(x => x.BookCategory)
                 .Include(x => x.Author)
+                .Where(x => !x.IsBorrowed)
                 .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 

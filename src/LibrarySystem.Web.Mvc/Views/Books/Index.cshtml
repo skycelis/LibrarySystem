@@ -87,12 +87,12 @@
                                             }
                                             <td>@book.BookCategory?.Name</td>
                                             <td>
-                                                <button disabled type="button" class="edit-book btn btn-sm bg-secondary" data-book-id="@book.Id">
-                                                    <i class="fas fa-pencil-alt"></i> Edit
-                                                </button>
-                                                <button disabled type="button" class="btn btn-sm bg-danger delete-book" data-book-id="@book.Id" data-book-title="@book.BookTitle">
-                                                    <i class="fas fa-pencil-alt"></i> Delete
-                                                </button>
+                                                <a class="edit-book btn btn-sm bg-secondary" data-book-id="@book.Id">
+                                                    <i class="fas fa-trash-o fa-lg"></i> Edit
+                                                </a>
+                                                <a class="btn btn-sm bg-danger delete-book" href="#" data-book-id="@book.Id" data-book-title="@book.BookTitle">
+                                                    <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                </a>
                                             </td>
                                         </tr>
                                     }

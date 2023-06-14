@@ -1,9 +1,9 @@
 ﻿(function ($) {
-    //var _$form = $('#CreateAuthorForm');
+    var _$form = $('#CreateAuthorForm');
     var _authorappService = abp.services.app.author;
     l = abp.localization.getSource('LibrarySystem'),
         _$table = $('#AuthorsTable');
-    //var _indexPage = "/Authors";
+    var _indexPage = "/Authors";
 
     var _$authorsTable = _$table.DataTable({
         paging: true,
@@ -45,12 +45,12 @@
                 defaultContent: '',
                 render: (data, type, row, meta) => {
                     return [
-                        `   <a class="edit-author btn btn-sm bg-secondary" href="#" data-author-id="${row.id}">`,
-                        `       <i class="fas fa-trash-o fa-lg"></i> ${l('Edit')}`,
-                        '   </a>',
-                        `   <a class="btn btn-sm bg-danger delete-author" href="#" data-author-id="${row.id}" data-author-name="${row.name}">`,
+                        `   <button type="button" class="btn btn-sm bg-secondary edit-author" data-author-id="${row.id}">`,
+                        `       <i class="fas fa-pencil-alt"></i> ${l('Edit')}`,
+                        '   </button>',
+                        `   <button type="button" class="btn btn-sm bg-danger delete-author" data-author-id="${row.id}" data-author-name="${row.name}">`,
                         `       <i class="fas fa-trash-o fa-lg"></i> ${l('Delete')}`,
-                        '   </a>'
+                        '   </button>'
                     ].join('');
                 }
             }
@@ -94,11 +94,12 @@
             function (isConfirmed) {
                 if (isConfirmed) {
                     if (authorId > 0) {
-                        _authorAppService.delete({
+                        _authorappService.delete({
                             id: authorId
                         })
                             .done(function () {
                                 abp.notify.info(l('SuccessfullyDeleted'));
+                                location.reload(true);
                             });
                     }
                 }

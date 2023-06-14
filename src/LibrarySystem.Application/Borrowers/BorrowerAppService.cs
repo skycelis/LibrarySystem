@@ -61,10 +61,6 @@ namespace LibrarySystem.Borrowers
         {
             return base.GetAsync(input);
         }
-        //public override Task<BorrowerDto> UpdateIsBorrowed(BorrowerDto input)
-        //{
-        //    return base.UpdateAsync(input);
-        //}
         public override Task<PagedResultDto<BorrowerDto>> GetAllAsync(PagedBorrowerResultRequestDto input)
         {
             return base.GetAllAsync(input);
@@ -81,6 +77,7 @@ namespace LibrarySystem.Borrowers
             var borrower = await _repository.GetAll()
                 .Include(x => x.Book)
                 .Include(x => x.Student)
+                .OrderByDescending(x => x.Id)
                 .Select(x => ObjectMapper.Map<BorrowerDto>(x))
                 .ToListAsync();
 

@@ -83,7 +83,9 @@ namespace LibrarySystem.Web.Controllers
                     ReturnDate = borrower.ReturnDate,
                     BookId = borrower.BookId,
                     StudentId = borrower.StudentId,
+                    IsBorrowed = borrower.Book.IsBorrowed,
                     Id = id
+
 
                 };
             }

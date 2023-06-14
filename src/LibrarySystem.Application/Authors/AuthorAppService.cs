@@ -64,6 +64,7 @@ namespace LibrarySystem.Authors
         public async Task<List<AuthorDto>> GetAllAuthorsUnderBooks(PagedAuthorResultRequestDto input)
         {
             var authors = await _repository.GetAll()
+                .OrderByDescending(x => x.Id)
                 .Select(x => ObjectMapper.Map<AuthorDto>(x))
                 .ToListAsync();
 

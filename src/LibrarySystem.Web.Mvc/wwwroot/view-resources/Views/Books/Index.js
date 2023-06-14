@@ -34,6 +34,7 @@
                         })
                             .done(function () {
                                 abp.notify.info(l('SuccessfullyDeleted'));
+                                location.reload(true);
                             });
                     }
                 }
