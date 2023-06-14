@@ -72,7 +72,11 @@
                                 <tbody>
                                     @foreach (var book in Model.Books)
                                     {
-                                        @*<div>
+                                        <tr>
+                                            <td>@book.Id</td>
+                                            <td>@book.BookTitle</td>
+                                            <td>@book.BookPublisher</td>
+                                            <td>@book.Author?.Name</td>
                                             @if (book.IsBorrowed)
                                             {
                                                 <td>Borrowed</td>
@@ -81,21 +85,14 @@
                                             {
                                                 <td>Not Borrowed</td>
                                             }
-                                        </div>*@
-                                        <tr>
-                                            <td>@book.Id</td>
-                                            <td>@book.BookTitle</td>
-                                            <td>@book.BookPublisher</td>
-                                            <td>@book.Author?.Name</td>
-                                            <td>@book.IsBorrowed</td>
                                             <td>@book.BookCategory?.Name</td>
                                             <td>
-                                                <a class="edit-book btn btn-sm bg-secondary" data-book-id="@book.Id">
-                                                    <i class="fas fa-trash-o fa-lg"></i> Edit
-                                                </a>
-                                                <a class="btn btn-sm bg-danger delete-book" href="#" data-book-id="@book.Id" data-book-title="@book.BookTitle">
-                                                    <i class="fas fa-trash-o fa-lg"></i> Delete
-                                                </a>
+                                                <button disabled type="button" class="edit-book btn btn-sm bg-secondary" data-book-id="@book.Id">
+                                                    <i class="fas fa-pencil-alt"></i> Edit
+                                                </button>
+                                                <button disabled type="button" class="btn btn-sm bg-danger delete-book" data-book-id="@book.Id" data-book-title="@book.BookTitle">
+                                                    <i class="fas fa-pencil-alt"></i> Delete
+                                                </button>
                                             </td>
                                         </tr>
                                     }

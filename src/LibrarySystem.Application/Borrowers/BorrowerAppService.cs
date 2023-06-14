@@ -16,30 +16,55 @@ namespace LibrarySystem.Borrowers
 
     {
         private readonly IRepository<Borrower, int> _repository;
+        private readonly IRepository<Book, int> _bookRepository;
 
-        public BorrowerAppService(IRepository<Borrower, int> repository) : base(repository)
+        public BorrowerAppService(IRepository<Borrower, int> repository, IRepository<Book, int> bookrepository) : base(repository)
         {
             _repository = repository;
+            _bookRepository = bookrepository;
         }
 
-        public override Task<BorrowerDto> CreateAsync(CreateBorrowerDto input)
+        public override async Task<BorrowerDto> CreateAsync(CreateBorrowerDto input)
         {
-            return base.CreateAsync(input);
+            var borrower = ObjectMapper.Map<Borrower>(input);
+            await _repository.InsertAsync(borrower);
+
+            var book = await _bookRepository.GetAsync(input.BookId);
+
+            book.IsBorrowed = true;
+
+            await _bookRepository.UpdateAsync(book);
+
+            return base.MapToEntityDto(borrower);
         }
         public override Task DeleteAsync(EntityDto<int> input)
         {
             return base.DeleteAsync(input);
         }
 
-        public override Task<BorrowerDto> UpdateAsync(BorrowerDto input)
+        public override async Task<BorrowerDto> UpdateAsync(BorrowerDto input)
         {
-            return base.UpdateAsync(input);
+            var borrower = ObjectMapper.Map<Borrower>(input);
+            await _repository.UpdateAsync(borrower);
+
+            var book = await _bookRepository.GetAsync(input.BookId);
+            
+            if(borrower.ReturnDate.HasValue) {
+                book.IsBorrowed = false;
+            }
+
+            await _bookRepository.UpdateAsync(book);
+
+            return base.MapToEntityDto(borrower);
         }
         public override Task<BorrowerDto> GetAsync(EntityDto<int> input)
         {
             return base.GetAsync(input);
         }
-
+        //public override Task<BorrowerDto> UpdateIsBorrowed(BorrowerDto input)
+        //{
+        //    return base.UpdateAsync(input);
+        //}
         public override Task<PagedResultDto<BorrowerDto>> GetAllAsync(PagedBorrowerResultRequestDto input)
         {
             return base.GetAllAsync(input);
@@ -61,48 +86,6 @@ namespace LibrarySystem.Borrowers
 
             return new PagedResultDto<BorrowerDto>(borrower.Count(), borrower);
         }
-
-
-        //public async Task<List<BorrowerDto>> GetAllBorrowers(PagedBorrowerResultRequestDto input)
-        //{
-        //    var query = await _repository.GetAll()
-        //        .Select(x => ObjectMapper.Map<BorrowerDto>(x))
-        //        .ToListAsync();
-
-        //    return query;
-        //}
-        //public async Task<List<BorrowerDto>> GetAllStudentsWithBorrowers()
-        //{
-        //    var borrower = await _repository.GetAll()
-        //        .Select(x => ObjectMapper.Map<BorrowerDto>(x))
-        //        .ToListAsync();
-
-        //    return borrower;
-        //}
-        //public async Task<List<BorrowerDto>> GetAllBooksWithBorrowers()
-        //{
-        //    var borrower = await _repository.GetAll()
-        //        .Include(x => x.Book)
-        //        .Select(x => ObjectMapper.Map<BorrowerDto>(x))
-        //        .ToListAsync();
-
-        //    return borrower;
-        //}
-        //public override async Task<PagedResultDto<BorrowerDto>> GetAllAsync(PagedBorrowerResultRequestDto input)
-        //{
-        //    var borrowers = await _repository.GetAll()
-        //        .Include(x => x.Book)
-        //            .ThenInclude(x => x.BookCategory)
-        //            .ThenInclude(x => x.Department)
-        //        .Include(x => x.Student)
-        //            .ThenInclude(x => x.Department)
-        //        .OrderByDescending(x => x.Id)
-        //        .Select(x => ObjectMapper.Map<BorrowerDto>(x))
-        //        .ToListAsync();
-
-        //    return new PagedResultDto<BorrowerDto>(borrowers.Count(), borrowers);
-        //    return base.GetAllAsync(input);
-        //}
     }
 
 }

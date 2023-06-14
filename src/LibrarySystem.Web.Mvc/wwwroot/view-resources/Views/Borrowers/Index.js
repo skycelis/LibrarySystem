@@ -8,36 +8,36 @@
         var borrowerId = parseInt($(this).attr("data-borrower-id"));
 
         e.preventDefault();
-        window.location.href = "/Borrowers/CreateBorrower/" + borrowerId;
+        window.location.href = "/Borrowers/EditBorrower/" + borrowerId;
     });
 
 
     $(document).on('click', '.delete-borrower', function () {
         var borrowerId = parseInt($(this).attr("data-borrower-id"));
         var borrowerBorrowDate = $(this).attr("data-borrow-date");
-        
-        deleteBorrower(borrowerId, borrowerBorrowDate);      
+
+        deleteBorrower(borrowerId, borrowerBorrowDate);
     });
 
-   function deleteBorrower(borrowerId) {
+    function deleteBorrower(borrowerId) {
         abp.message.confirm(
             abp.utils.formatString(
-              l('AreYouSureWantToDelete',
-                   borrowerId
+                l('AreYouSureWantToDelete',
+                    borrowerId
                 )),
-           null,
-           function (isConfirmed) {
+            null,
+            function (isConfirmed) {
                 if (isConfirmed) {
                     if (borrowerId > 0) {
                         _borrowerappService.delete({
-                           id: borrowerId
+                            id: borrowerId
                         })
                             .done(function () {
-                               abp.notify.info(l('SuccessfullyDeleted'));
+                                abp.notify.info(l('SuccessfullyDeleted'));
                             });
-                   }
-               }
+                    }
+                }
             }
-       );
+        );
     }
 })(jQuery);
