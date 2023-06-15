@@ -45,11 +45,11 @@
                 defaultContent: '',
                 render: (data, type, row, meta) => {
                     return [
-                        `   <button type="button" class="btn btn-sm bg-secondary edit-author" data-author-id="${row.id}">`,
-                        `       <i class="fas fa-pencil-alt"></i> ${l('Edit')}`,
+                        `   <button type="button" class="btn btn-dark btn-rounded edit-author" data-author-id="${row.id}">`,
+                        `       <i class="fas fa-pencil-alt"></i> ${l('')}`,
                         '   </button>',
-                        `   <button type="button" class="btn btn-sm bg-danger delete-author" data-author-id="${row.id}" data-author-name="${row.name}">`,
-                        `       <i class="fas fa-trash-o fa-lg"></i> ${l('Delete')}`,
+                        `   <button type="button" class="btn btn-danger delete-author" data-author-id="${row.id}" data-author-name="${row.name}">`,
+                        `       <i class="fas fa-trash"></i> ${l('')}`,
                         '   </button>'
                     ].join('');
                 }

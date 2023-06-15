@@ -17,17 +17,16 @@
         <input type="hidden" name="Id" value="@Model?.Id" />
         <div class="form-group row required">
             <div class="col-12">
-                <div class="row">
-                    <div class="col-md-6 form-group">
+                @*<div class="row">*@
+                    <div class="col-sm-3 form-group">
                         <label class="col-md-3 col-form-label" for="Name">Name</label>
-
                         <input id="Name" type="text" name="Name" value="@Model?.Name" class="form-control" required>
                     </div>
-                </div>
+               @* </div>*@
                 <div class="container my-3">
                     <div class="col-md-12">
-                        <button id="Submit" type="submit" name="Submit" class="save-button btn btn-primary">Create</button>
-                        <button id="Cancel" type="button" name="Cancel" class="btn bg-secondary cancel-button">Cancel</button>
+                        <button id="Submit" type="submit" name="Submit" class="save-button btn btn-primary btn-sm">Create</button>
+                        <button id="Cancel" type="button" name="Cancel" class="btn btn-secondary btn-sm cancel-button">Cancel</button>
                     </div>
                 </div>
             </div>
