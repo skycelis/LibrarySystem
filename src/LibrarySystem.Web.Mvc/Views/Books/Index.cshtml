@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@L("Books")</h1>
+                <h2><strong>@L("Books")</strong></h2>
             </div>
             <div class="col-sm-6">
             </div>
@@ -31,22 +31,22 @@
 
                     <div class="card-header">
                         <a class="btn bg-blue float-sm-right" href="/Books/CreateBook">
-                            <i class="fa fa-plus-square"></i>
+                            <i class="fa fa-plus-circle"></i>
                             @L("Create")
                         </a>
                         <div class="col-sm-6">
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="abp-advamced-search">
-                                    <form name="SearchBookForm" class="form-horizontal" asp-controller="Books" asp-action="Index" method="get">
+                                <div class="abp-advanced-search">
+                                    <form name="SearchBookForm" asp-controller="Books" asp-action="Index" method="get">
                                         <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button type="submit" class="btn bg-blue btn-search search-button">
+                                            <div class="input-group-append">
+                                                <input type="search" class="form-control rounded" name="SearchBook" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                                <a class="btn btn-outline-primary float-sm-right">
                                                     <span class="fas fa-search" aria-hidden="true"></span>
-                                                </button>
+                                                </a>
                                             </div>
-                                            <input class="form-control" type="text" name="SearchBook" placeholder="Search" />
                                         </div>
                                     </form>
                                 </div>
@@ -66,7 +66,7 @@
                                         <th>BookAuthor</th>
                                         <th>IsBorrowed</th>
                                         <th>Book Category Name</th>
-                                        <th style="width: 150px">@L("Actions")</th>
+                                        <th style="width: 120px">@L("Actions")</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -87,11 +87,11 @@
                                             }
                                             <td>@book.BookCategory?.Name</td>
                                             <td>
-                                                <a class="edit-book btn btn-sm bg-secondary" data-book-id="@book.Id">
-                                                    <i class="fas fa-trash-o fa-lg"></i> Edit
+                                                <a class="edit-book btn btn-dark btn-rounded" data-book-id="@book.Id">
+                                                    <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <a class="btn btn-sm bg-danger delete-book" href="#" data-book-id="@book.Id" data-book-title="@book.BookTitle">
-                                                    <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                <a class="btn btn-danger delete-book" data-book-id="@book.Id" data-book-name="@book.BookTitle">
+                                                    <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>
                                         </tr>

@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@L("Students")</h1>
+                <h2><strong>@L("Students")</strong></h2>
             </div>
             <div class="col-sm-6">
             </div>
@@ -31,7 +31,7 @@
 
                     <div class="card-header">
                         <a class="btn bg-blue float-sm-right" href="/Students/CreateStudent">
-                            <i class="fa fa-plus-square"></i>
+                            <i class="fa fa-plus-circle"></i>
                             Create
                         </a>
                         <div class="col-sm-6">
@@ -39,14 +39,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="abp-advanced-search">
-                                    <form name="SearchStudentForm" class="form-horizontal" asp-controller="Students" asp-action="Index" method="get">
+                                    <form name="SearchStudentForm" asp-controller="Students" asp-action="Index" method="get">
                                         <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button type="submit" class="btn bg-gradient-blue btn-search search-button">
+                                            <div class="input-group-append">
+                                                <input type="search" class="form-control rounded" name="SearchStudent" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                                <a class="btn btn-outline-primary float-sm-right">
                                                     <span class="fas fa-search" aria-hidden="true"></span>
-                                                </button>
+                                                </a>
                                             </div>
-                                            <input class="form-control" type="text" name="SearchStudent" placeholder="Search" />
                                         </div>
                                     </form>
                                 </div>
@@ -63,9 +63,9 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Contact Number</th>
-                                        <th>Email</th>
+                                        <th>Email Address</th>
                                         <th>Department</th>
-                                        <th style="width: 150px">@L("Actions")</th>
+                                        <th style="width: 110px">@L("Actions")</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,11 +78,11 @@
                                             <td>@student.StudentEmail</td>
                                             <td>@student.Department?.Name</td>
                                             <td>
-                                                <a class="edit-student btn btn-sm bg-secondary" href="#" data-student-id="@student.Id">
-                                                    <i class="fas fa-trash-o fa-lg"></i> Edit
+                                                <a class="edit-student btn btn-dark btn-rounded" data-student-id="@student.Id">
+                                                    <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <a class="btn btn-sm bg-danger delete-student" href="#" data-student-id="@student.Id" data-student-name="@student.StudentName">
-                                                    <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                <a class="btn btn-danger delete-student" data-student-id="@student.Id" data-student-name="@student.StudentName">
+                                                    <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>
                                         </tr>

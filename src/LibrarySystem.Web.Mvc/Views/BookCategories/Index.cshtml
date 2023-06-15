@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@L("BookCategories")</h1>
+                <h2><strong>@L("BookCategories")</strong></h2>
             </div>
             <div class="col-sm-6">
             </div>
@@ -31,7 +31,7 @@
 
                     <div class="card-header">
                         <a class="btn bg-blue float-sm-right" href="/BookCategories/CreateBookCategory">
-                            <i class="fa fa-plus-square"></i>
+                            <i class="fa fa-plus-circle"></i>
                             @L("Create")
                         </a>
                         <div class="col-sm-6">
@@ -39,14 +39,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="abp-advanced-search">
-                                    <form name="SearchBookCategoryForm" class="form-horizontal" asp-controller="BookCategories" asp-action="Index" method="get">
+                                    <form name="SearchBookCategoryForm" asp-controller="BookCategories" asp-action="Index" method="get">
                                         <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button type="submit" class="btn bg-blue btn-search search-button">
+                                            <div class="input-group-append">
+                                                <input type="search" class="form-control rounded" name="SearchBookCategory" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                                <a class="btn btn-outline-primary float-sm-right">
                                                     <span class="fas fa-search" aria-hidden="true"></span>
-                                                </button>
+                                                </a>
                                             </div>
-                                            <input class="form-control" type="text" name="SearchBookCategory" placeholder="Search" />
                                         </div>
                                     </form>
                                 </div>
@@ -62,8 +62,8 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Department Name</th>
-                                        <th style="width: 150px">@L("Actions")</th>
+                                        <th>Department</th>
+                                        <th style="width: 110px">@L("Actions")</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,11 +74,11 @@
                                             <td>@bookcategory.Name</td>
                                             <td>@bookcategory.Department?.Name</td>
                                             <td>
-                                                <a class="edit-bookcat btn btn-sm bg-secondary" href="#" data-bookcat-id="@bookcategory.Id">
-                                                    <i class="fas fa-trash-o fa-lg"></i> Edit
+                                                <a class="edit-bookcat btn btn-dark btn-rounded" data-bookcat-id="@bookcategory.Id">
+                                                    <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <a class="btn btn-sm bg-danger delete-bookcat" href="#" data-bookcat-id="@bookcategory.Id" data-bookcat-name="@bookcategory.Name">
-                                                    <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                <a class="btn bg-danger delete-bookcat" data-bookcat-id="@bookcategory.Id" data-bookcat-name="@bookcategory.Name">
+                                                    <i class="fas fa-trash"></i> 
                                                 </a>
                                             </td>
                                         </tr>

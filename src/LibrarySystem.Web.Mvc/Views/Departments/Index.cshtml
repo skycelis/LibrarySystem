@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@L("Departments")</h1>
+                <h2><strong>@L("Departments")</strong></h2>
             </div>
             <div class="col-sm-6">
             </div>
@@ -28,8 +28,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <a class="btn bg-blue float-sm-right" href="/Departments/CreateDepartment">
-                            <i class="fa fa-plus-square"></i>
+                        <a class="btn btn-primary float-sm-right" href="/Departments/CreateDepartment">
+                            <i class="fa fa-plus-circle"></i>
                             Create
                         </a>
                         <div class="col-sm-6">
@@ -37,14 +37,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="abp-advanced-search">
-                                    <form name="SearchDepartmentForm" class="form-horizontal" asp-controller="Departments" asp-action="Index" method="get">
+                                    <form name="SearchDepartmentForm" asp-controller="Departments" asp-action="Index" method="get">
                                         <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button type="submit" class="btn bg-blue btn-search search-button">
+                                            <div class="input-group-append">
+                                                <input type="search" class="form-control rounded" name="SearchDepartment" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                                <a class="btn btn-outline-primary float-sm-right">
                                                     <span class="fas fa-search" aria-hidden="true"></span>
-                                                </button>
+                                                </a>
                                             </div>
-                                            <input class="form-control" type="text" name="SearchDepartment" placeholder="Search" />
                                         </div>
                                     </form>
                                 </div>
@@ -60,7 +60,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th style="width: 150px">@L("Actions")</th>
+                                        <th style="width: 110px">@L("Actions")</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,11 +70,11 @@
                                             <td>@department.Id</td>
                                             <td>@department.Name</td>
                                             <td>
-                                                <a class="edit-dept btn btn-sm bg-secondary" href="#" data-dept-id="@department.Id">
-                                                    <i class="fas fa-trash-o fa-lg"></i> Edit
+                                                <a class="edit-dept btn btn-dark btn-rounded" data-dept-id="@department.Id">
+                                                    <i class="fas fa-pencil-alt"></i> 
                                                 </a>
-                                                <a class="btn btn-sm bg-danger delete-dept" href="#" data-dept-id="@department.Id" data-dept-name="@department.Name">
-                                                    <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                <a class="btn btn-danger delete-dept" data-dept-id="@department.Id" data-dept-name="@department.Name">
+                                                    <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>
                                         </tr>

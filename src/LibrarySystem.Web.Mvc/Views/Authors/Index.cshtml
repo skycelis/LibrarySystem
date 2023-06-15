@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@L("Authors")</h1>
+                <h2><strong>@L("Authors")</strong></h2>
             </div>
             <div class="col-sm-6">
             </div>
@@ -31,13 +31,27 @@
 
                     <div class="card-header">
                         <a class="btn bg-blue float-sm-right" href="/Authors/CreateAuthor">
-                            <i class="fa fa-plus-square"></i>
+                            <i class="fa fa-plus-circle"></i>
                             @L("Create")
                         </a>
                         <div class="col-sm-6">
                         </div>
                         <div class="row">
                             <div class="col-md-6">
+                                <div class="abp-advanced-search">
+                                    <form id="authorSearchForm" class="form=horizontal">
+                                        <div class="input-group">
+                                            <div class="input-group-append">
+                                                <input type="search" class="form-control rounded" name="Keyword" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                                <a class="btn btn-outline-primary float-sm-left">
+                                                    <span class="fas fa-search" aria-hidden="true"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            @*<div class="col-md-6">
                                 <div class="abp-advanced-search">
                                     <form id="authorSearchForm" class="form-horizontal">
                                         <div class="input-group">
@@ -50,7 +64,7 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="col-md-6">
                             </div>
                         </div>

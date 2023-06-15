@@ -31,9 +31,6 @@
                     });
                 });
             }
-            else if (borrower._returnDate < borrower._borrowDate) {
-                alert("Cannot return the book at an earlier time than the borrowed date");
-            }
             else {
                 _borrowerappService.update(borrower).done(function () {
                     window.location.href = _indexPage;

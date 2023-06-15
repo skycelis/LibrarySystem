@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@L("Borrowers")</h1>
+                <h2><strong>@L("Borrowers")</strong></h2>
             </div>
             <div class="col-sm-6">
             </div>
@@ -31,7 +31,7 @@
 
                     <div class="card-header">
                         <a class="btn bg-blue float-sm-right" href="/Borrowers/CreateBorrower">
-                            <i class="fa fa-plus-square"></i>
+                            <i class="fa fa-plus-circle"></i>
                             @L("Create")
                         </a>
                         <div class="col-sm-6">
@@ -39,15 +39,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="abp-advanced-search">
-                                    @*Search Bar*@
-                                    <form name="SearchBorrowerForm" class="form-horizontal" asp-controller="Borrowers" asp-action="Index" method="get">
+                                    <form name="SearchBorrowerForm" asp-controller="Borrowers" asp-action="Index" method="get">
                                         <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button type="submit" class="btn bg-blue btn-search search-button">
+                                            <div class="input-group-append">
+                                                <input type="search" class="form-control rounded" name="SearchBorrower" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                                <a class="btn btn-outline-primary float-sm-right">
                                                     <span class="fas fa-search" aria-hidden="true"></span>
-                                                </button>
+                                                </a>
                                             </div>
-                                            <input class="form-control" type="text" name="SearchBorrower" placeholder="Search" />
                                         </div>
                                     </form>
                                 </div>
@@ -67,7 +66,7 @@
                                         <th>ReturnDate</th>
                                         <th>Book Title</th>
                                         <th>Student Name</th>
-                                        <th style="width: 200px">@L("Actions")</th>
+                                        <th style="width: 110px">@L("Actions")</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,7 +74,7 @@
                                     {
                                         @if (borrower.ExpectedReturnDate < borrower.ReturnDate)
                                         {
-                                            <tr style="background-color:brown;" id="borrower">
+                                            <tr style="background-color:indianred;" id="borrower">
                                                 <td>@borrower.Id</td>
                                                 <td>@borrower.BorrowDate.ToString("yyyy-MM-dd")</td>
                                                 <td>@borrower.ExpectedReturnDate.ToString("yyyy-MM-dd")</td>
@@ -86,20 +85,26 @@
                                                 @if (borrower.ReturnDate == null)
                                                 {
                                                     <td>
-                                                        <a class="edit-borrower btn btn-sm bg-secondary" data-borrower-id="@borrower?.Id">
-                                                            <i class="fas fa-trash-o fa-lg"></i> Update
+                                                        <a class="edit-borrower btn btn-dark btn-rounded" data-borrower-id="@borrower?.Id">
+                                                            <i class="fa fa-wrench"></i>
                                                         </a>
-                                                        <a class="btn btn-sm bg-danger delete-borrower" href="#" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
-                                                            <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                        <a class="btn bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
+                                                            <i class="fas fa-trash"></i> 
                                                         </a>
                                                     </td>
                                                 }else{
                                                     <td>
-                                                        <button disabled class="edit-borrower btn btn-sm bg-secondary" data-borrower-id="@borrower?.Id">
-                                                            <i class="fas fa-trash-o fa-lg"></i> Update
+                                                        @*<a class="edit-borrower btn btn-dark btn-rounded" href="javascript:void(0)" data-borrower-id="@borrower?.Id">
+                                                            <i class="fa fa-wrench"></i>
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="btn bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>*@
+                                                        <button disabled class="edit-borrower btn btn-dark btn-rounded" data-borrower-id="@borrower?.Id">
+                                                            <i class="fas fa-wrench"></i>
                                                         </button>
-                                                        <button disabled class="btn btn-sm bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
-                                                            <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                        <button disabled class="btn bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
+                                                            <i class="fas fa-trash"></i>
                                                         </button>
                                                     </td>
                                                 }
@@ -117,22 +122,28 @@
                                                 @if (borrower.ReturnDate == null)
                                                 {
                                                     <td>
-                                                        <a class="edit-borrower btn btn-sm bg-secondary" data-borrower-id="@borrower?.Id">
-                                                            <i class="fas fa-trash-o fa-lg"></i> Update
+                                                        <a class="edit-borrower btn btn-dark btn-rounded" data-borrower-id="@borrower?.Id">
+                                                            <i class="fa fa-wrench"></i>
                                                         </a>
-                                                        <a class="btn btn-sm bg-danger delete-borrower" href="#" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
-                                                            <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                        <a class="btn bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
+                                                            <i class="fas fa-trash"></i>
                                                         </a>
                                                     </td>
                                                 }
                                                 else
                                                 {
                                                     <td>
-                                                        <button disabled class="edit-borrower btn btn-sm bg-secondary" data-borrower-id="@borrower?.Id">
-                                                            <i class="fas fa-trash-o fa-lg"></i> Update
+                                                        @*<a class="edit-borrower btn btn-dark btn-rounded" href="javascript:void(0)" data-borrower-id="@borrower?.Id">
+                                                            <i class="fa fa-wrench"></i>
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="btn bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>*@
+                                                        <button disabled class="edit-borrower btn btn-dark btn-rounded" data-borrower-id="@borrower?.Id">
+                                                            <i class="fas fa-wrench"></i>
                                                         </button>
-                                                        <button disabled class="btn btn-sm bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
-                                                            <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                        <button disabled class="btn bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
+                                                            <i class="fas fa-trash"></i>
                                                         </button>
                                                     </td>
                                                 }
@@ -151,22 +162,28 @@
                                                 @if (borrower.ReturnDate == null)
                                                 {
                                                     <td>
-                                                        <a class="edit-borrower btn btn-sm bg-secondary" data-borrower-id="@borrower?.Id">
-                                                            <i class="fas fa-trash-o fa-lg"></i> Update
+                                                        <a class="edit-borrower btn btn-dark btn-rounded" data-borrower-id="@borrower?.Id">
+                                                            <i class="fa fa-wrench"></i>
                                                         </a>
-                                                        <a class="btn btn-sm bg-danger delete-borrower" href="#" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
-                                                            <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                        <a class="btn bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
+                                                            <i class="fas fa-trash"></i>
                                                         </a>
                                                     </td>
                                                 }
                                                 else
                                                 {
                                                     <td>
-                                                        <button disabled class="edit-borrower btn btn-sm bg-secondary" data-borrower-id="@borrower?.Id">
-                                                            <i class="fas fa-trash-o fa-lg"></i> Update
+                                                       @* <a class="edit-borrower btn btn-dark btn-rounded" href="javascript:void(0)" data-borrower-id="@borrower?.Id">
+                                                            <i class="fa fa-wrench"></i>
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="btn bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>*@
+                                                        <button disabled class="edit-borrower btn btn-dark btn-rounded" data-borrower-id="@borrower?.Id">
+                                                            <i class="fas fa-wrench"></i>
                                                         </button>
-                                                        <button disabled class="btn btn-sm bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
-                                                            <i class="fas fa-trash-o fa-lg"></i> Delete
+                                                        <button disabled class="btn bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
+                                                            <i class="fas fa-trash"></i>
                                                         </button>
                                                     </td>
                                                 }

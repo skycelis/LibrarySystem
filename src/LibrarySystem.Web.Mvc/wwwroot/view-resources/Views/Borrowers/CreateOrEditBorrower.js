@@ -77,3 +77,7 @@
 //    });
 
 //})(jQuery);
+
+//else if (borrower._returnDate < borrower._borrowDate) {
+            //    alert("Cannot return the book at an earlier time than the borrowed date");
+            //}
