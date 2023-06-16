@@ -54,7 +54,7 @@ namespace LibrarySystem.Web.Controllers
         [HttpGet]
 
 
-        public async Task<IActionResult> CreateBorrower(int id)
+        public async Task<IActionResult> CreateBorrower()
         {
             var model = new CreateOrEditBorrowersViewModel();
             var books = await _bookappService.GetAllAuthorsUnderBooks();
@@ -70,12 +70,12 @@ namespace LibrarySystem.Web.Controllers
         public async Task<IActionResult> EditBorrower(int id)
         {
             var model = new CreateOrEditBorrowersViewModel();
-            var books = await _bookappService.GetAllBooks();
+            var books = await _bookappService.GetAllAuthorsUnderBooks();
             var students = await _studentappService.GetAllStudents();
 
             if (id != 0)
             {
-                var borrower = await _borrowerappService.GetAsync(new EntityDto<int>(id));
+                var borrower = await _borrowerappService.GetBorrowerWithBook(id);
                 model = new CreateOrEditBorrowersViewModel()
                 {
                     BorrowDate = borrower.BorrowDate,
@@ -85,14 +85,9 @@ namespace LibrarySystem.Web.Controllers
                     StudentId = borrower.StudentId,
                     IsBorrowed = borrower.Book.IsBorrowed,
                     Id = id
-
-
                 };
-            }
-            else
-            {
-                books = await _bookappService.GetAllBooks();
-                students = await _studentappService.GetAllStudents();
+                var book = await _bookappService.GetAsync(new EntityDto<int>(borrower.BookId));
+                books.Add(book);
             }
 
             model.Books = books;

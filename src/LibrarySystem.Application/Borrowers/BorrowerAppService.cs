@@ -37,29 +37,77 @@ namespace LibrarySystem.Borrowers
 
             return base.MapToEntityDto(borrower);
         }
-        public override Task DeleteAsync(EntityDto<int> input)
+        public override async Task DeleteAsync(EntityDto<int> input)
         {
-            return base.DeleteAsync(input);
+            var borrower = await _repository.GetAsync(input.Id);
+
+            var oldBook = await _bookRepository.GetAsync(borrower.BookId.Value);
+            oldBook.IsBorrowed = false;
+            await _bookRepository.UpdateAsync(oldBook);
+
+            await _repository.DeleteAsync(borrower);
         }
 
         public override async Task<BorrowerDto> UpdateAsync(BorrowerDto input)
         {
-            var borrower = ObjectMapper.Map<Borrower>(input);
-            await _repository.UpdateAsync(borrower);
+            try
+            {
+                var borrower = await _repository.GetAll().AsNoTracking().Where(w => w.Id == input.Id).FirstOrDefaultAsync();
 
-            var book = await _bookRepository.GetAsync(input.BookId);
-            
-            if(borrower.ReturnDate.HasValue) {
-                book.IsBorrowed = false;
+                if (input.ReturnDate.HasValue)
+                {
+                    var book = await _bookRepository.GetAsync(input.BookId);
+                    book.IsBorrowed = false;
+                    await _bookRepository.UpdateAsync(book);
+                }
+
+                if (borrower.BookId != input.BookId)
+                {
+                    var oldBook = await _bookRepository.GetAsync(borrower.BookId.Value);
+                    oldBook.IsBorrowed = false;
+                    await _bookRepository.UpdateAsync(oldBook);
+
+                    var newBook = await _bookRepository.GetAsync(input.BookId);
+                    newBook.IsBorrowed = true;
+                    await _bookRepository.UpdateAsync(newBook);
+                }
+
+                //var entity = new Borrower()
+                //{
+                //    Id = input.Id,
+                //    BorrowDate = input.BorrowDate,
+                //    ExpectedReturnDate = input.ExpectedReturnDate,
+                //    ReturnDate = input.ReturnDate.Value,
+                //    BookId = input.BookId,
+                //    StudentId = input.StudentId
+                //};
+                borrower = ObjectMapper.Map<Borrower>(input);
+
+                await _repository.UpdateAsync(borrower);
+                return base.MapToEntityDto(borrower);
             }
+            catch (System.Exception e)
+            {
 
-            await _bookRepository.UpdateAsync(book);
-
-            return base.MapToEntityDto(borrower);
+                throw e;
+            }
+          
         }
+
         public override Task<BorrowerDto> GetAsync(EntityDto<int> input)
-        {
+        { 
             return base.GetAsync(input);
+        }
+
+        public async Task<BorrowerDto> GetBorrowerWithBook(int id)
+        { 
+            var borrower = await _repository.GetAll()
+                .Include(b => b.Book)
+                .Where(w => w.Id == id)
+                .Select(s => ObjectMapper.Map<BorrowerDto>(s))
+                .FirstOrDefaultAsync();
+
+            return borrower;
         }
         public override Task<PagedResultDto<BorrowerDto>> GetAllAsync(PagedBorrowerResultRequestDto input)
         {

@@ -8,5 +8,6 @@ namespace LibrarySystem.Borrowers
     public interface IBorrowerAppService :IAsyncCrudAppService<BorrowerDto, int, PagedBorrowerResultRequestDto, CreateBorrowerDto, BorrowerDto>
     {
         Task<PagedResultDto<BorrowerDto>> GetBorrowerWithBooksAndStudent(PagedBorrowerResultRequestDto input);
+        Task<BorrowerDto> GetBorrowerWithBook(int id);
     }
 }
