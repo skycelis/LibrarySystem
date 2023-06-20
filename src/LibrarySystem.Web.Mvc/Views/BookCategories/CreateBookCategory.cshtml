@@ -13,16 +13,14 @@
 
 
     <div class="modal-body">
-        <label style="font-size:24px" class="col-md-3 col-form-label">CreateBookCategory</label>
+        <label style="font-size:28px" class="col-md-3 col-form-label">Create Book Category</label>
         <input type="hidden" name="Id" value="@Model.Id" />
         <div class="form-group row required">
             <div class="col-12">
-                <div class="row">
                     <div class="col-sm-3 form-group">
                         <label class="col-md-3 col-form-label" for="Name">Name</label>
                         <input id="Name" type="text" name="Name" value="@Model.Name" class="form-control" required>
                     </div>
-                </div>
 
                 <div class="col-md-3 form-group row required">
                     <label for="BookCategoryDepartment" class="col-md-5 col-form-label">Department</label>
@@ -30,12 +28,10 @@
                         @Html.DropDownListFor(m => m.DepartmentId, Model.ListDepartments.Select(d => new SelectListItem { Text = d.Name, Value = d.Id.ToString() }), "Select Department", new {@class = "form-control" })
                     </div>
                 </div>
-                <div class="container my-3">
-                    <div class="col-md-12">
-                        <button id="Submit" type="submit" name="Submit" class="save-button btn btn-primary btn-sm">Save</button>
+                    <div class="col-md-3">
+                        <button id="Submit" type="submit" name="Submit" class="save-button btn btn-success btn-sm">Save</button>
                         <button id="Cancel" type="button" name="Cancel" class="btn btn-secondary btn-sm cancel-button">Cancel</button>
                     </div>
-                </div>
             </div>
         </div>
     </div>

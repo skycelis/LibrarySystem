@@ -30,8 +30,8 @@
                 <div class="card">
 
                     <div class="card-header">
-                        <a class="btn bg-blue float-sm-right" href="/Borrowers/CreateBorrower">
-                            <i class="fa fa-plus-circle"></i>
+                        <a class="btn btn-success float-sm-right" href="/Borrowers/CreateBorrower">
+                            <i class="fa fa-plus"></i>
                             @L("Create")
                         </a>
                         <div class="col-sm-6">
@@ -43,7 +43,7 @@
                                         <div class="input-group">
                                             <div class="input-group-append">
                                                 <input type="search" class="form-control rounded" name="SearchBorrower" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                                                <a class="btn btn-outline-primary float-sm-right">
+                                                <a class="btn btn-outline-success float-sm-right">
                                                     <span class="fas fa-search" aria-hidden="true"></span>
                                                 </a>
                                             </div>
@@ -61,11 +61,11 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>BorrowDate</th>
-                                        <th>ExpectedReturnDate</th>
-                                        <th>ReturnDate</th>
-                                        <th>Book Title</th>
-                                        <th>Student Name</th>
+                                        <th>Borrow Date</th>
+                                        <th>Expected Return Date</th>
+                                        <th>Return Date</th>
+                                        <th>Book</th>
+                                        <th>Student</th>
                                         <th style="width: 110px">@L("Actions")</th>
                                     </tr>
                                 </thead>
@@ -94,12 +94,6 @@
                                                     </td>
                                                 }else{
                                                     <td>
-                                                        @*<a class="edit-borrower btn btn-dark btn-rounded" href="javascript:void(0)" data-borrower-id="@borrower?.Id">
-                                                            <i class="fa fa-wrench"></i>
-                                                        </a>
-                                                        <a href="javascript:void(0)" class="btn bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
-                                                            <i class="fas fa-trash"></i>
-                                                        </a>*@
                                                         <button disabled class="edit-borrower btn btn-dark btn-rounded" data-borrower-id="@borrower?.Id">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </button>
@@ -133,12 +127,6 @@
                                                 else
                                                 {
                                                     <td>
-                                                        @*<a class="edit-borrower btn btn-dark btn-rounded" href="javascript:void(0)" data-borrower-id="@borrower?.Id">
-                                                            <i class="fa fa-wrench"></i>
-                                                        </a>
-                                                        <a href="javascript:void(0)" class="btn bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
-                                                            <i class="fas fa-trash"></i>
-                                                        </a>*@
                                                         <button disabled class="edit-borrower btn btn-dark btn-rounded" data-borrower-id="@borrower?.Id">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </button>
@@ -173,12 +161,6 @@
                                                 else
                                                 {
                                                     <td>
-                                                       @* <a class="edit-borrower btn btn-dark btn-rounded" href="javascript:void(0)" data-borrower-id="@borrower?.Id">
-                                                            <i class="fa fa-wrench"></i>
-                                                        </a>
-                                                        <a href="javascript:void(0)" class="btn bg-danger delete-borrower" data-borrower-id="@borrower?.Id" data-borrow-date="@borrower?.BorrowDate">
-                                                            <i class="fas fa-trash"></i>
-                                                        </a>*@
                                                         <button disabled class="edit-borrower btn btn-dark btn-rounded" data-borrower-id="@borrower?.Id">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </button>
