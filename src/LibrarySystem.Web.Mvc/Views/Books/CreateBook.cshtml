@@ -46,17 +46,13 @@
                                     @Html.DropDownListFor(m => m.BookCategoryId, Model.ListBookCategories.Select(d => new SelectListItem { Text = d.Name, Value = d.Id.ToString()}), "Select Book Category", new {@class = "form-control" })
                                 </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input type="hidden" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1"></label>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="container my-3">
                     <div class="col-md-12">
-                        <button id="Submit" type="submit" name="Submit" class="save-button btn btn-success">Save</button>
-                        <button id="Cancel" type="button" name="Cancel" class="cancel-button btn bg-secondary">Cancel</button>
+                        <button id="Submit" type="submit" name="Submit" class="save-button btn btn-success btn-sm">Save</button>
+                        <button id="Cancel" type="button" name="Cancel" class="cancel-button btn bg-secondary btn-sm">Cancel</button>
                     </div>
                 </div>
             </div>

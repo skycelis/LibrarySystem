@@ -37,7 +37,7 @@ namespace LibrarySystem.Web.Controllers
             {
                 model = new BorrowersListViewModel()
                 {
-                    Borrowers = borrowers.Items.Where(b => b.Book.BookTitle.Contains(SearchBorrower) || b.Student.StudentName.Contains(SearchBorrower)).ToList()
+                    Borrowers = borrowers.Items.Where(b => b.Book.BookTitle.Contains(SearchBorrower)/* || b.Student.StudentName.Contains(SearchBorrower)*/).ToList()
                 };
             }
             else
