@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using LibrarySystem.Authors;
 using LibrarySystem.Authors.Dto;
 using Microsoft.AspNetCore.Components.Forms;
+using Abp.Linq.Extensions;
 
 namespace LibrarySystem.Entities.Books
 {
@@ -68,6 +69,11 @@ namespace LibrarySystem.Entities.Books
                 .Include(x => x.Author)
                 .OrderByDescending(x => x.Id)
                 .Select(x => ObjectMapper.Map<BookDto>(x))
+                //.WhereIf(!string.IsNullOrEmpty(input.Keyword),
+                //x => x.BookTitle!.Contains(input.Keyword) ||
+                //x.BookPublisher.Contains(input.Keyword) ||
+                //x.Author.Name.Contains(input.Keyword) ||
+                //x.BookCategory.Name.Contains(input.Keyword))
                 .ToListAsync();
 
             return new PagedResultDto<BookDto>(books.Count(), books);

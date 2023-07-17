@@ -28,23 +28,28 @@ namespace LibrarySystem.Web.Controllers
 
         public async Task<IActionResult> Index(string SearchBook)
         {
-            var books = await _bookappService.GetAllBooksWithCategoriesAndAuthor(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
-            var model = new BookListViewModel();
+            var books = await _bookappService.GetAllBooksWithCategoriesAndAuthor(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue, Keyword = SearchBook });
 
-            if (!string.IsNullOrEmpty(SearchBook))
+            var model = new BookListViewModel()
             {
-                model = new BookListViewModel()
-                {
-                    Books = books.Items.Where(b => b.BookTitle.Contains(SearchBook)).ToList()
-                };
-            }
-            else
-            {
-                model = new BookListViewModel()
-                {
-                    Books = books.Items.ToList()
-                };
-            }
+                Books = books.Items.ToList(),
+            };
+
+            
+            //if (!string.IsNullOrEmpty(SearchBook))
+            //{
+            //    model = new BookListViewModel()
+            //    {
+            //        Books = books.Items.Where(b => b.BookTitle.Contains(SearchBook)).ToList()
+            //    };
+            //}
+            //else
+            //{
+            //    model = new BookListViewModel()
+            //    {
+            //        Books = books.Items.ToList()
+            //    };
+            //}
 
             return View(model);
         }
